@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module classpath="eclipse" classpath-dir="$MODULE_DIR$" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="scala" name="Scala">
+      <configuration>
+        <option name="compilerLibraryLevel" value="Global" />
+        <option name="compilerLibraryName" value="scala-compiler" />
+        <option name="pluginPaths">
+          <array>
+            <option value="lib.scalax.graph/graph-core_2.10-1.6.0-javadoc.jar" />
+            <option value="lib.scalax.graph/graph-core_2.10-1.6.0-sources.jar" />
+            <option value="lib.scalax.graph/graph-core_2.10-1.6.0.jar" />
+            <option value="lib.scalax.graph/graph-dot_2.10-1.6.0-javadoc.jar" />
+            <option value="lib.scalax.graph/graph-dot_2.10-1.6.0-sources.jar" />
+            <option value="lib.scalax.graph/graph-dot_2.10-1.6.0.jar" />
+            <option value="lib.scalax.graph/bundles/graph-core_2.10-1.6.0.jar" />
+            <option value="lib.scalax.graph/bundles/graph-dot_2.10-1.6.0.jar" />
+          </array>
+        </option>
+      </configuration>
+    </facet>
+  </component>
+</module>
+
