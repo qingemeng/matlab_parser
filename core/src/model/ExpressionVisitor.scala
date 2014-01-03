@@ -25,6 +25,7 @@ abstract class ExpressionVisitor {
   def visit(expr: FunctionCallExpr): Int = { ExpressionVisitor.Continue }
   def visit(expr: ExpressionListExpr): Int = { ExpressionVisitor.Continue }
   def visit(expr: TupleExpr): Int = { ExpressionVisitor.Continue }
+  //def visit(expr: VectorExpr): Int = {ExpressionVisitor.Continue}
   def visit(expr: ConditionalExpr): Int = { ExpressionVisitor.Continue }
   def visit(expr: TypeIdExpr): Int = { ExpressionVisitor.Continue }
   def visit(expr: SliceExpr): Int = { ExpressionVisitor.Continue }
@@ -43,6 +44,7 @@ abstract class ExpressionVisitor {
   def leave(expr: FunctionCallExpr): Expr = { expr }
   def leave(expr: ExpressionListExpr): Expr = { expr }
   def leave(expr: TupleExpr): Expr = { expr }
+  //def leave(expr: VectorExpr): Expr = {expr}
   def leave(expr: ConditionalExpr): Expr = { expr }
   def leave(expr: TypeIdExpr): Expr = { expr }
   def leave(expr: SliceExpr): Expr = { expr }

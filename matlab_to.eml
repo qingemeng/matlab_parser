@@ -3,4 +3,7 @@
 	<output-test url="file://$MODULE_DIR$/out/test/matlab_to"/>
 	<exclude-output/>
 	<contentEntry url="file://$MODULE_DIR$"/>
+	<levels>
+		<level name="scalatest_2.10-2.0" value="project"/>
+	</levels>
 </component>

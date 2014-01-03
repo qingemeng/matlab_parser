@@ -37,6 +37,7 @@ class ExpressionProcessor(private val visitor: ExpressionVisitor) {
         case e: FunctionCallExpr    => process(e)
         case e: ExpressionListExpr  => process(e)
         case e: TupleExpr  		      => process(e)
+//        case e: VectorExpr          => process(e)
         case e: ConditionalExpr     => process(e)
         case e: TypeIdExpr          => process(e)
         case e: ConstLiteralExpr    => process(e)
@@ -170,6 +171,23 @@ class ExpressionProcessor(private val visitor: ExpressionVisitor) {
     if (result != ExpressionVisitor.Abort) visitor.leave(expr)
     else null
   }
+
+//  def process(expr: VectorExpr): Expr ={
+//    val result = visitor.visit(expr)
+//    if( result ==ExpressionVisitor.Continue){
+//      val exprs  = ListBuffer.empty[Expr]
+//      val pass = expr.exprs.forall{e=>
+//        val xpr = process(e)
+//        if(xpr != null ) exprs +=xpr
+//        xpr != null
+//      }
+//      if (!pass) return null
+//      expr.update(exprs = exprs.toList)
+//    }
+//    if(result !=ExpressionVisitor.Abort)
+//      visitor.leave(expr)
+//    else null
+//  }
   
   def process(expr: ArrayCompositionExpr): Expr = {
     val result = visitor.visit(expr)    

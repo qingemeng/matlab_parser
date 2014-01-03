@@ -14,5 +14,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/eclipse:eclipse-jface:2.1.0"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/eclipse:eclipse-ui:2.1.0"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/eclipse-workbench-2.1.0"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/scalatest_2.10-2.0"/>
 	<classpathentry kind="output" path="out/production/matlab_to"/>
 </classpath>
