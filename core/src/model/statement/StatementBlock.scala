@@ -109,14 +109,14 @@ class StatementBlock() extends Statement {
   override def pretty(level: Int): String = {
     val str = new StringBuilder
     str.append(indentStr(level-1))
-    str.append("{\n")
+    str.append("\n")
     for (i <- 0 until statements.size) {
       str.append(statements(i).pretty(level))
       //if (i != statements.size - 1)
       str.append("\n")
     }
     str.append(indentStr(level-1))
-    str.append("}")
+    str.append("\n")
     str.toString
   }
   
