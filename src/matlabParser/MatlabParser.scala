@@ -17,99 +17,115 @@ import scala.util.parsing.combinator._
 import model._
 import model.expression._
 import model.statement._
+import model.property.HasProperties
+import refactoring.matlab.model.FunctionDefStatement
 
 object MatlabParser extends JavaTokenParsers with PackratParsers {
   val declMap = HashMap[IdName, BasicType]()
 
   //lazy val keywords: PackratParser[Any] = "var" | "for"
-  lazy val eol: Parser[Any] = rep(""";(\r?\n)?+""".r)
+//  lazy val eol: Parser[Any] = rep(""";(\r?\n)?+""".r)
+    lazy val eol: Parser[Any] = rep(""";(\r?\n)?+""".r)
+
 
   lazy val source: PackratParser[StatementBlock] =
     (statement*) ^^ { case stmts => StatementBlock(stmts)}
+  //  lazy val source :PackratParser[StatementList] =
+  //      (statement*) ^^ { case stmts => StatementBlock(stmts)}
 
-  lazy val functions: PackratParser[List[FunctionDef]] = rep(function_def)
+  //  lazy val StatementList: PackratParser[]
 
-//  def newFunction(name: IdName, paramsList: List[Parameter], body: Statement, typ: Option[BasicType]): FunctionDef = {
-//    val inParams = ListBuffer[IdName]()
-//    val outParams = ListBuffer[IdName]()
-//    val params = ListBuffer[IdName]()
-//    paramsList.foreach(param => {
-//      declMap += param.idName -> param.typ
-//      params += param.idName
-//      param match {
-//        case p: InParameter => inParams += p.idName
-//        case p: OutParameter => outParams += p.idName
-//        case p: InOutParameter => {
-//          inParams += p.idName
-//          outParams += p.idName
-//        }
-//      }
-//    })
-//
-//    FunctionDef(name, params.toList, inParams.toList, outParams.toList, body, typ)
-//  }
-def newFunction(name: IdName, paramsIn: List[InParameter],paramsOut: List[OutParameter], body: Statement): FunctionDef = {
-  val inParams = ListBuffer[IdName]()
-  val outParams = ListBuffer[IdName]()
-  val params = ListBuffer[IdName]()
-  paramsIn.foreach(param => {
-    //    declMap += param.idName -> param.typ
-    //    params += param.idName
-    //    param match {
-    //      InParameter => inParams += p.idName
-    //      case p: InOutParameter => {
-    inParams += param.idName
-    //        outParams += p.idName
-    //      }
-    //    }
-  })
-  paramsOut.foreach(param =>{
-    outParams +=param.idName;
-  })
+  lazy val functions: PackratParser[List[FunctionDefStatement]] = rep(function_def)
+
+  //  def newFunction(name: IdName, paramsList: List[Parameter], body: Statement, typ: Option[BasicType]): FunctionDef = {
+  //    val inParams = ListBuffer[IdName]()
+  //    val outParams = ListBuffer[IdName]()
+  //    val params = ListBuffer[IdName]()
+  //    paramsList.foreach(param => {
+  //      declMap += param.idName -> param.typ
+  //      params += param.idName
+  //      param match {
+  //        case p: InParameter => inParams += p.idName
+  //        case p: OutParameter => outParams += p.idName
+  //        case p: InOutParameter => {
+  //          inParams += p.idName
+  //          outParams += p.idName
+  //        }
+  //      }
+  //    })
+  //
+  //    FunctionDef(name, params.toList, inParams.toList, outParams.toList, body, typ)
+  //  }
+  def newFunction(name: IdName, paramsIn: List[Parameter],paramsOut: List[Parameter], body: Statement): FunctionDefStatement = {
+    val inParams = ListBuffer[IdName]()
+    val outParams = ListBuffer[IdName]()
+    val params = ListBuffer[IdName]()
+    if(paramsIn!=null&&paramsOut!=null){
+    paramsIn.foreach(param => {
+      //    declMap += param.idName -> param.typ
+      params += param.idName
+      //    param match {
+      //      InParameter => inParams += p.idName
+      //      case p: InOutParameter => {
+      inParams += param.idName
+      params += param.idName
+
+      //        outParams += p.idName
+      //      }
+      //    }
+    })
+    paramsOut.foreach(param =>{
+      outParams +=param.idName;
+    })
+    }
 
 
-//  FunctionDef(name, params.toList, inParams.toList, outParams.toList, body, typ)
-    FunctionDef(name, params.toList, inParams.toList, outParams.toList, body, typ)
+    //  FunctionDef(name, params.toList, inParams.toList, outParams.toList, body, typ)
+    FunctionDef(name, params.toList, inParams.toList, outParams.toList, body)
+    FunctionDefStatement(FunctionDef(name, params.toList, inParams.toList, outParams.toList, body))
 
-}
+  }
 
-//  lazy val function: PackratParser[FunctionDef] =
-//    "def" ~> identifierName ~ ("(" ~> parameters <~ ")") ~ (":" ~> declarationType) ~ blockStmt ^^ {
-//      case name~params~typ~body => newFunction(name, params, body, Some(typ))
-//    } |
-//      "def" ~> identifierName ~ ("(" ~> parameters <~ ")") ~ blockStmt ^^ {
-//        case name~params~body => newFunction(name, params, body, None)
-//      }
-////
-//  function_definition
-//    : FUNCTION function_return? ID parameter_list? nloc
-//  func_or_statement_list
-//  END -> ^(FUNCTION ID function_return parameter_list func_or_statement_list)
-//  ;
-//
-//  function_return
-//    : ID EQ -> ^(FUNCTION_RETURN ID)
-//  | LSBRACE (options {greedy=false;} : ID COMMA?)+ RSBRACE EQ -> ^(FUNCTION_RETURN ID+)
-//  ;
+  //  lazy val function: PackratParser[FunctionDef] =
+  //    "def" ~> identifierName ~ ("(" ~> parameters <~ ")") ~ (":" ~> declarationType) ~ blockStmt ^^ {
+  //      case name~params~typ~body => newFunction(name, params, body, Some(typ))
+  //    } |
+  //      "def" ~> identifierName ~ ("(" ~> parameters <~ ")") ~ blockStmt ^^ {
+  //        case name~params~body => newFunction(name, params, body, None)
+  //      }
+  ////
+  //  function_definition
+  //    : FUNCTION function_return? ID parameter_list? nloc
+  //  func_or_statement_list
+  //  END -> ^(FUNCTION ID function_return parameter_list func_or_statement_list)
+  //  ;
+  //
+  //  function_return
+  //    : ID EQ -> ^(FUNCTION_RETURN ID)
+  //  | LSBRACE (options {greedy=false;} : ID COMMA?)+ RSBRACE EQ -> ^(FUNCTION_RETURN ID+)
+  //  ;
 
-  lazy val function_def: PackratParser[FunctionDef] =
-    "function" ~> ("["~>parameters<~"]")  ~ ( "=" ~>identifierName) ~ ("("~>(parameters)<~")") ~blockStmt ^^{
+  lazy val function_def: PackratParser[FunctionDefStatement] =
+    "function" ~> ("["~>parameters<~"]")  ~ ( "=" ~>identifierName) ~ ("("~>(parameters)<~")") ~blockStmt <~"end"^^{
       case out~name~in~body => newFunction(name,in, out, body)
     } |
-  "function" ~> identifierName ~("(" ~> (parameters)<~")") ~blockStmt ^^{
-    case name~in~body => newFunction(name, in, None,body)
-  } |
-  "function" ~> ("["~>parameters<~"]")~ ("=" ~>identifierName)~blockStmt ^^{
-    case out~name~body => newFunction(name,None, out,body)
-  }
-//
-//  lazy val function_return: PackratParser[List[Parameter]]=
+      "function" ~> identifierName ~("(" ~> (parameters)<~")") ~blockStmt <~"end"^^{
+        case name~in~body => newFunction(name, in, null,body)
+      } |
+      "function" ~> ("["~>parameters<~"]")~ ("=" ~>identifierName)~blockStmt <~"end"^^{
+        case out~name~body => newFunction(name,null, out,body)
+      }  |
+      "function" ~> identifierName ~ blockStmt<~"end"^^{
+        case name~body => newFunction(name,null,null,body)
+      }
+  //
+  //  lazy val function_return: PackratParser[List[Parameter]]=
 
 
-//  class Parameter(val idName: IdName, val typ: BasicType)
-//  case class InParameter(name: IdName, t: BasicType) extends Parameter(name, t)
-//  case class OutParameter(name: IdName, t: BasicType) extends Parameter(name, t)
-//  case class InOutParameter(name: IdName, t: BasicType) extends Parameter(name, t)
+  //  class Parameter(val idName: IdName, val typ: BasicType)
+  //  case class InParameter(name: IdName, t: BasicType) extends Parameter(name, t)
+  //  case class OutParameter(name: IdName, t: BasicType) extends Parameter(name, t)
+  //  case class InOutParameter(name: IdName, t: BasicType) extends Parameter(name, t)
   class Parameter(val idName: IdName)
   case class InParameter(name:IdName) extends Parameter(name)
   case class OutParameter(name:IdName) extends Parameter(name)
@@ -117,30 +133,51 @@ def newFunction(name: IdName, paramsIn: List[InParameter],paramsOut: List[OutPar
 
 
   lazy val parameters: PackratParser[List[Parameter]] = repsep(parameter, ",")
+  //  lazy val inParameters: PackratReader[List[InParameter]] = repsep(parameter, ",")
 
-//  lazy val parameter: PackratParser[Parameter] =
-//    "in" ~> identifierName ~ (":" ~> declarationType) ^^ { case name~typ => InParameter(name, typ)} |
-//      "out" ~> identifierName ~ (":" ~> declarationType) ^^ { case name~typ => OutParameter(name, typ)} |
-//      "inout" ~> identifierName ~ (":" ~> declarationType) ^^ { case name~typ => InOutParameter(name, typ)} |
-//      identifierName ~ (":" ~> declarationType) ^^ { case name~typ => InOutParameter(name, typ)}
-lazy val parameter: PackratParser[Parameter] =
-//  "in" ~> identifierName  ^^ { case name => InParameter(name)} |
-//    "out" ~> identifierName ^^ { case name => OutParameter(name)} |
-//    "inout" ~> identifierName ~ (":" ~> declarationType) ^^ { case name~typ => InOutParameter(name, typ)} |
-    identifierName ^^ { case name => InOutParameter(name)}
+
+  //  lazy val parameter: PackratParser[Parameter] =
+  //    "in" ~> identifierName ~ (":" ~> declarationType) ^^ { case name~typ => InParameter(name, typ)} |
+  //      "out" ~> identifierName ~ (":" ~> declarationType) ^^ { case name~typ => OutParameter(name, typ)} |
+  //      "inout" ~> identifierName ~ (":" ~> declarationType) ^^ { case name~typ => InOutParameter(name, typ)} |
+  //      identifierName ~ (":" ~> declarationType) ^^ { case name~typ => InOutParameter(name, typ)}
+  lazy val parameter: PackratParser[Parameter] =
+    identifierName  ^^ { case name => InParameter(name)} |
+      identifierName ^^ { case name => OutParameter(name)}
+  //    "inout" ~> identifierName ~ (":" ~> declarationType) ^^ { case name~typ => InOutParameter(name, typ)} |
+  //    identifierName ^^ { case name => InOutParameter(name)}
 
   /******************************************************************************************/
+  //  lazy val statement: PackratParser[Statement] =
+  //    singleLineStmt |
+  //      forStmt |
+  //      ifStmt |
+  //      whileStmt |
+  //      doStmt |
+  //      switchStmt |
+  //      blockStmt
   lazy val statement: PackratParser[Statement] =
-    singleLineStmt |
-      forStmt |
-      ifStmt |
-      whileStmt |
-      doStmt |
-      switchStmt |
-      blockStmt
+      statementCmd
+
+//  lazy val statementExpr: PackratParser[Statement] = assignmentStmt
+  //    simpleAssignment|
+  //      multiAssignment
+
+
+  lazy val statementCmd: PackratParser[Statement] =
+   singleLineStmt|
+    forStmt|
+  whileStmt|
+   switchStmt|
+    ifStmt|
+//    breakStmt|
+//    continueStmt|
+//    retStmt|
+    function_def
+
 
   lazy val blockStmt : PackratParser[Statement] =
-    "{" ~> (statement*) <~ "}" ^^ { case stmts => StatementBlock(stmts)}
+    (statement*) ^^ { case stmts => StatementBlock(stmts)}
 
   lazy val singleLineStmt: PackratParser[Statement] =
     declarationStmt <~ eol |
@@ -152,8 +189,12 @@ lazy val parameter: PackratParser[Parameter] =
       continueStmt <~ eol
 
   lazy val declarationStmt: PackratParser[Statement] =
-    "var" ~> repsep(declarator, ",") ^^ { case declarators => DeclarationStatement(declarators)}
+//    "var" ~> repsep(declarator, ",") ^^ { case declarators => DeclarationStatement(declarators)}
   //"var" ~> declarator <~ eol ^^ { case declarator => DeclarationStatement(declarator)}
+  assignmentStmt|
+  "global"~> declarator ^^{case declarator=> DeclarationStatement(List(declarator))}|
+  "local"~> declarator ^^{case declarator => DeclarationStatement(List(declarator)) }
+  lazy val declarator: PackratParser[Declarator] = identifierName^^{case idname => Declarator(idname)}
 
   lazy val assignmentLHSexpr: PackratParser[Expr] =
     arrayRefExpr |
@@ -166,27 +207,35 @@ lazy val parameter: PackratParser[Parameter] =
       assignmentLHSexpr ~ ("*=" ~> expr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpTimesAssign())} |
       assignmentLHSexpr ~ ("/=" ~> expr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpDivideAssign())}
 
-  lazy val forInit: PackratParser[Statement] =
-    "(" ~> assignmentStmt <~ ")" |
-      assignmentStmt
-
+  //  lazy val forInit: PackratParser[Statement] =
+  //    "(" ~> assignmentStmt <~ ")" |
+  //      assignmentStmt
+  //
+  //  lazy val forStmt: PackratParser[Statement] =
+  //    ("for" ~> "(" ~> (forInit ~ (";" ~> simpleExpr) ~ (";" ~> simpleExprList) <~ ")")) ~ statement ^^ {
+  //      case initStmt~condExpr~iterExpr~stmt => ForStatement(Some(initStmt), Some(condExpr), Some(iterExpr), stmt)
+  //    }
   lazy val forStmt: PackratParser[Statement] =
-    ("for" ~> "(" ~> (forInit ~ (";" ~> simpleExpr) ~ (";" ~> simpleExprList) <~ ")")) ~ statement ^^ {
-      case initStmt~condExpr~iterExpr~stmt => ForStatement(Some(initStmt), Some(condExpr), Some(iterExpr), stmt)
+    ("for"~> opt( multiAssignStmt)) ~blockStmt<~"end"^^{
+      case range~body =>ForStatement(range,null,null, body)
     }
 
   lazy val ifStmt: PackratParser[Statement] =
-    ("if" ~> "(" ~> expr <~ ")") ~ statement ~ ("else" ~> statement) ^^ { case cond~thebody~elsebody => IfStatement(cond, thebody, elsebody)} |
-      ("if" ~> "(" ~> expr <~ ")") ~ statement ^^ { case cond~stmt => IfStatement(cond, stmt)}
+    ("if" ~> expr ) ~ blockStmt ~ ("else" ~> blockStmt) <~"end"^^ { case cond~thebody~elsebody => IfStatement(cond, thebody, elsebody)} |
+      //      ("if"~>expr) ~statement~repsep((("elseif" ~> expr) ~statement),whiteSpace)<~"end"^^ {case cond~elseifbody=>IfStatement(cond,)}                                |
+      //Todo:elseif
+      ("if" ~> expr) ~ blockStmt <~"end"^^ { case cond~stmt => IfStatement(cond, stmt)}
+  //  lazy val elseifStmt: PackratParser[Statement] =
+  //    ("elseif" ~> expr) ~statement
 
   lazy val whileStmt: PackratParser[Statement] =
-    ("while" ~> "(" ~> expr <~ ")") ~ statement ^^ { case cond~stmt => WhileStatement(cond, stmt)}
+    ("while"  ~> expr) ~ blockStmt <~"end"^^ { case cond~stmt => WhileStatement(cond, stmt)}
 
-  lazy val doStmt: PackratParser[Statement] =
-    ("do" ~> statement) ~  ("while" ~> "(" ~> expr <~ ")") ^^ { case stmt~cond => DoStatement(cond, stmt)}
+  //  lazy val doStmt: PackratParser[Statement] =
+  //    ("do" ~> statement) ~  ("while" ~> "(" ~> expr <~ ")") ^^ { case stmt~cond => DoStatement(cond, stmt)}
 
   lazy val switchStmt: PackratParser[Statement] =
-    ("switch" ~> "(" ~> expr <~ ")") ~ statement ^^ { case cond~stmt => SwitchStatement(cond, stmt)}
+    ("switch" ~> expr ) ~ blockStmt<~"end" ^^ { case cond~stmt => SwitchStatement(cond, stmt)}
 
   lazy val breakStmt: PackratParser[Statement] =
     "break" ^^ {x => BreakStatement()}
@@ -195,47 +244,58 @@ lazy val parameter: PackratParser[Parameter] =
     "continue" ^^ {x => ContinueStatement()}
 
   lazy val defaultStmt: PackratParser[Statement] =
-    "default:" ^^ {x => DefaultStatement()}
+    "otherwise" ^^ {x => DefaultStatement()}
 
   lazy val caseStmt: PackratParser[Statement] =
-    "case" ~> simpleExpr <~ ":" ^^ {xpr => CaseStatement(xpr)}
+    "case" ~> expr  ^^ {xpr => CaseStatement(xpr)}
 
   lazy val retStmt: PackratParser[Statement] =
-    "return" ~> simpleExpr  ^^ {xpr => ReturnStatement(xpr)} |
+    "return" ~> expr  ^^ {xpr => ReturnStatement(xpr)} |
       "return"  ^^ {x => ReturnStatement()}
+
+  lazy val multiAssignStmt: PackratParser[Statement] =
+    assignmentLHSexpr ~ ("=" ~> sliceExpr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpAssign())}
+//      assignmentLHSexpr ~ ("+=" ~> sliceExpr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpPlusAssign())} |
+//      assignmentLHSexpr ~ ("-=" ~> sliceExpr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpMinusAssign())} |
+//      assignmentLHSexpr ~ ("*=" ~> sliceExpr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpTimesAssign())} |
+//      assignmentLHSexpr ~ ("/=" ~> sliceExpr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpDivideAssign())}
+
 
   /******************************************************************************************/
   // Declaration
   //var T:Float[nsize][nsize]
   //var norm:Float
 
-  lazy val declarator: PackratParser[Declarator] =
-    identifierName ~ (":" ~> declarationType) ^^ { case name~typ => {
-      declMap+= name -> typ
-      Declarator(name)
-    }} |
-      identifierName ^^ { case name => Declarator(name)}
+//  lazy val declarator: PackratParser[Declarator] =
+//    identifierName ~ (":" ~> declarationType) ^^ { case name~typ => {
+//      declMap+= name -> typ
+//      Declarator(name)
+//    }} |
+//      identifierName ^^ { case name => Declarator(name)}
 
 
-  lazy val declarationType: PackratParser[BasicType] =
-    basicType ~ rep1("[" ~> simpleArithmeticExpr <~ "]") ^^ { case subtype~sizes => ArrayType(subtype, sizes.length, sizes) } |
-      basicType
 
-  lazy val basicType: PackratParser[BasicType] =
-    "Int" ^^ { case t => IntType()} |
-      "Float" ^^ { case t => FloatType()}
+
+//  lazy val declarationType: PackratParser[BasicType] =
+//    basicType ~ rep1("[" ~> simpleArithmeticExpr <~ "]") ^^ { case subtype~sizes => ArrayType(subtype, sizes.length, sizes) } |
+//      basicType
+
+//  lazy val basicType: PackratParser[BasicType] =
+//    "Int" ^^ { case t => IntType()} |
+//      "Float" ^^ { case t => FloatType()}
 
   /******************************************************************************************/
   lazy val expr: PackratParser[Expr] = arrayExpr
 
+
   //Array Expressions
 
   lazy val arrayExpr: PackratParser[Expr] =
-    arrayCondtionalExpr
+    arrayConditionalExpr
 
-  lazy val arrayCondtionalExpr: PackratParser[Expr] =
-    (arrayCondtionalExpr <~ "&&") ~ arrayCompareExpr ^^ { case lhs~rhs => NAryExpr(OpLogicalAnd(), List(lhs, rhs)) } |
-      (arrayCondtionalExpr <~ "||") ~ arrayCompareExpr ^^ { case lhs~rhs => NAryExpr(OpLogicalOr(), List(lhs, rhs)) } |
+  lazy val arrayConditionalExpr: PackratParser[Expr] =
+    (arrayConditionalExpr <~ "&&") ~ arrayCompareExpr ^^ { case lhs~rhs => NAryExpr(OpLogicalAnd(), List(lhs, rhs)) } |
+      (arrayConditionalExpr <~ "||") ~ arrayCompareExpr ^^ { case lhs~rhs => NAryExpr(OpLogicalOr(), List(lhs, rhs)) } |
       arrayCompareExpr
 
   lazy val arrayCompareExpr: PackratParser[Expr] =
@@ -266,8 +326,8 @@ lazy val parameter: PackratParser[Parameter] =
     sumTerm | prodTerm | permuteTerm |
       identifier ~ ("(" ~> repsep(arrayTerm, ",") <~ ")") ^^ { case name~params => FunctionCallExpr(name,params)} |
       "(" ~> arrayExpr <~ ")" |
-      arrayFactor |
-      "-" ~> arrayTerm ^^ { case x => UnaryExpr(OpNegate(), x) }
+      arrayFactor
+//      "-" ~> arrayTerm ^^ { case x => UnaryExpr(OpNegate(), x) }
 
   lazy val sumTerm: PackratParser[Expr] =
     ("Sum(" ~> arrayTerm <~ ",") ~ integerList <~ ")" ^^ { case xpr~list => UnaryExpr(OpSum(list), xpr) } |
@@ -288,7 +348,7 @@ lazy val parameter: PackratParser[Parameter] =
   // Array Reference
 
   lazy val arrayRefExpr: PackratParser[ArrayRefExpr] =
-    identifier ~ rep1("[" ~> sliceExpr <~ "]") ^^ { case id~slices => ArrayRefExpr(id, slices)}
+    identifier ~ rep1("(" ~> sliceExpr <~ ")") ^^ { case id~slices => ArrayRefExpr(id, slices)}
 
   lazy val sliceExpr: PackratParser[Expr] =
     simpleExpr ~ (":" ~> simpleExpr) ~ (":" ~> simpleExpr) ^^ { case lower~upper~stride => SliceExpr(lower, upper, stride)} |
@@ -379,11 +439,13 @@ lazy val parameter: PackratParser[Parameter] =
   //override val whiteSpace = """(\s|//.*|(?m)/\*(\*(?!/)|[^*])*\*/)+""".r
   override val whiteSpace = """(\s|%.*|%\{(\n|\r)+\}%)+""".r
 
+
   /******************************************************************************************/
   // matrix	: LSBRACE vector? ( nlos vector )* RSBRACE -> ^(MATRIX vector*);
   //vector	:	expression ( COMMA expression )* -> ^(VECTOR expression+);
   //lazy val vector : PackratParser[VectorExpr] =
-//  lazy val matrix : PackratParser[MatrixExpr] =
+  //  lazy val matrix : PackratParser[MatrixExpr] =
+//  lazy val cell: PackratParser[]
 
   /******************************************************************************************/
 
@@ -408,6 +470,7 @@ lazy val parameter: PackratParser[Parameter] =
     declMap.clear()
     parseAll(source, text)  match {
       case Success (statement, _) => Left(declMap.toMap, statement)
+      //      case Success(function_def,_)=>Left( parseFunctions(text),function_def)
       case f => Right(f.toString)
     }
   }

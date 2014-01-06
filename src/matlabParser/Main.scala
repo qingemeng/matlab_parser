@@ -20,10 +20,11 @@ object Main extends Parsers{
 
     val plusTest = "/arith/plus.m"
     val testCell = "/test_cell.m"
-    val testMatrix  =""
+    val testAssign  ="/test_assignment.m"
+    val testFor ="/test_for.m"
 
 
-    val filename = testPath + testCell
+    val filename = testPath + testFor
     val content = scala.io.Source.fromFile(filename).mkString
 
     MatlabParser.parseSource(content) match {
@@ -31,16 +32,20 @@ object Main extends Parsers{
         //println(declMap.mkString("\n"));
 
         val pretty = stmt.pretty()
+        println(pretty)
+
         val tree_pretty = stmt.treePretty()
+        println(tree_pretty)
 
-        MatlabParser.parseStatement(pretty) match {
-          case Left((declMap2, stmt2)) => println(stmt2.pretty())
-            println(stmt2.treePretty())
-
-          case Right(err2) => println(err2)
-        }
+//        MatlabParser.parseStatement(pretty) match {
+//          case Left((declMap2, stmt2)) => println(stmt2.pretty())
+//            println(stmt2.treePretty())
+//
+//          case Right(err2) => println(err2)
+//        }
 
       }
+      //case Left((declMap, func))=>
       case Right(err) => println(err)
     }
 
