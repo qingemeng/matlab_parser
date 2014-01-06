@@ -1,7 +1,7 @@
+
 function test_cell
-
-  a = { 1, 2, 3 };
+  b = 22;c = 33,b = c,a = { 1, 2, 3 };
+    a = {,}
   a = { a; b; c };
-  a = { a+b, c+d; foo, 'bar' };
-
+  a = { b, c;'cat', 'bar' };
 end

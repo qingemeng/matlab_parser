@@ -19,6 +19,35 @@ import model.expression._
 import model.statement._
 import model.property.HasProperties
 import refactoring.matlab.model.FunctionDefStatement
+import model.OpTimesAssign
+import model.OpPostfixInc
+import model.OpLogicalAnd
+import model.OpEquals
+import model.OpMatProd
+import model.OpMinus
+import model.OpTimes
+import model.OpPermute
+import model.OpOuterProd
+import model.OpGreaterEq
+import model.OpLessThan
+import model.OpPlus
+import model.OpMinusAssign
+import model.OpPostfixDec
+import model.OpNotEquals
+import model.OpLogicalOr
+import model.OpAssign
+import model.OpPow
+import model.OpLessEq
+import model.OpPlusAssign
+import model.OpDivideAssign
+import model.OpProd
+import model.OpSum
+import model.OpPrefixInc
+import model.OpDotProd
+import model.OpPrefixDec
+import model.OpDivide
+import model.OpGreaterThan
+import model.OpMatPow
 
 object MatlabParser extends JavaTokenParsers with PackratParsers {
   val declMap = HashMap[IdName, BasicType]()
@@ -178,15 +207,26 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
 
   lazy val blockStmt : PackratParser[Statement] =
     (statement*) ^^ { case stmts => StatementBlock(stmts)}
+//      repsep(assignmentStmt,",") ^^ { case stmts => StatementBlock(stmts)}
+
+
 
   lazy val singleLineStmt: PackratParser[Statement] =
     declarationStmt <~ eol |
       assignmentStmt <~ eol |
+//      assignmentStmt <~ "," |
       caseStmt <~ eol |
       retStmt <~ eol |
       defaultStmt <~ eol |
       breakStmt <~ eol |
-      continueStmt <~ eol
+      continueStmt <~ eol|
+    singletonStmt<~eol
+
+  lazy val singletonStmt:PackratParser[Statement]=
+    expr^^{case expr=>ExpressionStatement(expr)}
+
+
+
 
   lazy val declarationStmt: PackratParser[Statement] =
 //    "var" ~> repsep(declarator, ",") ^^ { case declarators => DeclarationStatement(declarators)}
@@ -201,11 +241,11 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
       identifier
 
   lazy val assignmentStmt: PackratParser[Statement] =
-    assignmentLHSexpr ~ ("=" ~> expr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpAssign())} |
-      assignmentLHSexpr ~ ("+=" ~> expr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpPlusAssign())} |
-      assignmentLHSexpr ~ ("-=" ~> expr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpMinusAssign())} |
-      assignmentLHSexpr ~ ("*=" ~> expr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpTimesAssign())} |
-      assignmentLHSexpr ~ ("/=" ~> expr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpDivideAssign())}
+  opt(",")~>   assignmentLHSexpr ~ ("+=" ~> expr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpPlusAssign())} |
+  opt(",")~>   assignmentLHSexpr ~ ("=" ~> expr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpAssign())} |
+  opt(",")~>   assignmentLHSexpr ~ ("-=" ~> expr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpMinusAssign())} |
+  opt(",")~>   assignmentLHSexpr ~ ("*=" ~> expr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpTimesAssign())} |
+  opt(",")~>   assignmentLHSexpr ~ ("/=" ~> expr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpDivideAssign())}
 
   //  lazy val forInit: PackratParser[Statement] =
   //    "(" ~> assignmentStmt <~ ")" |
@@ -216,7 +256,7 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
   //      case initStmt~condExpr~iterExpr~stmt => ForStatement(Some(initStmt), Some(condExpr), Some(iterExpr), stmt)
   //    }
   lazy val forStmt: PackratParser[Statement] =
-    ("for"~> opt( multiAssignStmt)) ~blockStmt<~"end"^^{
+    ("for"~> opt( rangeAssignStmt)) ~blockStmt<~"end"^^{
       case range~body =>ForStatement(range,null,null, body)
     }
 
@@ -253,12 +293,15 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
     "return" ~> expr  ^^ {xpr => ReturnStatement(xpr)} |
       "return"  ^^ {x => ReturnStatement()}
 
-  lazy val multiAssignStmt: PackratParser[Statement] =
+  lazy val rangeAssignStmt: PackratParser[Statement] =
     assignmentLHSexpr ~ ("=" ~> sliceExpr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpAssign())}
 //      assignmentLHSexpr ~ ("+=" ~> sliceExpr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpPlusAssign())} |
 //      assignmentLHSexpr ~ ("-=" ~> sliceExpr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpMinusAssign())} |
 //      assignmentLHSexpr ~ ("*=" ~> sliceExpr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpTimesAssign())} |
 //      assignmentLHSexpr ~ ("/=" ~> sliceExpr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpDivideAssign())}
+//  lazy val multiAssignStmt: PackratParser[Statement] =
+//  repsep(assignmentStmt,",") ^^{case stmtList=> StatementBlock(stmtList)}
+
 
 
   /******************************************************************************************/
@@ -285,7 +328,7 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
 //      "Float" ^^ { case t => FloatType()}
 
   /******************************************************************************************/
-  lazy val expr: PackratParser[Expr] = arrayExpr
+  lazy val expr: PackratParser[Expr] = arrayExpr|cellExpr
 
 
   //Array Expressions
@@ -293,7 +336,11 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
   lazy val arrayExpr: PackratParser[Expr] =
     arrayConditionalExpr
 
-  lazy val arrayConditionalExpr: PackratParser[Expr] =
+  lazy val oneDArrExpr: PackratParser[Expr] =
+    repsep(arrayFactor,",") ^^{case arrayFactors =>ArrayCompositionExpr(arrayFactors)}
+
+
+      lazy val arrayConditionalExpr: PackratParser[Expr] =
     (arrayConditionalExpr <~ "&&") ~ arrayCompareExpr ^^ { case lhs~rhs => NAryExpr(OpLogicalAnd(), List(lhs, rhs)) } |
       (arrayConditionalExpr <~ "||") ~ arrayCompareExpr ^^ { case lhs~rhs => NAryExpr(OpLogicalOr(), List(lhs, rhs)) } |
       arrayCompareExpr
@@ -343,6 +390,11 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
   lazy val arrayFactor : PackratParser[Expr] =
     arrayRefExpr |
       simpleFactor
+
+
+  lazy val arrayList: PackratParser[Expr] =
+    repsep(oneDArrExpr,";") ^^{case arrayList =>ArrayCompositionExpr(arrayList)  }
+
 
   /******************************************************************************************/
   // Array Reference
@@ -411,6 +463,8 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
       decimalNumber ^^ {x => toFloat(x)} |
       wholeNumber ^^ {x => ConstLiteralExpr(x.toInt)} |
       booleanLiteral
+  override def stringLiteral: Parser[String] =
+  ("\'"+"""([^"\p{Cntrl}\\]|\\[\\'"bfnrt]|\\u[a-fA-F0-9]{4})*"""+"\'").r
 
   def toFloat(x: String) = {
     try {
@@ -445,7 +499,10 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
   //vector	:	expression ( COMMA expression )* -> ^(VECTOR expression+);
   //lazy val vector : PackratParser[VectorExpr] =
   //  lazy val matrix : PackratParser[MatrixExpr] =
-//  lazy val cell: PackratParser[]
+  lazy val cellExpr: PackratParser[Expr] =
+    "{"~opt(",")~"}" ^^{case s =>ArrayCompositionExpr()}|
+    "{"~>repsep(arrayFactor,",")<~"}"^^{case arrayFactors =>ArrayCompositionExpr(arrayFactors)} |
+    "{"~>arrayList<~"}"
 
   /******************************************************************************************/
 

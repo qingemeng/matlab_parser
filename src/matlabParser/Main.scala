@@ -19,12 +19,16 @@ object Main extends Parsers{
     val testPath = "/Users/gemengqin/Dropbox/ntu/FYP/matlab_to/src/m_files/test"
 
     val plusTest = "/arith/plus.m"
-    val testCell = "/test_cell.m"
     val testAssign  ="/test_assignment.m"
+    val testCell = "/test_cell.m"
+    val testCtrl = "/test_cntrl.m"
+
+    val testComments = "/test_comments.m"
     val testFor ="/test_for.m"
 
 
-    val filename = testPath + testFor
+
+    val filename = testPath + testCtrl
     val content = scala.io.Source.fromFile(filename).mkString
 
     MatlabParser.parseSource(content) match {

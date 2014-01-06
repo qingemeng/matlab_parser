@@ -2,8 +2,9 @@ function test_comments
   b = 42;  % a comment
   c = 43;  % another
   % this is a comment
-  a = b + ...
+%   a = b + ...
       c;
+      23;
   
   % this is illegal.
   % a = b + ... c;
