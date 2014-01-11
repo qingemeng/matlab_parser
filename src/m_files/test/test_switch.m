@@ -8,8 +8,8 @@ function test_switch
     b = 12;
     a = 'foo';
    otherwise
-    g = @randn;
-    h = @rand;
+    g = '@randn';
+    h = '@rand';
   end
 
 end

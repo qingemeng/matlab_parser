@@ -5,6 +5,7 @@ function test_comments
 %   a = b + ...
       c;
       23;
+      {b,c}
   
   % this is illegal.
   % a = b + ... c;

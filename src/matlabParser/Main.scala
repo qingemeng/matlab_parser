@@ -22,13 +22,20 @@ object Main extends Parsers{
     val testAssign  ="/test_assignment.m"
     val testCell = "/test_cell.m"
     val testCtrl = "/test_cntrl.m"
-
     val testComments = "/test_comments.m"
+    val testElseIf = "/test_elseif.m"
     val testFor ="/test_for.m"
+    val testExpr ="/test_expr.m"
+    val testMatrix ="/test_matrix.m"
+    val testNestedFuncs ="/test_nested_funcs.m"
+    val testSwitch="/test_switch.m"
+    val testWhile="/test_while.m"
 
 
 
-    val filename = testPath + testCtrl
+
+
+    val filename = testPath + testMatrix
     val content = scala.io.Source.fromFile(filename).mkString
 
     MatlabParser.parseSource(content) match {

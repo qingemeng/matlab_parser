@@ -1,15 +1,17 @@
 function test_elseif
+bob=42
   if bob == 42
     a = 5;
   end
-  
+
   if ( bob == 42 )
-    fprintf( 1, 'hello, %s\n', bob );
-  elseif ( bob == 43 )
-    fprintf( 'goodbye, world\n' );
-  elseif bob == 44
-    fprintf( 'goodbye, world\n' );
+        a = 6
+%   elseif ( bob == 43 )
+%         a = 7
+%   elseif bob == 44
+%         a = 8
   else
-    b = @frank;
+     b = 100
+    %b = @frank;
   end
 end

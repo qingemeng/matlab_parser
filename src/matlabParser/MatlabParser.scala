@@ -59,80 +59,30 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
 
   lazy val source: PackratParser[StatementBlock] =
     (statement*) ^^ { case stmts => StatementBlock(stmts)}
-  //  lazy val source :PackratParser[StatementList] =
-  //      (statement*) ^^ { case stmts => StatementBlock(stmts)}
-
-  //  lazy val StatementList: PackratParser[]
 
   lazy val functions: PackratParser[List[FunctionDefStatement]] = rep(function_def)
 
-  //  def newFunction(name: IdName, paramsList: List[Parameter], body: Statement, typ: Option[BasicType]): FunctionDef = {
-  //    val inParams = ListBuffer[IdName]()
-  //    val outParams = ListBuffer[IdName]()
-  //    val params = ListBuffer[IdName]()
-  //    paramsList.foreach(param => {
-  //      declMap += param.idName -> param.typ
-  //      params += param.idName
-  //      param match {
-  //        case p: InParameter => inParams += p.idName
-  //        case p: OutParameter => outParams += p.idName
-  //        case p: InOutParameter => {
-  //          inParams += p.idName
-  //          outParams += p.idName
-  //        }
-  //      }
-  //    })
-  //
-  //    FunctionDef(name, params.toList, inParams.toList, outParams.toList, body, typ)
-  //  }
   def newFunction(name: IdName, paramsIn: List[Parameter],paramsOut: List[Parameter], body: Statement): FunctionDefStatement = {
     val inParams = ListBuffer[IdName]()
     val outParams = ListBuffer[IdName]()
     val params = ListBuffer[IdName]()
     if(paramsIn!=null&&paramsOut!=null){
     paramsIn.foreach(param => {
-      //    declMap += param.idName -> param.typ
       params += param.idName
-      //    param match {
-      //      InParameter => inParams += p.idName
-      //      case p: InOutParameter => {
       inParams += param.idName
       params += param.idName
-
-      //        outParams += p.idName
-      //      }
-      //    }
     })
     paramsOut.foreach(param =>{
       outParams +=param.idName;
     })
     }
 
-
-    //  FunctionDef(name, params.toList, inParams.toList, outParams.toList, body, typ)
     FunctionDef(name, params.toList, inParams.toList, outParams.toList, body)
     FunctionDefStatement(FunctionDef(name, params.toList, inParams.toList, outParams.toList, body))
 
   }
 
-  //  lazy val function: PackratParser[FunctionDef] =
-  //    "def" ~> identifierName ~ ("(" ~> parameters <~ ")") ~ (":" ~> declarationType) ~ blockStmt ^^ {
-  //      case name~params~typ~body => newFunction(name, params, body, Some(typ))
-  //    } |
-  //      "def" ~> identifierName ~ ("(" ~> parameters <~ ")") ~ blockStmt ^^ {
-  //        case name~params~body => newFunction(name, params, body, None)
-  //      }
-  ////
-  //  function_definition
-  //    : FUNCTION function_return? ID parameter_list? nloc
-  //  func_or_statement_list
-  //  END -> ^(FUNCTION ID function_return parameter_list func_or_statement_list)
-  //  ;
-  //
-  //  function_return
-  //    : ID EQ -> ^(FUNCTION_RETURN ID)
-  //  | LSBRACE (options {greedy=false;} : ID COMMA?)+ RSBRACE EQ -> ^(FUNCTION_RETURN ID+)
-  //  ;
+
 
   lazy val function_def: PackratParser[FunctionDefStatement] =
     "function" ~> ("["~>parameters<~"]")  ~ ( "=" ~>identifierName) ~ ("("~>(parameters)<~")") ~blockStmt <~"end"^^{
@@ -147,14 +97,7 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
       "function" ~> identifierName ~ blockStmt<~"end"^^{
         case name~body => newFunction(name,null,null,body)
       }
-  //
-  //  lazy val function_return: PackratParser[List[Parameter]]=
 
-
-  //  class Parameter(val idName: IdName, val typ: BasicType)
-  //  case class InParameter(name: IdName, t: BasicType) extends Parameter(name, t)
-  //  case class OutParameter(name: IdName, t: BasicType) extends Parameter(name, t)
-  //  case class InOutParameter(name: IdName, t: BasicType) extends Parameter(name, t)
   class Parameter(val idName: IdName)
   case class InParameter(name:IdName) extends Parameter(name)
   case class OutParameter(name:IdName) extends Parameter(name)
@@ -162,36 +105,15 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
 
 
   lazy val parameters: PackratParser[List[Parameter]] = repsep(parameter, ",")
-  //  lazy val inParameters: PackratReader[List[InParameter]] = repsep(parameter, ",")
 
-
-  //  lazy val parameter: PackratParser[Parameter] =
-  //    "in" ~> identifierName ~ (":" ~> declarationType) ^^ { case name~typ => InParameter(name, typ)} |
-  //      "out" ~> identifierName ~ (":" ~> declarationType) ^^ { case name~typ => OutParameter(name, typ)} |
-  //      "inout" ~> identifierName ~ (":" ~> declarationType) ^^ { case name~typ => InOutParameter(name, typ)} |
-  //      identifierName ~ (":" ~> declarationType) ^^ { case name~typ => InOutParameter(name, typ)}
   lazy val parameter: PackratParser[Parameter] =
     identifierName  ^^ { case name => InParameter(name)} |
       identifierName ^^ { case name => OutParameter(name)}
-  //    "inout" ~> identifierName ~ (":" ~> declarationType) ^^ { case name~typ => InOutParameter(name, typ)} |
-  //    identifierName ^^ { case name => InOutParameter(name)}
 
   /******************************************************************************************/
-  //  lazy val statement: PackratParser[Statement] =
-  //    singleLineStmt |
-  //      forStmt |
-  //      ifStmt |
-  //      whileStmt |
-  //      doStmt |
-  //      switchStmt |
-  //      blockStmt
+
   lazy val statement: PackratParser[Statement] =
       statementCmd
-
-//  lazy val statementExpr: PackratParser[Statement] = assignmentStmt
-  //    simpleAssignment|
-  //      multiAssignment
-
 
   lazy val statementCmd: PackratParser[Statement] =
    singleLineStmt|
@@ -199,22 +121,17 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
   whileStmt|
    switchStmt|
     ifStmt|
-//    breakStmt|
-//    continueStmt|
-//    retStmt|
     function_def
 
 
   lazy val blockStmt : PackratParser[Statement] =
     (statement*) ^^ { case stmts => StatementBlock(stmts)}
-//      repsep(assignmentStmt,",") ^^ { case stmts => StatementBlock(stmts)}
 
 
 
   lazy val singleLineStmt: PackratParser[Statement] =
     declarationStmt <~ eol |
       assignmentStmt <~ eol |
-//      assignmentStmt <~ "," |
       caseStmt <~ eol |
       retStmt <~ eol |
       defaultStmt <~ eol |
@@ -223,14 +140,18 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
     singletonStmt<~eol
 
   lazy val singletonStmt:PackratParser[Statement]=
-    expr^^{case expr=>ExpressionStatement(expr)}
+  //TODO:fix idExpr
+      cellExpr^^{case cellExpr=>ExpressionStatement(cellExpr)}
+      const_literal^^ {case constExpr=>ExpressionStatement(constExpr)}
+
+
+
+
 
 
 
 
   lazy val declarationStmt: PackratParser[Statement] =
-//    "var" ~> repsep(declarator, ",") ^^ { case declarators => DeclarationStatement(declarators)}
-  //"var" ~> declarator <~ eol ^^ { case declarator => DeclarationStatement(declarator)}
   assignmentStmt|
   "global"~> declarator ^^{case declarator=> DeclarationStatement(List(declarator))}|
   "local"~> declarator ^^{case declarator => DeclarationStatement(List(declarator)) }
@@ -247,29 +168,18 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
   opt(",")~>   assignmentLHSexpr ~ ("*=" ~> expr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpTimesAssign())} |
   opt(",")~>   assignmentLHSexpr ~ ("/=" ~> expr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpDivideAssign())}
 
-  //  lazy val forInit: PackratParser[Statement] =
-  //    "(" ~> assignmentStmt <~ ")" |
-  //      assignmentStmt
-  //
-  //  lazy val forStmt: PackratParser[Statement] =
-  //    ("for" ~> "(" ~> (forInit ~ (";" ~> simpleExpr) ~ (";" ~> simpleExprList) <~ ")")) ~ statement ^^ {
-  //      case initStmt~condExpr~iterExpr~stmt => ForStatement(Some(initStmt), Some(condExpr), Some(iterExpr), stmt)
-  //    }
   lazy val forStmt: PackratParser[Statement] =
     ("for"~> opt( rangeAssignStmt)) ~blockStmt<~"end"^^{
       case range~body =>ForStatement(range,null,null, body)
     }
 
   lazy val ifStmt: PackratParser[Statement] =
-    ("if" ~> expr ) ~ blockStmt ~ ("else" ~> blockStmt) <~"end"^^ { case cond~thebody~elsebody => IfStatement(cond, thebody, elsebody)} |
-      //      ("if"~>expr) ~statement~repsep((("elseif" ~> expr) ~statement),whiteSpace)<~"end"^^ {case cond~elseifbody=>IfStatement(cond,)}                                |
-      //Todo:elseif
-      ("if" ~> expr) ~ blockStmt <~"end"^^ { case cond~stmt => IfStatement(cond, stmt)}
-  //  lazy val elseifStmt: PackratParser[Statement] =
-  //    ("elseif" ~> expr) ~statement
+      ("if" ~> opt("(")~>expr<~opt(")")) ~ blockStmt <~"end"^^ { case cond~stmt => IfStatement(cond, stmt)}|
+        ("if" ~> opt("(")~>expr<~opt(")") ) ~ blockStmt ~ ("else" ~> blockStmt) <~"end"^^ { case cond~thebody~elsebody => IfStatement(cond, thebody, elsebody)}
+  //Todo:elseif
 
   lazy val whileStmt: PackratParser[Statement] =
-    ("while"  ~> expr) ~ blockStmt <~"end"^^ { case cond~stmt => WhileStatement(cond, stmt)}
+    ("while"  ~>opt("(")~> expr<~opt(")")) ~ blockStmt <~"end"^^ { case cond~stmt => WhileStatement(cond, stmt)}
 
   //  lazy val doStmt: PackratParser[Statement] =
   //    ("do" ~> statement) ~  ("while" ~> "(" ~> expr <~ ")") ^^ { case stmt~cond => DoStatement(cond, stmt)}
@@ -295,40 +205,11 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
 
   lazy val rangeAssignStmt: PackratParser[Statement] =
     assignmentLHSexpr ~ ("=" ~> sliceExpr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpAssign())}
-//      assignmentLHSexpr ~ ("+=" ~> sliceExpr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpPlusAssign())} |
-//      assignmentLHSexpr ~ ("-=" ~> sliceExpr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpMinusAssign())} |
-//      assignmentLHSexpr ~ ("*=" ~> sliceExpr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpTimesAssign())} |
-//      assignmentLHSexpr ~ ("/=" ~> sliceExpr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpDivideAssign())}
-//  lazy val multiAssignStmt: PackratParser[Statement] =
-//  repsep(assignmentStmt,",") ^^{case stmtList=> StatementBlock(stmtList)}
-
-
 
   /******************************************************************************************/
-  // Declaration
-  //var T:Float[nsize][nsize]
-  //var norm:Float
-
-//  lazy val declarator: PackratParser[Declarator] =
-//    identifierName ~ (":" ~> declarationType) ^^ { case name~typ => {
-//      declMap+= name -> typ
-//      Declarator(name)
-//    }} |
-//      identifierName ^^ { case name => Declarator(name)}
-
-
-
-
-//  lazy val declarationType: PackratParser[BasicType] =
-//    basicType ~ rep1("[" ~> simpleArithmeticExpr <~ "]") ^^ { case subtype~sizes => ArrayType(subtype, sizes.length, sizes) } |
-//      basicType
-
-//  lazy val basicType: PackratParser[BasicType] =
-//    "Int" ^^ { case t => IntType()} |
-//      "Float" ^^ { case t => FloatType()}
 
   /******************************************************************************************/
-  lazy val expr: PackratParser[Expr] = arrayExpr|cellExpr
+  lazy val expr: PackratParser[Expr] = arrayExpr|cellExpr |matrixExpr
 
 
   //Array Expressions
@@ -386,6 +267,10 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
 
   lazy val permuteTerm: PackratParser[Expr] =
     ("Permute(" ~> arrayTerm <~ ",") ~ integerList <~ ")" ^^ { case xpr~list => UnaryExpr(OpPermute(list), xpr) }
+
+  //TODO: Symbol reference and builtin func
+
+
 
   lazy val arrayFactor : PackratParser[Expr] =
     arrayRefExpr |
@@ -495,14 +380,14 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
 
 
   /******************************************************************************************/
-  // matrix	: LSBRACE vector? ( nlos vector )* RSBRACE -> ^(MATRIX vector*);
-  //vector	:	expression ( COMMA expression )* -> ^(VECTOR expression+);
-  //lazy val vector : PackratParser[VectorExpr] =
-  //  lazy val matrix : PackratParser[MatrixExpr] =
   lazy val cellExpr: PackratParser[Expr] =
     "{"~opt(",")~"}" ^^{case s =>ArrayCompositionExpr()}|
     "{"~>repsep(arrayFactor,",")<~"}"^^{case arrayFactors =>ArrayCompositionExpr(arrayFactors)} |
     "{"~>arrayList<~"}"
+  lazy val matrixExpr :  PackratParser[Expr] =
+    "["~opt(",")~"]" ^^{case s =>ArrayCompositionExpr()}|
+      "["~>repsep(arrayFactor,",")<~"]"^^{case arrayFactors =>ArrayCompositionExpr(arrayFactors)} |
+      "["~>arrayList<~"]"
 
   /******************************************************************************************/
 
@@ -527,7 +412,6 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
     declMap.clear()
     parseAll(source, text)  match {
       case Success (statement, _) => Left(declMap.toMap, statement)
-      //      case Success(function_def,_)=>Left( parseFunctions(text),function_def)
       case f => Right(f.toString)
     }
   }
