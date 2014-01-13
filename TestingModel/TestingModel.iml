@@ -17,6 +17,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="scala-library" level="application" />
     <orderEntry type="library" name="scalatest_2.10-2.0" level="project" />
+    <orderEntry type="module" module-name="matlab_to" />
   </component>
 </module>
 
