@@ -7,7 +7,7 @@ import   model.property._
 
 object ForStatement {
   def apply(
-      initStmt: Option[Statement],
+      initStmt: Statement,
       condExpr: Option[Expr],
       iterExpr: Option[Expr],
       body: Statement) = new ForStatement(initStmt, condExpr, iterExpr, body)
@@ -19,7 +19,7 @@ object ForStatement {
 
 // initStmt can be either DeclarationStatement or ExpressionStatement
 class ForStatement(
-    private var _initStmt: Option[Statement],
+    private var _initStmt: Statement,
     private var _condExpr: Option[Expr],
     private var _iterExpr: Option[Expr],
     private var _body: Statement) extends Statement {
@@ -31,7 +31,7 @@ class ForStatement(
   def iterExpr = _iterExpr
   def body = _body
 
-  def update(initStmt: Option[Statement] = _initStmt, condExpr: Option[Expr] = _condExpr, iterExpr: Option[Expr] = _iterExpr, body: Statement = _body) = {
+  def update(initStmt: Statement = _initStmt, condExpr: Option[Expr] = _condExpr, iterExpr: Option[Expr] = _iterExpr, body: Statement = _body) = {
     _initStmt = initStmt
     _condExpr = condExpr
     _iterExpr = iterExpr
@@ -45,10 +45,7 @@ class ForStatement(
 
   def cloneStmt(cloneBody: Boolean) = {
     val newStmt = ForStatement(
-      initStmt match {
-        case Some(stmt)	=> Some(stmt.cloneStmt)
-        case None		=> None
-      },
+      initStmt.cloneStmt(),
       condExpr match {
         case Some(expr)	=> Some(expr.cloneExpr)
         case None		=> None
@@ -65,8 +62,8 @@ class ForStatement(
       }
     )
 
-    if(newStmt.initStmt.isDefined){
-      newStmt.initStmt.get.setParent(newStmt)
+    if(newStmt.initStmt!=null){
+      newStmt.initStmt.setParent(newStmt)
     }
     newStmt.body.setParent(newStmt)
 
@@ -76,7 +73,7 @@ class ForStatement(
 
   override def pretty() = pretty(0)
   override def pretty(level: Int): String = {
-    val initStmtPretty = initStmt.map(_.pretty()).getOrElse("")
+    val initStmtPretty = initStmt.pretty()
     val str = new StringBuilder
     str.append(indentStr(level))
     if(condExpr!=null &&iterExpr!=null){
@@ -104,12 +101,12 @@ class ForStatement(
     //str.append(pretty())
     str.append("\n")
 
-    if (initStmt!=null&&initStmt.isDefined){
+    if (initStmt!=null){
       str.append(indentStr(level))
       str.append("->InitStmt: ")
-      str.append(initStmt.get.pretty())
+      str.append(initStmt.pretty())
       str.append("\n")
-      str.append(initStmt.get.treePretty(level+2))
+      str.append(initStmt.treePretty(level+2))
     }
 
     if (condExpr!=null&&condExpr.isDefined){

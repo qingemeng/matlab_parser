@@ -169,9 +169,14 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
   opt(",")~>   assignmentLHSexpr ~ ("/=" ~> expr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpDivideAssign())}
 
   lazy val forStmt: PackratParser[Statement] =
-    ("for"~> opt( rangeAssignStmt)) ~blockStmt<~"end"^^{
+    ("for"~> rangeAssignStmt) ~blockStmt<~"end"^^{
       case range~body =>ForStatement(range,null,null, body)
-    }
+    }|
+      ("for"~> assignmentStmt) ~blockStmt<~"end"^^{
+        case init~body =>ForStatement(init,null,null, body)
+      }
+
+
 
   lazy val ifStmt: PackratParser[Statement] =
       ("if" ~> opt("(")~>expr<~opt(")")) ~ blockStmt <~"end"^^ { case cond~stmt => IfStatement(cond, stmt)}|

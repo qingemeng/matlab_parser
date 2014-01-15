@@ -38,14 +38,14 @@ class ExpressionStatementProcessor(private val exprProc: ExpressionProcessor) ex
   
   override def leave(stmt: ForStatement): Unit = {
     stmt.initStmt match {
-      case Some(initStmt) => initStmt match {
+      case initStmt=> initStmt match {
         case s: FunctionCallStatement => leave(s)
         case s: DeclarationStatement  => leave(s)
         case s: ExpressionStatement   => leave(s)
         case s: NullStatement         => leave(s)
         case s: AssignmentStatement   => leave(s)        
       }
-      case None =>
+      case null =>
     }
     
     stmt.condExpr match {

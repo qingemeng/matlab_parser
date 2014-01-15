@@ -14,8 +14,19 @@ class ParserTest extends FlatSpec with Matchers {
   "Id parsing" should "parse letters" in {
     //just declare the parser to test once and mark it implicit
     //that way our test functions will use it automagically
-    val content = "a"
-    parsing_id(content)
+    val letters = "a"
+    val letters2 = "abc"
+    parsing_id(letters)
+    parsing_id(letters2)
+  }
+
+  "Id parsing" should "parse letters with numbers" in {
+    //just declare the parser to test once and mark it implicit
+    //that way our test functions will use it automagically
+    val t1 = "a2"
+    val t2 = "abcs"
+    parsing_id(t1)
+    parsing_id(t2)
   }
 
   "assignment statement parsing" should "parse simple assignment statement" in {

@@ -11,7 +11,7 @@ object LoopHelper {
     // For (i=s; i<N; i++ or i+=k)
     // Extract index variable, start and end values, stride
 
-    if (stmt.initStmt.isEmpty || stmt.condExpr.isEmpty || stmt.iterExpr.isEmpty) return None
+    if (stmt.condExpr.isEmpty || stmt.iterExpr.isEmpty) return None
     
     var inductionVar: IdName = null
     var lbExpr: Expr = null
@@ -24,7 +24,7 @@ object LoopHelper {
       case _ => return None
     }
     
-    stmt.initStmt.get match {
+    stmt.initStmt match {
       case DeclarationStatement(List(Declarator(idName, Some(xpr))))                => if (idName != inductionVar) return None else lbExpr = xpr
       case ExpressionStatement(NAryExpr(OpTempAssign(), List(IdExpr(idName), xpr))) => if (idName != inductionVar) return None else lbExpr = xpr
       case AssignmentStatement(IdExpr(idName), xpr, OpAssign()) => if (idName != inductionVar) return None else lbExpr = xpr

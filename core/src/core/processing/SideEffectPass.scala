@@ -168,8 +168,8 @@ class SideEffectPass extends StatementVisitor {
     
     if (inductionVar == null) return StatementVisitor.Continue
     
-    if (stmt.initStmt.isDefined) {
-      val initExprs = stmt.initStmt.get match {
+    if (stmt.initStmt!=null) {
+      val initExprs = stmt.initStmt match {
         case s: DeclarationStatement => 
           s.decls.filter(d => d.initializer != None).map(d => NAryExpr(OpTempAssign(), List(IdExpr(d.idName), d.initializer.get)))
         case s: ExpressionStatement  => s.expr match {
@@ -191,10 +191,10 @@ class SideEffectPass extends StatementVisitor {
         case _ =>
       }
       if (hasLastInit) {
-        stmt.update(initStmt = Some(ExpressionStatement(procExprs.last)))
+        stmt.update(initStmt = ExpressionStatement(procExprs.last))
         addSideEffectStatements(stmt, procExprs.dropRight(1).toList, List.empty)
       } else {
-        stmt.update(initStmt = None)
+        stmt.update(initStmt = null)
         addSideEffectStatements(stmt, procExprs.toList, List.empty)
       }
     }

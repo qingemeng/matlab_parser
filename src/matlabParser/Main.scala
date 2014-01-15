@@ -35,7 +35,7 @@ object Main extends Parsers{
 
 
 
-    val filename = testPath + testAssign
+    val filename = testPath + testFor
     val content = scala.io.Source.fromFile(filename).mkString
 
     MatlabParser.parseSource(content) match {

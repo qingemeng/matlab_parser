@@ -214,7 +214,7 @@ class CodeGenerator {
   }
   protected def generateCode(stmt: ForStatement): mutable.ListBuffer[String] = {
     val gen = mutable.ListBuffer.empty[String]
-    val init = generateCode(stmt.initStmt.get)(0).toString().drop(1).dropRight(1)	// remove brackets
+    val init = generateCode(stmt.initStmt)(0).toString().drop(1).dropRight(1)	// remove brackets
     val cond = generateCode(stmt.condExpr.get)
     val iter = generateCode(stmt.iterExpr.get)
     

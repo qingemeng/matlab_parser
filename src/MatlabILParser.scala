@@ -212,11 +212,11 @@ object MatlabILParser {
         val condExpr = NAryExpr(OpLessEq(), List(dslLhs.cloneExpr(), slice.upperBound))
         val iterExpr = NAryExpr(OpTempPlusAssign(), List(dslLhs.cloneExpr(), slice.stride))
 
-        val forStmt = ForStatement(Some(ExpressionStatement(initExpr)), Some(condExpr), Some(iterExpr), dslBody)
+        val forStmt = ForStatement(ExpressionStatement(initExpr), Some(condExpr), Some(iterExpr), dslBody)
         forStmt.isStencil = isStencil
         forStmt
       } else {
-        val forStmt = ForStatement(Some(ExpressionStatement(dslCond)), None, None, dslBody)
+        val forStmt = ForStatement(ExpressionStatement(dslCond), None, None, dslBody)
         forStmt.isStencil = isStencil
         forStmt
       }
