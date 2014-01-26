@@ -29,6 +29,16 @@ class ParserTest extends FlatSpec with Matchers {
     parsing_id(t2)
   }
 
+  "single line statement parsing" should "parse unary expression as a single line expression" in {
+    //just declare the parser to test once and mark it implicit
+    //that way our test functions will use it automagically
+    implicit val parserToTest = Boolean
+    val testSingleLineStmt  ="/test_singleLineStmt.m"
+    val filename = testPath + testSingleLineStmt
+    val content = scala.io.Source.fromFile(filename).mkString
+    parsing_script(content)
+  }
+
   "assignment statement parsing" should "parse simple assignment statement" in {
     //just declare the parser to test once and mark it implicit
     //that way our test functions will use it automagically
@@ -47,6 +57,51 @@ class ParserTest extends FlatSpec with Matchers {
     val content = scala.io.Source.fromFile(filename).mkString
     parsing_script(content)
   }
+
+  "cell statement parsing" should "parse cell statement" in {
+    //just declare the parser to test once and mark it implicit
+    //that way our test functions will use it automagically
+    val testCell  ="/test_cell.m"
+    val filename = testPath + testCell
+    val content = scala.io.Source.fromFile(filename).mkString
+    parsing_script(content)
+  }
+
+  "continue(control) statement parsing" should "parse continue statement" in {
+    //just declare the parser to test once and mark it implicit
+    //that way our test functions will use it automagically
+    val testCntrl  ="/test_cntrl.m"
+    val filename = testPath + testCntrl
+    val content = scala.io.Source.fromFile(filename).mkString
+    parsing_script(content)
+  }
+
+  "comments parsing" should "skip all comments" in {
+    //just declare the parser to test once and mark it implicit
+    //that way our test functions will use it automagically
+    val testComment  ="/test_comments.m"
+    val filename = testPath + testComment
+    val content = scala.io.Source.fromFile(filename).mkString
+    parsing_script(content)
+  }
+
+  "simple elseif parsing" should "parse elseif in if statement" in {
+    //just declare the parser to test once and mark it implicit
+    //that way our test functions will use it automagically
+    val testElseifS  ="/test_elseif_simple.m"
+    val filename = testPath + testElseifS
+    val content = scala.io.Source.fromFile(filename).mkString
+    parsing_script(content)
+  }
+  "elseif statement parsing" should "parse elseif in if statement" in {
+    //just declare the parser to test once and mark it implicit
+    //that way our test functions will use it automagically
+    val testElseif  ="/test_elseif.m"
+    val filename = testPath + testElseif
+    val content = scala.io.Source.fromFile(filename).mkString
+    parsing_script(content)
+  }
+
 //  "The MatlabParser" should "parse a big test statement" in {
 //    //just declare the parser to test once and mark it implicit
 //    //that way our test functions will use it automagically

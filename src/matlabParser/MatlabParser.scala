@@ -124,7 +124,7 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
     function_def
 
 
-  lazy val blockStmt : PackratParser[Statement] =
+  lazy val blockStmt : PackratParser[StatementBlock] =
     (statement*) ^^ { case stmts => StatementBlock(stmts)}
 
 
@@ -137,12 +137,19 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
       defaultStmt <~ eol |
       breakStmt <~ eol |
       continueStmt <~ eol|
-    singletonStmt<~eol
+      simpleStmt<~eol
+  //TODO:fix the single line evaluation
+//  lazy val evalStmt: PackratParser[Statement] =
 
-  lazy val singletonStmt:PackratParser[Statement]=
-  //TODO:fix idExpr
-      cellExpr^^{case cellExpr=>ExpressionStatement(cellExpr)}
-      const_literal^^ {case constExpr=>ExpressionStatement(constExpr)}
+
+  lazy val simpleStmt:PackratParser[Statement]=
+      cellExpr^^{case cellExpr=>ExpressionStatement(cellExpr)}  |
+      matrixExpr^^{case matrixExpr => ExpressionStatement(matrixExpr)}
+//      const_literal^^ {case constExpr=>ExpressionStatement(constExpr)}  |
+////      identifier^^{case id=>ExpressionStatement(id)}
+//  simpleFactor^^{case simpleFactor => ExpressionStatement(simpleFactor)}
+//  cellExpr|matrixExpr|simpleFactor
+
 
 
 
@@ -179,9 +186,18 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
 
 
   lazy val ifStmt: PackratParser[Statement] =
-      ("if" ~> opt("(")~>expr<~opt(")")) ~ blockStmt <~"end"^^ { case cond~stmt => IfStatement(cond, stmt)}|
-        ("if" ~> opt("(")~>expr<~opt(")") ) ~ blockStmt ~ ("else" ~> blockStmt) <~"end"^^ { case cond~thebody~elsebody => IfStatement(cond, thebody, elsebody)}
+    (("if" ~> opt("(")~>expr<~opt(")") ) ~blockStmt )~ opt(elseifStmt*)~("else" ~> opt(blockStmt)) <~"end"^^ { case cond~thebody~elseifStmts~elsebody => IfStatement(cond, thebody,elseifStmts, elsebody)}
+//  (("if" ~> opt("(")~>expr<~opt(")") )) ~ blockStmt ~ opt(elseifBlocks)<~"end"^^ { case cond~thebody~elseifStmts => IfStatement(cond, thebody,elseifStmts,null)}|
+//      ( ("if" ~> opt("(")~>expr<~opt(")") )) ~ blockStmt ~ ("else" ~> opt(blockStmt)) <~"end"^^ { case cond~thebody~elsebody => IfStatement(cond, thebody,null, elsebody)}|
+//      ( ("if" ~> opt("(")~>expr<~opt(")")) )~ blockStmt <~"end"^^ { case cond~stmt => IfStatement(cond, stmt)}
   //Todo:elseif
+
+//  lazy val elseifBlocks: PackratParser[StatementBlock]=
+//  (("elseif" ~> blockStmt)*) ^^ {case blockStmts => ElseifStatements(blockStmts)}
+  lazy val elseifStmt : PackratParser[ElseifStatement] =
+  ("elseif"~>opt("(")~>expr<~opt(")")) ~blockStmt ^^{case cond~body => ElseifStatement(cond,body)}
+
+
 
   lazy val whileStmt: PackratParser[Statement] =
     ("while"  ~>opt("(")~> expr<~opt(")")) ~ blockStmt <~"end"^^ { case cond~stmt => WhileStatement(cond, stmt)}
@@ -387,11 +403,11 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
   /******************************************************************************************/
   lazy val cellExpr: PackratParser[Expr] =
     "{"~opt(",")~"}" ^^{case s =>ArrayCompositionExpr()}|
-    "{"~>repsep(arrayFactor,",")<~"}"^^{case arrayFactors =>ArrayCompositionExpr(arrayFactors)} |
+    "{"~>repsep(arrayFactor,",")<~"}"^^{case arrayFactors =>CellCompositionExpr(arrayFactors)} |
     "{"~>arrayList<~"}"
   lazy val matrixExpr :  PackratParser[Expr] =
     "["~opt(",")~"]" ^^{case s =>ArrayCompositionExpr()}|
-      "["~>repsep(arrayFactor,",")<~"]"^^{case arrayFactors =>ArrayCompositionExpr(arrayFactors)} |
+      "["~>repsep(arrayFactor,",")<~"]"^^{case arrayFactors =>MatrixCompositionExpr(arrayFactors)} |
       "["~>arrayList<~"]"
 
   /******************************************************************************************/

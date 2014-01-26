@@ -16,7 +16,7 @@ abstract class Statement extends HasProperties with StencilProperty {
   def cloneStmt(): Statement = ???
   
   // copy attributes from given model.statement to this model.statement
-  protected def base_copyFrom(stmt: Statement) {
+   def base_copyFrom(stmt: Statement) {
     //Only keep track of the previous clone
     stmt.cloneSrc = None
     cloneSrc = Some(stmt)

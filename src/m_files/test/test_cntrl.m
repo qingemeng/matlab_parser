@@ -9,7 +9,7 @@ function test_cntrl
     continue;
   end
   
-  if ( frank )
+  while ( frank )
     continue;
   end
 

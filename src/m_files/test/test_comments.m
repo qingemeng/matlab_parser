@@ -3,8 +3,8 @@ function test_comments
   c = 43;  % another
   % this is a comment
 %   a = b + ...
-      c;
-      23;
+      %c;
+      %23;
       {b,c}
   
   % this is illegal.

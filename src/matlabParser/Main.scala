@@ -23,11 +23,13 @@ object Main extends Parsers{
     val testCell = "/test_cell.m"
     val testCtrl = "/test_cntrl.m"
     val testComments = "/test_comments.m"
-    val testElseIf = "/test_elseif.m"
+    val testElseIf = "/test_elseif2.m"
+    val testElseIf_Simple = "/test_elseif_simple.m"
     val testFor ="/test_for.m"
     val testExpr ="/test_expr.m"
     val testMatrix ="/test_matrix.m"
     val testNestedFuncs ="/test_nested_funcs.m"
+    val testSingleLineStmt = "/test_singleLineStmt.m"
     val testSwitch="/test_switch.m"
     val testWhile="/test_while.m"
 
@@ -35,7 +37,7 @@ object Main extends Parsers{
 
 
 
-    val filename = testPath + testFor
+    val filename = testPath + testElseIf_Simple
     val content = scala.io.Source.fromFile(filename).mkString
 
     MatlabParser.parseSource(content) match {
