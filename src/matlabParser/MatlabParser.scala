@@ -186,7 +186,8 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
 
 
   lazy val ifStmt: PackratParser[Statement] =
-    (("if" ~> opt("(")~>expr<~opt(")") ) ~blockStmt )~ opt(elseifStmt*)~("else" ~> opt(blockStmt)) <~"end"^^ { case cond~thebody~elseifStmts~elsebody => IfStatement(cond, thebody,elseifStmts, elsebody)}
+//    ("if" ~> opt("(")~>expr<~opt(")"))~ blockStmt <~"end"^^ { case cond~stmt => IfStatement(cond, stmt,null, null)}|
+    (("if" ~> opt("(")~>expr<~opt(")") ) ~blockStmt )~ opt(elseifStmt*)~opt(("else" ~> blockStmt)) <~"end"^^ { case cond~thebody~elseifStmts~elsebody => IfStatement(cond, thebody,elseifStmts, elsebody)}
 //  (("if" ~> opt("(")~>expr<~opt(")") )) ~ blockStmt ~ opt(elseifBlocks)<~"end"^^ { case cond~thebody~elseifStmts => IfStatement(cond, thebody,elseifStmts,null)}|
 //      ( ("if" ~> opt("(")~>expr<~opt(")") )) ~ blockStmt ~ ("else" ~> opt(blockStmt)) <~"end"^^ { case cond~thebody~elsebody => IfStatement(cond, thebody,null, elsebody)}|
 //      ( ("if" ~> opt("(")~>expr<~opt(")")) )~ blockStmt <~"end"^^ { case cond~stmt => IfStatement(cond, stmt)}

@@ -2,23 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbd1eb0d-98d0-4002-b4ee-e896ff357094" name="Default" comment="additional for statement builder and fix&quot;{&quot; found err">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/model/expression/CellCompositionExpr.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/model/statement/ElseifStatement.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/model/statement/ElseifStatements.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/model/expression/MatrixCompositionExpr.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_singleLineStmt.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/statement/IfStatement.scala" afterPath="$PROJECT_DIR$/core/src/model/statement/IfStatement.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_else_if.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_if.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_if_else.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/statement/ElseifStatement.scala" afterPath="$PROJECT_DIR$/core/src/model/statement/ElseifStatement.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/matlabParser/Main.scala" afterPath="$PROJECT_DIR$/src/matlabParser/Main.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MatlabILParser.scala" afterPath="$PROJECT_DIR$/src/MatlabILParser.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" afterPath="$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Parser.scala" afterPath="$PROJECT_DIR$/src/Parser.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestingModel/src/ParserTest.scala" afterPath="$PROJECT_DIR$/TestingModel/src/ParserTest.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/statement/Statement.scala" afterPath="$PROJECT_DIR$/core/src/model/statement/Statement.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/core/processing/StatementBlockPass.scala" afterPath="$PROJECT_DIR$/core/src/core/processing/StatementBlockPass.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test.scala" afterPath="$PROJECT_DIR$/src/test.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m_files/test/test_cntrl.m" afterPath="$PROJECT_DIR$/src/m_files/test/test_cntrl.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m_files/test/test_comments.m" afterPath="$PROJECT_DIR$/src/m_files/test/test_comments.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m_files/test/test_elseif.m" afterPath="$PROJECT_DIR$/src/m_files/test/test_elseif.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="matlab_to.iws" />
@@ -47,11 +37,11 @@
     <file path="/DependencyGraph.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388197950515" ignored="false" />
     <file path="/ExprHelper.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388198351920" ignored="false" />
     <file path="/SliceExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388198387869" ignored="false" />
-    <file path="/fragment.java" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1389422377153" ignored="false" />
+    <file path="/fragment.java" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392186792201" ignored="false" />
     <file path="/test.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388287953919" ignored="false" />
     <file path="/mParser.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388412985439" ignored="false" />
     <file path="/MatlabParser.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1390718357511" ignored="false" />
-    <file path="/Dummy.txt" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1390668314613" ignored="false" />
+    <file path="/Dummy.txt" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392187411158" ignored="false" />
     <file path="/VectorExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388474263098" ignored="false" />
     <file path="/ExpressionProcessor.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388475257710" ignored="false" />
     <file path="/ExpressionVisitor.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388474610881" ignored="false" />
@@ -92,6 +82,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <method_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint url="file://$PROJECT_DIR$/core/src/model/statement/DeclarationStatement.scala" line="8" class="model.statement.DeclarationStatement$" package="model.statement">
         <option name="WATCH_ENTRY" value="true" />
@@ -210,7 +201,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" line="441" class="matlabParser.MatlabParser$" package="matlabParser">
+      <breakpoint url="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" line="442" class="matlabParser.MatlabParser$" package="matlabParser">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -255,7 +246,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" line="301" class="matlabParser.MatlabParser$" package="matlabParser">
+      <breakpoint url="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" line="302" class="matlabParser.MatlabParser$" package="matlabParser">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -270,7 +261,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" line="227" class="matlabParser.MatlabParser$" package="matlabParser">
+      <breakpoint url="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" line="228" class="matlabParser.MatlabParser$" package="matlabParser">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -346,7 +337,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </line_breakpoints>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -360,55 +350,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MatlabParser.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="196" column="53" selection-start="6959" selection-end="6959" vertical-scroll-proportion="-4.52">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_elseif_simple.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/m_files/test/test_elseif_simple.m">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="37" selection-start="66" selection-end="66" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IfStatement.scala" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="IfStatement.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/model/statement/IfStatement.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="124" column="8" selection-start="3927" selection-end="3927" vertical-scroll-proportion="-7.16">
+            <state line="124" column="8" selection-start="3927" selection-end="3927" vertical-scroll-proportion="1.022082">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NAryExpr.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/model/expression/NAryExpr.scala">
+      <file leaf-file-name=".classpath" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/.classpath">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="44" selection-start="918" selection-end="918" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StatementBlock.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/model/statement/StatementBlock.scala">
+      <file leaf-file-name="ParserTest.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TestingModel/src/ParserTest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="129" column="4" selection-start="3138" selection-end="3210" vertical-scroll-proportion="0.0">
+            <state line="96" column="2" selection-start="3562" selection-end="3562" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ElseifStatement.scala" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/core/src/model/statement/ElseifStatement.scala">
+      <file leaf-file-name="test_if.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/m_files/test/test_if.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="52" selection-start="1461" selection-end="1461" vertical-scroll-proportion="2.5987842">
+            <state line="2" column="3" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_if_else.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/m_files/test/test_if_else.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="42" selection-start="36" selection-end="36" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -423,19 +404,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ElseifStatements.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/model/statement/ElseifStatements.scala">
+      <file leaf-file-name="Main.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/matlabParser/Main.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="36" selection-start="2" selection-end="3837" vertical-scroll-proportion="0.0">
+            <state line="42" column="42" selection-start="1223" selection-end="1223" vertical-scroll-proportion="-2.84">
+              <folding>
+                <element signature="e#22#60#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ElseifStatement.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/model/statement/ElseifStatement.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="11" selection-start="964" selection-end="964" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/matlabParser/Main.scala">
+      <file leaf-file-name="test_elseif.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/m_files/test/test_elseif.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="47" selection-start="1109" selection-end="1109" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -460,15 +452,11 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/m_files/test/test_comments.m" />
-        <option value="$PROJECT_DIR$/core/src/model/statement/ElseifStatementBlock.scala" />
         <option value="$PROJECT_DIR$/core/src/model/statement/StatementBlock.scala" />
         <option value="$PROJECT_DIR$/src/MatlabILParser.scala" />
         <option value="$PROJECT_DIR$/src/Parser.scala" />
         <option value="$PROJECT_DIR$/src/test.scala" />
         <option value="$PROJECT_DIR$/src/m_files/test/test_elseif.m" />
-        <option value="$PROJECT_DIR$/TestingModel/src/ParserTest.scala" />
-        <option value="$PROJECT_DIR$/src/matlabParser/Main.scala" />
         <option value="$PROJECT_DIR$/core/src/model/statement/ElseifStatementBlocks.scala" />
         <option value="$PROJECT_DIR$/core/src/model/statement/ElseifStatements.scala" />
         <option value="$PROJECT_DIR$/core/src/core/processing/StatementBlockPass.scala" />
@@ -476,6 +464,10 @@
         <option value="$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" />
         <option value="$PROJECT_DIR$/core/src/model/statement/IfStatement.scala" />
         <option value="$PROJECT_DIR$/core/src/model/statement/ElseifStatement.scala" />
+        <option value="$PROJECT_DIR$/TestingModel/src/ParserTest.scala" />
+        <option value="$PROJECT_DIR$/src/m_files/test/test_if.m" />
+        <option value="$PROJECT_DIR$/src/m_files/test/test_if_else.m" />
+        <option value="$PROJECT_DIR$/src/matlabParser/Main.scala" />
       </list>
     </option>
   </component>
@@ -543,6 +535,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="TestingModel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="matlab_to" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="matlab_to" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TestingModel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="matlab_to" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="matlab_to" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -580,6 +604,60 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="m_files" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="matlab_to" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="matlab_to" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="m_files" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="matlab_to" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="matlab_to" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="matlab_to" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="matlab_to" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -634,7 +712,7 @@
       <recent name="$PROJECT_DIR$/refactoring/src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.mP">
+  <component name="RunManager" selected="ScalaTest.scalaTest">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -761,31 +839,6 @@
       <setting name="showProgressMessages" value="true" />
       <method />
     </configuration>
-    <configuration default="false" name="matlabP" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="Parser" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="matlab_to" />
-      <envs />
-      <RunnerSettings RunnerId="Cover" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Cover" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
     <configuration default="false" name="mP" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="matlabParser.Main" />
@@ -804,13 +857,7 @@
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
       </RunnerSettings>
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
@@ -832,10 +879,9 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <list size="3">
-      <item index="0" class="java.lang.String" itemvalue="Application.matlabP" />
-      <item index="1" class="java.lang.String" itemvalue="Application.mP" />
-      <item index="2" class="java.lang.String" itemvalue="ScalaTest.scalaTest" />
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Application.mP" />
+      <item index="1" class="java.lang.String" itemvalue="ScalaTest.scalaTest" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -895,12 +941,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="22" width="1276" height="778" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272727" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32674772" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32674772" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39969605" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -912,15 +957,16 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34954408" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25447154" sideWeight="0.5775076" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25447154" sideWeight="0.5775076" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2617886" sideWeight="0.6732523" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4224924" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2617886" sideWeight="0.57902735" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.42097265" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32674772" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -990,44 +1036,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/m_files/test/test_elseif2.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Downloads/scala-2.10.3.final/src/scala-library-src.jar!/scala/util/parsing/combinator/Parsers.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="888" column="6" selection-start="40108" selection-end="40108" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/m_files/test/test_elseif.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="280" selection-end="280" vertical-scroll-proportion="0.77878106" />
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Downloads/scala-2.10.3.final/src/scala-library-src.jar!/scala/Option.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="6" selection-start="3906" selection-end="3906" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TestingModel/src/ParserTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="41" selection-start="3464" selection-end="3464" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/core/processing/StatementBlockPass.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="21" selection-start="1110" selection-end="1110" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/model/statement/ElseifStatements.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="36" selection-start="2" selection-end="3837" vertical-scroll-proportion="0.0">
@@ -1037,7 +1045,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="196" column="53" selection-start="6959" selection-end="6959" vertical-scroll-proportion="-4.52">
+        <state line="196" column="53" selection-start="6959" selection-end="6959" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1049,25 +1057,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/matlabParser/Main.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="47" selection-start="1109" selection-end="1109" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/model/statement/StatementBlock.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="129" column="4" selection-start="3138" selection-end="3210" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/core/DependencyGraph.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="48" selection-start="3563" selection-end="3563" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="96" column="48" selection-start="3563" selection-end="3563" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/model/expression/NAryExpr.scala">
@@ -1077,9 +1069,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/model/statement/IfStatement.scala">
+    <entry file="file://$PROJECT_DIR$/core/.classpath">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="8" selection-start="3927" selection-end="3927" vertical-scroll-proportion="-7.16">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1091,9 +1083,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/model/statement/StatementBlock.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="129" column="4" selection-start="3138" selection-end="3210" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/m_files/test/test_elseif.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/model/statement/ElseifStatement.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="52" selection-start="1461" selection-end="1461" vertical-scroll-proportion="2.5987842">
+        <state line="40" column="11" selection-start="964" selection-end="964" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/m_files/test/test_if_else.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="42" selection-start="36" selection-end="36" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestingModel/src/ParserTest.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="96" column="2" selection-start="3562" selection-end="3562" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/m_files/test/test_if.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="3" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/matlabParser/Main.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="42" selection-start="1223" selection-end="1223" vertical-scroll-proportion="-2.84">
+          <folding>
+            <element signature="e#22#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/model/statement/IfStatement.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="124" column="8" selection-start="3927" selection-end="3927" vertical-scroll-proportion="1.022082">
           <folding />
         </state>
       </provider>

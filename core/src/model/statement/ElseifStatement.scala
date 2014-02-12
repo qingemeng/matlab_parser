@@ -29,15 +29,16 @@ class ElseifStatement(
 
   // deep clone of the model.statement
   override def cloneStmt() = {
-    val newStmt = IfStatement(
+
+    val newStmt = ElseifStatement(
       condExpr.cloneExpr,
       body.cloneStmt
     )
 
-    newStmt.thenBody.setParent(newStmt)
-    if(newStmt.elseBody.isDefined){
-      newStmt.elseBody.get.setParent(newStmt)
-    }
+    newStmt.body.setParent(newStmt)
+    //    if(newStmt.elseBody.isDefined){
+    //      newStmt.elseBody.get.setParent(newStmt)
+    //    }
 
     newStmt.base_copyFrom(this)
     newStmt
