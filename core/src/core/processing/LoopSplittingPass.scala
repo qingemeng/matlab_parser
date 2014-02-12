@@ -9,7 +9,7 @@ import   model.property._
 
 // Identifies countable loops that can be refactored, i.e.
 //  - countable, currently for-loops with proper start, end and stride
-//  - no control dependent flow, 
+//  - no control dependent flow,
 //  - no while, do, if, switch, conditional-expr, break, continue, return
 //  - all statements in loop must be AssignmentStatement
 //  - FunctionCallExpr in statement assumed no side-effect and single-valued
@@ -20,7 +20,7 @@ import   model.property._
 class LoopSplittingPass() extends StatementVisitor {
   private val DEBUG_PRINT = false
   private val SPLIT = true
-  
+
   private def hasNoInvalidStatements(stmt: ForStatement, loopInfo: LoopInfo): Boolean = {
     // XXX: For now, inner loops considered to fail the test
     def testStatement(stmt: Statement): Boolean = stmt match {
@@ -58,17 +58,17 @@ class LoopSplittingPass() extends StatementVisitor {
 	        pass = false
 	      expr
 	    }
-	  } 
-    
+	  }
+
       ExpressionProcessor.process(stmt.lhsExpr, visitor)
       ExpressionProcessor.process(stmt.rhsExpr, visitor)
       pass
     }
-    
+
     val blk = stmt.body.asInstanceOf[StatementBlock]
     blk.statements.forall(testStatement)
   }
-  
+
   // Checks that domain is rectangular
   // Goes through each child statement to ensure that child statement domain does not depend on parent
   private def hasValidDomains(loopInfo: LoopInfo, stmt: ForStatement): Boolean = {
@@ -87,59 +87,59 @@ class LoopSplittingPass() extends StatementVisitor {
           return ExpressionVisitor.Continue
         }
       })
-      
+
       return found
-    } 
+    }
     // XXX: For now, check induction variable not contained
     def testDomain(stmt: Statement): Boolean = {
       if (stmt.isInstanceOf[AssignmentStatement]) {
         val s = stmt.asInstanceOf[AssignmentStatement]
-        s.props[DomainsProperty].getDomains.forall(l => 
+        s.props[DomainsProperty].getDomains.forall(l =>
           !(containsInductionVar(l.lowerBound) || containsInductionVar(l.upperBound) || containsInductionVar(l.stride))
         )
       } else {
         false
       }
     }
-    
+
     val blk = stmt.body.asInstanceOf[StatementBlock]
     val isValid = blk.statements.forall(testDomain)
     isValid
   }
-  
+
   override def leave(stmt: ForStatement): Unit = {
     LoopHelper.hasValidForHeader(stmt) match {
       case Some(loopInfo) => {
         val validStmts = hasNoInvalidStatements(stmt, loopInfo)
         val validDomains = hasValidDomains(loopInfo, stmt)
-        
+
         // Check if loop body has valid structure
         val valid = validStmts && validDomains
-         
+
         if (DEBUG_PRINT) {
           if (!valid) println("x " + stmt.pretty())
           else println("/ " + stmt.pretty())
         }
-    
+
         if (!valid) return
-    
+
         // XXX: Assumes no aliasing
         // Note locality is lost after splitting
         if (SPLIT) {
           val blk = stmt.body.asInstanceOf[StatementBlock]
-    
+
           // Build dependency graph
           // 'sorted' contains list of blocks of statements
           val stmts = blk.statements.map(s => s.asInstanceOf[AssignmentStatement])
           val graph = DependencyGraph.buildSCC(stmts, loopInfo.inductionVar)
           val sorted = DependencyGraph.topoSort(stmts, graph)
           //DependencyGraph.printGraph(stmts, graph)
-    
+
           // XXX: Currently loop splitting is implemented as all or none
           if ((sorted.size == stmts.size) && sorted.forall(l => l.size == 1)) {
           stmt.props[LoopProperty].setCanAbstractLoop(true)
-    
-            blk.statements.foreach(s => s.props[DomainsProperty].prependDomain(loopInfo))        
+
+            blk.statements.foreach(s => s.props[DomainsProperty].prependDomain(loopInfo))
           val parentBlk = stmt.getParent.asInstanceOf[StatementBlock]
           for (s <- blk.statements) {
             parentBlk.insertBefore(stmt, s)
@@ -159,14 +159,14 @@ class LoopSplittingPass() extends StatementVisitor {
           */
         }
       }
-      
+
       case None => {
         if (DEBUG_PRINT) {
           println("x " + stmt.pretty())
-        }        
+        }
       }
     }
-    
+
   }
 }
 

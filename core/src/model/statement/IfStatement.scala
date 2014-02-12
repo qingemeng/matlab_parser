@@ -12,17 +12,17 @@ object IfStatement {
 //               elseifStmts: StatementBlock,
 //               elseBody: Statement) = new IfStatement(condExpr, thenBody,Some(elseifStmts),Some(elseBody))
 
-
-//  def apply(
-//             condExpr: Expr,
-//             thenBody: Statement,
-//             elseBody: Statement) = new IfStatement(condExpr, thenBody, null,Some(elseBody))
 //
 //  def apply(
 //             condExpr: Expr,
 //             thenBody: Statement,
-//             elseifStmts: StatementBlock) = new IfStatement(condExpr, thenBody,Some(elseifStmts),null)
+//             elseBody: Statement) = new IfStatement(condExpr, thenBody, null,Some(elseBody))
 
+//  def apply(
+//             condExpr: Expr,
+//             thenBody: Statement,
+//             elseifStmts: List[ElseifStatement]) = new IfStatement(condExpr, thenBody,Some(elseifStmts),null)
+//
   def apply(
              condExpr: Expr,
              thenBody: Statement,
@@ -61,7 +61,7 @@ class IfStatement(
     val newStmt = IfStatement(
       condExpr.cloneExpr,
       thenBody.cloneStmt,
-      elseifBodies ,
+      elseifBodies,
       elseBody match {
         case Some(stmt)	=> Some(stmt.cloneStmt)
         case None		=> None
@@ -83,7 +83,7 @@ class IfStatement(
     str.append(indentStr(level))
     str.append(String.format("if %s\n", condExpr.pretty()))
     str.append(thenBody.pretty(level + 1))
-    if(elseifBodies!=null&&elseBody.isDefined){
+    if(elseifBodies!=null&&elseifBodies.isDefined && !elseifBodies.get.isEmpty ){
       str.append("\n" + indentStr(level))
       str.append("elseif\n")
 
