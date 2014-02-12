@@ -93,28 +93,10 @@ class ParserTest extends FlatSpec with Matchers {
     val content = scala.io.Source.fromFile(filename).mkString
     parsing_script(content)
   }
-
-  "if statement parsing" should "parse (only)if statement" in {
-    //just declare the parser to test once and mark it implicit
-    //that way our test functions will use it automagically
-    val testIf  ="/test_if.m"
-    val filename = testPath + testIf
-    val content = scala.io.Source.fromFile(filename).mkString
-    parsing_script(content)
-  }
-  "if statement with else parsing" should "parse if statement with else block" in {
-    //just declare the parser to test once and mark it implicit
-    //that way our test functions will use it automagically
-    val testIfElse  ="/test_if_else.m"
-    val filename = testPath + testIfElse
-    val content = scala.io.Source.fromFile(filename).mkString
-    parsing_script(content)
-  }
-
   "elseif statement parsing" should "parse elseif in if statement" in {
     //just declare the parser to test once and mark it implicit
     //that way our test functions will use it automagically
-    val testElseif  ="/test_else_if.m"
+    val testElseif  ="/test_elseif.m"
     val filename = testPath + testElseif
     val content = scala.io.Source.fromFile(filename).mkString
     parsing_script(content)
