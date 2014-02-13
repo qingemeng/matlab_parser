@@ -2,13 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbd1eb0d-98d0-4002-b4ee-e896ff357094" name="Default" comment="additional for statement builder and fix&quot;{&quot; found err">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_else_if.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_if.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_if_else.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/statement/ElseifStatement.scala" afterPath="$PROJECT_DIR$/core/src/model/statement/ElseifStatement.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/t_matrixCreation.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_NAryOp.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test_NAryOp2.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_arrOp_plus_minus.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_arrayOp_arrTimes.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_matOp_matTimes.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_paralleldemo_gpu_stencil.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_scalar.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_simpleMatrixAccessExpr.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_simpleUnaryTerm.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_vector_col.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_vector_row.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/core/Algebra.scala" afterPath="$PROJECT_DIR$/core/src/core/Algebra.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/matlabParser/Main.scala" afterPath="$PROJECT_DIR$/src/matlabParser/Main.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MatlabILParser.scala" afterPath="$PROJECT_DIR$/src/MatlabILParser.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" afterPath="$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/Operators.scala" afterPath="$PROJECT_DIR$/core/src/model/Operators.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestingModel/src/ParserTest.scala" afterPath="$PROJECT_DIR$/TestingModel/src/ParserTest.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/refactoring/matlab/processing/Preprocessor.scala" afterPath="$PROJECT_DIR$/src/refactoring/matlab/processing/Preprocessor.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="matlab_to.iws" />
@@ -16,7 +28,7 @@
     <file path="/Parser.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388387692777" ignored="false" />
     <file path="$PROJECT_DIR$/src/m_files/package.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388047866487" ignored="false" />
     <file path="/MatlabILParser.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388390947531" ignored="false" />
-    <file path="/a.dummy" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1390719306450" ignored="false" />
+    <file path="/a.dummy" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392312629584" ignored="false" />
     <file path="/AllocateArrayExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388072457811" ignored="false" />
     <file path="/TypeUtil.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388073857885" ignored="false" />
     <file path="$USER_HOME$/Downloads/scala-2.10.3.final/examples/parsing/lambda/.idea/workspace.xml" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388110028947" ignored="false" />
@@ -29,7 +41,7 @@
     <file path="$PROJECT_DIR$/../test2/src/test.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388109407382" ignored="false" />
     <file path="$PROJECT_DIR$/../test2/.idea/workspace.xml" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388109430349" ignored="false" />
     <file path="$USER_HOME$/Downloads/scala-2.10.3.final/examples/parsing/lambda/Main.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388109465729" ignored="false" />
-    <file path="/Main.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1389853686510" ignored="false" />
+    <file path="/Main.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392322392209" ignored="false" />
     <file path="/ConstLiteralExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388110372380" ignored="false" />
     <file path="/NumericValue.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388110404595" ignored="false" />
     <file path="/*.regexp" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388288288007" ignored="false" />
@@ -40,8 +52,8 @@
     <file path="/fragment.java" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392186792201" ignored="false" />
     <file path="/test.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388287953919" ignored="false" />
     <file path="/mParser.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388412985439" ignored="false" />
-    <file path="/MatlabParser.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1390718357511" ignored="false" />
-    <file path="/Dummy.txt" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392187411158" ignored="false" />
+    <file path="/MatlabParser.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392324043418" ignored="false" />
+    <file path="/Dummy.txt" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392262269957" ignored="false" />
     <file path="/VectorExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388474263098" ignored="false" />
     <file path="/ExpressionProcessor.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388475257710" ignored="false" />
     <file path="/ExpressionVisitor.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388474610881" ignored="false" />
@@ -55,7 +67,7 @@
     <file path="/ForStatement.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1389798912844" ignored="false" />
     <file path="/test_elseif.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1389821025191" ignored="false" />
     <file path="/test_while.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1389041603817" ignored="false" />
-    <file path="/ParserTest.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1389853649156" ignored="false" />
+    <file path="/ParserTest.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392321738869" ignored="false" />
     <file path="/testUtil.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1389498494621" ignored="false" />
     <file path="/TestUtil.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1389498208485" ignored="false" />
     <file path="/SideEffectPass.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1389799142764" ignored="false" />
@@ -68,6 +80,13 @@
     <file path="/ElseifStatementBlocks.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1390010488666" ignored="false" />
     <file path="/StatementBlockPass.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1390718027569" ignored="false" />
     <file path="/ElseifStatement.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1390719481092" ignored="false" />
+    <file path="/test_vestor_col.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392301889284" ignored="false" />
+    <file path="/test_simpleUnaryTerm.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392317154220" ignored="false" />
+    <file path="/test_NAryOP.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392305663384" ignored="false" />
+    <file path="/Operators.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392307116720" ignored="false" />
+    <file path="/arrOp_plus.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392319753897" ignored="false" />
+    <file path="/test_arrayOp_arrTimes.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392320148615" ignored="false" />
+    <file path="/t_matrixCreation.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392323029100" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +94,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/matlab_to$scalaTest.coverage" NAME="scalaTest Coverage Results" MODIFIED="1392188622856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -82,79 +104,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <method_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/core/src/model/statement/DeclarationStatement.scala" line="8" class="model.statement.DeclarationStatement$" package="model.statement">
-        <option name="WATCH_ENTRY" value="true" />
-        <option name="WATCH_EXIT" value="true" />
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/core/src/model/statement/ForStatement.scala" line="8" class="model.statement.ForStatement$" package="model.statement">
-        <option name="WATCH_ENTRY" value="true" />
-        <option name="WATCH_EXIT" value="true" />
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </method_breakpoints>
-    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint>
-        <option name="NOTIFY_CAUGHT" value="true" />
-        <option name="NOTIFY_UNCAUGHT" value="true" />
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint>
-        <option name="NOTIFY_CAUGHT" value="true" />
-        <option name="NOTIFY_UNCAUGHT" value="true" />
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </breakpoint_any>
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint url="file://$PROJECT_DIR$/src/Parser.scala" line="41" class="Parser.scala" package="">
         <option name="ENABLED" value="true" />
@@ -201,7 +150,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" line="442" class="matlabParser.MatlabParser$" package="matlabParser">
+      <breakpoint url="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" line="466" class="matlabParser.MatlabParser$" package="matlabParser">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -246,7 +195,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" line="302" class="matlabParser.MatlabParser$" package="matlabParser">
+      <breakpoint url="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" line="314" class="matlabParser.MatlabParser$" package="matlabParser">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -261,7 +210,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" line="228" class="matlabParser.MatlabParser$" package="matlabParser">
+      <breakpoint url="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" line="230" class="matlabParser.MatlabParser$" package="matlabParser">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -336,7 +285,140 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/statement/AssignmentStatement.scala" line="10" class="model.statement.AssignmentStatement$" package="model.statement">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/Types.scala" line="50" class="model.IntType" package="model">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/ExpressionProcessor.scala" line="30" class="model.ExpressionProcessor" package="model">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/expression/FunctionCallExpr.scala" line="7" class="model.expression.FunctionCallExpr$" package="model.expression">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
     </line_breakpoints>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <method_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/statement/DeclarationStatement.scala" line="8" class="model.statement.DeclarationStatement$" package="model.statement">
+        <option name="WATCH_ENTRY" value="true" />
+        <option name="WATCH_EXIT" value="true" />
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/statement/ForStatement.scala" line="8" class="model.statement.ForStatement$" package="model.statement">
+        <option name="WATCH_ENTRY" value="true" />
+        <option name="WATCH_EXIT" value="true" />
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </method_breakpoints>
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </breakpoint_any>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -350,19 +432,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="IfStatement.scala" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/core/src/model/statement/IfStatement.scala">
+      <file leaf-file-name="MatlabParser.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="124" column="8" selection-start="3927" selection-end="3927" vertical-scroll-proportion="1.022082">
+            <state line="140" column="32" selection-start="4176" selection-end="4176" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#183#215#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="t_matrixCreation.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/m_files/test/t_matrixCreation.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="80" selection-start="30" selection-end="30" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".classpath" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/.classpath">
+      <file leaf-file-name="test_simpleUnaryTerm.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/m_files/test/test_simpleUnaryTerm.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="1" column="12" selection-start="31" selection-end="31" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -371,34 +464,45 @@
       <file leaf-file-name="ParserTest.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestingModel/src/ParserTest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="2" selection-start="3562" selection-end="3562" vertical-scroll-proportion="0.0">
+            <state line="60" column="2" selection-start="1740" selection-end="1740" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_cntrl.m" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/m_files/test/test_cntrl.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="6" selection-start="77" selection-end="77" vertical-scroll-proportion="0.24590164">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_if.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/m_files/test/test_if.m">
+      <file leaf-file-name="test_assignment.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/m_files/test/test_assignment.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="3" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_if_else.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/m_files/test/test_if_else.m">
+      <file leaf-file-name="test_matOp_matTimes.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/m_files/test/test_matOp_matTimes.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="42" selection-start="36" selection-end="36" vertical-scroll-proportion="0.0">
+            <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Statement.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/model/statement/Statement.scala">
+      <file leaf-file-name="test_paralleldemo_gpu_stencil.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/m_files/test/test_paralleldemo_gpu_stencil.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="2" selection-start="584" selection-end="584" vertical-scroll-proportion="0.0">
+            <state line="33" column="0" selection-start="698" selection-end="698" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -407,27 +511,16 @@
       <file leaf-file-name="Main.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/matlabParser/Main.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="42" selection-start="1223" selection-end="1223" vertical-scroll-proportion="-2.84">
-              <folding>
-                <element signature="e#22#60#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ElseifStatement.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/model/statement/ElseifStatement.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="11" selection-start="964" selection-end="964" vertical-scroll-proportion="0.0">
+            <state line="58" column="4" selection-start="1761" selection-end="1761" vertical-scroll-proportion="-9.4">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_elseif.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/m_files/test/test_elseif.m">
+      <file leaf-file-name="stencil_demo.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/m_files/test/stencil_demo.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="35396" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -452,22 +545,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/core/src/model/statement/StatementBlock.scala" />
+        <option value="$PROJECT_DIR$/src/m_files/test/test_NAryOP.m" />
+        <option value="$PROJECT_DIR$/core/src/model/Operators.scala" />
+        <option value="$PROJECT_DIR$/core/src/core/Algebra.scala" />
         <option value="$PROJECT_DIR$/src/MatlabILParser.scala" />
-        <option value="$PROJECT_DIR$/src/Parser.scala" />
-        <option value="$PROJECT_DIR$/src/test.scala" />
-        <option value="$PROJECT_DIR$/src/m_files/test/test_elseif.m" />
-        <option value="$PROJECT_DIR$/core/src/model/statement/ElseifStatementBlocks.scala" />
-        <option value="$PROJECT_DIR$/core/src/model/statement/ElseifStatements.scala" />
-        <option value="$PROJECT_DIR$/core/src/core/processing/StatementBlockPass.scala" />
-        <option value="$PROJECT_DIR$/core/src/model/statement/Statement.scala" />
-        <option value="$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" />
-        <option value="$PROJECT_DIR$/core/src/model/statement/IfStatement.scala" />
-        <option value="$PROJECT_DIR$/core/src/model/statement/ElseifStatement.scala" />
+        <option value="$PROJECT_DIR$/src/refactoring/matlab/processing/Preprocessor.scala" />
+        <option value="$PROJECT_DIR$/src/m_files/test/test_simpleUnaryTerm.m" />
+        <option value="$PROJECT_DIR$/src/m_files/test/arrOp_plus.m" />
+        <option value="$PROJECT_DIR$/src/m_files/test/test_arrOp_plus_minus.m" />
+        <option value="$PROJECT_DIR$/src/m_files/test/test_arrayOp_arrTimes.m" />
+        <option value="$PROJECT_DIR$/src/m_files/test/test_matOp_matTimes.m" />
         <option value="$PROJECT_DIR$/TestingModel/src/ParserTest.scala" />
-        <option value="$PROJECT_DIR$/src/m_files/test/test_if.m" />
-        <option value="$PROJECT_DIR$/src/m_files/test/test_if_else.m" />
+        <option value="$PROJECT_DIR$/src/m_files/test/test_paralleldemo_gpu_stencil.m" />
+        <option value="$PROJECT_DIR$/src/m_files/test/t_matrixCreation.m" />
+        <option value="$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" />
         <option value="$PROJECT_DIR$/src/matlabParser/Main.scala" />
+        <option value="$PROJECT_DIR$/src/m_files/test/test_cntrl.m" />
       </list>
     </option>
   </component>
@@ -549,43 +642,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="TestingModel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="matlab_to" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="matlab_to" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="matlab_to" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="matlab_to" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="matlabParser" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -660,6 +717,54 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="matlab_to" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="matlab_to" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="statement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="matlab_to" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="matlab_to" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -712,7 +817,7 @@
       <recent name="$PROJECT_DIR$/refactoring/src" />
     </key>
   </component>
-  <component name="RunManager" selected="ScalaTest.scalaTest">
+  <component name="RunManager" selected="Application.mP">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -857,7 +962,13 @@
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
       </RunnerSettings>
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
@@ -875,7 +986,9 @@
       <setting name="testName" value="" />
       <setting name="testKind" value="Class" />
       <setting name="showProgressMessages" value="true" />
+      <RunnerSettings RunnerId="Cover" />
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Cover" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -941,32 +1054,33 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="22" width="1276" height="778" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32674772" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3237082" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39969605" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34954408" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17235772" sideWeight="0.42727274" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34954408" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25447154" sideWeight="0.5775076" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20975609" sideWeight="0.71428573" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2617886" sideWeight="0.57902735" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.42097265" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3113821" sideWeight="0.6337386" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3662614" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25609756" sideWeight="0.5273556" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32674772" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1036,107 +1150,120 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/src/model/statement/ElseifStatements.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="36" selection-start="2" selection-end="3837" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="196" column="53" selection-start="6959" selection-end="6959" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/model/statement/Statement.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="2" selection-start="584" selection-end="584" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/core/DependencyGraph.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="48" selection-start="3563" selection-end="3563" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/model/expression/NAryExpr.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="44" selection-start="918" selection-end="918" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/.classpath">
+    <entry file="file://$PROJECT_DIR$/src/m_files/test/test_simpleMatrixAccessExpr.m">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/m_files/test/test_elseif_simple.m">
+    <entry file="file://$PROJECT_DIR$/src/m_files/test/test_vector_row.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="37" selection-start="66" selection-end="66" vertical-scroll-proportion="0.0">
+        <state line="1" column="6" selection-start="12" selection-end="12" vertical-scroll-proportion="0.04054054">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/model/statement/StatementBlock.scala">
+    <entry file="file://$PROJECT_DIR$/src/m_files/test/test_arrOp_plus_minus.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="129" column="4" selection-start="3138" selection-end="3210" vertical-scroll-proportion="0.0">
+        <state line="2" column="9" selection-start="0" selection-end="37" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/m_files/test/test_elseif.m">
+    <entry file="file://$PROJECT_DIR$/src/m_files/test/test_arrayOp_arrTimes.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="2" column="0" selection-start="28" selection-end="52" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/model/statement/ElseifStatement.scala">
+    <entry file="file://$PROJECT_DIR$/src/m_files/test/test_matOp_matTimes.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="11" selection-start="964" selection-end="964" vertical-scroll-proportion="0.0">
+        <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/m_files/test/test_if_else.m">
+    <entry file="file://$PROJECT_DIR$/src/m_files/test/stencil_demo.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="42" selection-start="36" selection-end="36" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="35396" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/m_files/test/test_simpleUnaryTerm.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="12" selection-start="31" selection-end="31" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/model/statement/FunctionCallStatement.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="7" selection-start="105" selection-end="105" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestingModel/src/TestUtil.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="45" selection-start="463" selection-end="463" vertical-scroll-proportion="0.90163934">
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/m_files/test/test_paralleldemo_gpu_stencil.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="698" selection-end="698" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/m_files/test/t_matrixCreation.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="80" selection-start="30" selection-end="30" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TestingModel/src/ParserTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="2" selection-start="3562" selection-end="3562" vertical-scroll-proportion="0.0">
+        <state line="60" column="2" selection-start="1740" selection-end="1740" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/m_files/test/test_assignment.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/m_files/test/test_if.m">
+    <entry file="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="3" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="140" column="32" selection-start="4176" selection-end="4176" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#183#215#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/matlabParser/Main.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="42" selection-start="1223" selection-end="1223" vertical-scroll-proportion="-2.84">
-          <folding>
-            <element signature="e#22#60#0" expanded="true" />
-          </folding>
+        <state line="58" column="4" selection-start="1761" selection-end="1761" vertical-scroll-proportion="-9.4">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/model/statement/IfStatement.scala">
+    <entry file="file://$PROJECT_DIR$/src/m_files/test/test_cntrl.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="8" selection-start="3927" selection-end="3927" vertical-scroll-proportion="1.022082">
+        <state line="6" column="6" selection-start="77" selection-end="77" vertical-scroll-proportion="0.24590164">
           <folding />
         </state>
       </provider>

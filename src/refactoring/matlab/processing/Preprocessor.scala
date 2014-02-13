@@ -8,7 +8,7 @@ import   refactoring.matlab.model._
 object Preprocessor {
   class OpConverter extends ExpressionVisitor {
     override def visit(expr: NAryExpr): Int = {
-      if (expr.op == OpMatProd()) expr.update(op = OpTimes())
+//      if (expr.op == OpMatProd()) expr.update(op = OpTimes())
       if (expr.op == OpMatPow()) expr.update(op = OpPow())
       ExpressionVisitor.Continue
     }
@@ -29,9 +29,6 @@ object Preprocessor {
         StatementVisitor.Continue
       }
     })
-	
 	blk
   }
-
-  
 }

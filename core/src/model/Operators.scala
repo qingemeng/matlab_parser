@@ -82,29 +82,29 @@ case class OpPlus() extends NAryOp {
 }
 case class OpTimes() extends NAryOp {
   override def pretty() = " * "
-  override def toString() = "Times"
+  override def toString() = "MatTimes"
 }
 case class OpPow() extends NAryOp {
   override def pretty() = " ^ "
-  override def toString() = "Power"
+  override def toString() = "MatPower"
 }
 
 // Special operators
 case class OpDotProd() extends NAryOp {
   override def pretty() = " .* "
-  override def toString() = "DotProduct"
+  override def toString() = "ArrayTimes"
 }
-case class OpOuterProd() extends NAryOp {
-  override def pretty() = " <o> "
-  override def toString() = "OuterProd"
-}
-case class OpMatProd() extends NAryOp {
-  override def pretty() = " ** "
-  override def toString() = "MatProd"
-}
+//case class OpOuterProd() extends NAryOp {
+//  override def pretty() = " <o> "
+//  override def toString() = "OuterProd"
+//}
+//case class OpMatProd() extends NAryOp {
+//  override def pretty() = " ** "
+//  override def toString() = "MatProd"
+//}
 case class OpMatPow() extends NAryOp {
   override def pretty() = " *^ "
-  override def toString() = "MatPow"
+  override def toString() = "ArrayPow"
 }
 
 // Extracted from IASTBinaryExpression
@@ -113,14 +113,14 @@ case class OpModulo() extends NAryOp {
   override def pretty() = " % "
   override def toString() = "Modulo"
 }
-case class OpShiftLeft() extends NAryOp {
-  override def pretty() = " << "
-  override def toString() = "ShiftLeft"
-}
-case class OpShiftRight() extends NAryOp {
-  override def pretty() = " >> "
-  override def toString() = "ShiftRight"
-}
+//case class OpShiftLeft() extends NAryOp {
+//  override def pretty() = " << "
+//  override def toString() = "ShiftLeft"
+//}
+//case class OpShiftRight() extends NAryOp {
+//  override def pretty() = " >> "
+//  override def toString() = "ShiftRight"
+//}
 case class OpLessThan() extends NAryOp {
   override def pretty() = " < "
   override def toString() = "LessThan"

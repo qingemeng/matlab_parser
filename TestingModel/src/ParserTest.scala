@@ -1,6 +1,3 @@
-import collection.mutable.Stack
-import matlabParser.MatlabParser
-import scala.util.parsing.combinator._
 import org.scalatest._
 import TestUtil._
 
@@ -12,8 +9,7 @@ class ParserTest extends FlatSpec with Matchers {
 
 
   "Id parsing" should "parse letters" in {
-    //just declare the parser to test once and mark it implicit
-    //that way our test functions will use it automagically
+
     val letters = "a"
     val letters2 = "abc"
     parsing_id(letters)
@@ -21,17 +17,14 @@ class ParserTest extends FlatSpec with Matchers {
   }
 
   "Id parsing" should "parse letters with numbers" in {
-    //just declare the parser to test once and mark it implicit
-    //that way our test functions will use it automagically
-    val t1 = "a2"
+       val t1 = "a2"
     val t2 = "abcs"
     parsing_id(t1)
     parsing_id(t2)
   }
 
   "single line statement parsing" should "parse unary expression as a single line expression" in {
-    //just declare the parser to test once and mark it implicit
-    //that way our test functions will use it automagically
+
     implicit val parserToTest = Boolean
     val testSingleLineStmt  ="/test_singleLineStmt.m"
     val filename = testPath + testSingleLineStmt
@@ -40,8 +33,7 @@ class ParserTest extends FlatSpec with Matchers {
   }
 
   "assignment statement parsing" should "parse simple assignment statement" in {
-    //just declare the parser to test once and mark it implicit
-    //that way our test functions will use it automagically
+
     implicit val parserToTest = Boolean
     val testAssign  ="/test_assignment.m"
     val filename = testPath + testAssign
@@ -50,8 +42,7 @@ class ParserTest extends FlatSpec with Matchers {
   }
 
   "for statement parsing" should "parse for statement" in {
-    //just declare the parser to test once and mark it implicit
-    //that way our test functions will use it automagically
+
     val testFor  ="/test_for.m"
     val filename = testPath + testFor
     val content = scala.io.Source.fromFile(filename).mkString
@@ -68,8 +59,7 @@ class ParserTest extends FlatSpec with Matchers {
   }
 
   "continue(control) statement parsing" should "parse continue statement" in {
-    //just declare the parser to test once and mark it implicit
-    //that way our test functions will use it automagically
+
     val testCntrl  ="/test_cntrl.m"
     val filename = testPath + testCntrl
     val content = scala.io.Source.fromFile(filename).mkString
@@ -77,8 +67,7 @@ class ParserTest extends FlatSpec with Matchers {
   }
 
   "comments parsing" should "skip all comments" in {
-    //just declare the parser to test once and mark it implicit
-    //that way our test functions will use it automagically
+
     val testComment  ="/test_comments.m"
     val filename = testPath + testComment
     val content = scala.io.Source.fromFile(filename).mkString
@@ -86,8 +75,7 @@ class ParserTest extends FlatSpec with Matchers {
   }
 
   "simple elseif parsing" should "parse elseif in if statement" in {
-    //just declare the parser to test once and mark it implicit
-    //that way our test functions will use it automagically
+
     val testElseifS  ="/test_elseif_simple.m"
     val filename = testPath + testElseifS
     val content = scala.io.Source.fromFile(filename).mkString
@@ -95,16 +83,14 @@ class ParserTest extends FlatSpec with Matchers {
   }
 
   "if statement parsing" should "parse (only)if statement" in {
-    //just declare the parser to test once and mark it implicit
-    //that way our test functions will use it automagically
+
     val testIf  ="/test_if.m"
     val filename = testPath + testIf
     val content = scala.io.Source.fromFile(filename).mkString
     parsing_script(content)
   }
   "if statement with else parsing" should "parse if statement with else block" in {
-    //just declare the parser to test once and mark it implicit
-    //that way our test functions will use it automagically
+
     val testIfElse  ="/test_if_else.m"
     val filename = testPath + testIfElse
     val content = scala.io.Source.fromFile(filename).mkString
@@ -112,13 +98,84 @@ class ParserTest extends FlatSpec with Matchers {
   }
 
   "elseif statement parsing" should "parse elseif in if statement" in {
-    //just declare the parser to test once and mark it implicit
-    //that way our test functions will use it automagically
+
     val testElseif  ="/test_else_if.m"
     val filename = testPath + testElseif
     val content = scala.io.Source.fromFile(filename).mkString
     parsing_script(content)
   }
+
+
+  "matrix statement parsing"should "parse simple scalar" in {
+
+    val testScalar  ="/test_scalar.m"
+    val filename = testPath + testScalar
+    val content = scala.io.Source.fromFile(filename).mkString
+    parsing_script(content)
+  }
+
+  "matrix statement parsing"should "parse simple row vector" in {
+
+    val testVR  ="/test_vector_row.m"
+    val filename = testPath + testVR
+    val content = scala.io.Source.fromFile(filename).mkString
+    parsing_script(content)
+  }
+  "matrix statement parsing"should "parse simple column vector" in {
+
+    val testVC  ="/test_vector_col.m"
+    val filename = testPath + testVC
+    val content = scala.io.Source.fromFile(filename).mkString
+    parsing_script(content)
+  }
+
+  "NAryOp parsing"should "parse + - /" in {
+
+    val test  ="/test_NAryOp.m"
+    val filename = testPath + test
+    val content = scala.io.Source.fromFile(filename).mkString
+    parsing_script(content)
+  }
+  "Matrix access parsing"should "parse simple ArrRefExpr" in {
+
+    val test  ="/test_simpleMatrixAccessExpr.m"
+    val filename = testPath + test
+    val content = scala.io.Source.fromFile(filename).mkString
+    parsing_script(content)
+  }
+
+  "Array Op parsing"should "parse simple Array op as + -" in {
+
+    val test  ="/test_arrOP_plus_minus.m"
+    val filename = testPath + test
+    val content = scala.io.Source.fromFile(filename).mkString
+    parsing_script(content)
+  }
+
+  "Array Op parsing"should "parse Array times" in {
+
+    val test  ="/test_arrayOp_arrTimes.m"
+    val filename = testPath + test
+    val content = scala.io.Source.fromFile(filename).mkString
+    parsing_script(content)
+  }
+
+  "Array Op parsing"should "parse Matrix times" in {
+
+    val test  ="/test_matOp_matTimes.m"
+    val filename = testPath + test
+    val content = scala.io.Source.fromFile(filename).mkString
+    parsing_script(content)
+  }
+
+
+
+
+
+
+
+
+
 
 //  "The MatlabParser" should "parse a big test statement" in {
 //    //just declare the parser to test once and mark it implicit

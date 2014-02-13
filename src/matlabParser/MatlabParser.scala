@@ -23,11 +23,11 @@ import model.OpTimesAssign
 import model.OpPostfixInc
 import model.OpLogicalAnd
 import model.OpEquals
-import model.OpMatProd
+//import model.OpMatProd
 import model.OpMinus
 import model.OpTimes
 import model.OpPermute
-import model.OpOuterProd
+//import model.OpOuterProd
 import model.OpGreaterEq
 import model.OpLessThan
 import model.OpPlus
@@ -137,7 +137,9 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
       defaultStmt <~ eol |
       breakStmt <~ eol |
       continueStmt <~ eol|
-      simpleStmt<~eol
+      simpleStmt<~eol |
+      functionCallStatement<~eol
+
   //TODO:fix the single line evaluation
 //  lazy val evalStmt: PackratParser[Statement] =
 
@@ -267,36 +269,46 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
       (arrayTerm2 <~ "/") ~ arrayUnaryTerm ^^ { case lhs~rhs => NAryExpr(OpDivide(), List(lhs, rhs)) } |
       (arrayTerm2 <~ "^") ~ arrayUnaryTerm ^^ { case lhs~rhs => NAryExpr(OpPow(), List(lhs, rhs)) } |
       (arrayTerm2 <~ ".*") ~ arrayUnaryTerm ^^ { case lhs~rhs => NAryExpr(OpDotProd(), List(lhs, rhs)) } |
-      (arrayTerm2 <~ "<o>") ~ arrayUnaryTerm ^^ { case lhs~rhs => NAryExpr(OpOuterProd(), List(lhs, rhs)) } |
-      (arrayTerm2 <~ "**") ~ arrayUnaryTerm ^^ { case lhs~rhs => NAryExpr(OpMatProd(), List(lhs, rhs)) } |
-      (arrayTerm2 <~ "*^") ~ arrayUnaryTerm ^^ { case lhs~rhs => NAryExpr(OpMatPow(), List(lhs, rhs)) } |
+//      (arrayTerm2 <~ "<o>") ~ arrayUnaryTerm ^^ { case lhs~rhs => NAryExpr(OpOuterProd(), List(lhs, rhs)) } |
+//      (arrayTerm2 <~ "**") ~ arrayUnaryTerm ^^ { case lhs~rhs => NAryExpr(OpMatProd(), List(lhs, rhs)) } |
+//      (arrayTerm2 <~ "*^") ~ arrayUnaryTerm ^^ { case lhs~rhs => NAryExpr(OpMatPow(), List(lhs, rhs)) } |
       arrayUnaryTerm
 
   lazy val arrayUnaryTerm: PackratParser[Expr] =
-    sumTerm | prodTerm | permuteTerm |
+//    sumTerm | prodTerm | permuteTerm |
       identifier ~ ("(" ~> repsep(arrayTerm, ",") <~ ")") ^^ { case name~params => FunctionCallExpr(name,params)} |
       "(" ~> arrayExpr <~ ")" |
       arrayFactor
-//      "-" ~> arrayTerm ^^ { case x => UnaryExpr(OpNegate(), x) }
 
-  lazy val sumTerm: PackratParser[Expr] =
-    ("Sum(" ~> arrayTerm <~ ",") ~ integerList <~ ")" ^^ { case xpr~list => UnaryExpr(OpSum(list), xpr) } |
-      "Sum(" ~> arrayTerm <~ ")" ^^ { case xpr => UnaryExpr(OpSum(List.empty[Int]), xpr) }
+  lazy val functionCallStatement: PackratParser[Statement] =
+    identifier ~ ("(" ~> repsep(arrayTerm, ",") <~ ")") ^^ { case name~params => FunctionCallStatement(FunctionCallExpr(name,params))}
 
-  lazy val prodTerm: PackratParser[Expr] =
-    ("Prod(" ~> arrayTerm <~ ",") ~ integerList <~ ")" ^^ { case xpr~list => UnaryExpr(OpProd(list), xpr) } |
-      "Prod(" ~> arrayTerm <~ ")" ^^ { case xpr => UnaryExpr(OpProd(List.empty[Int]), xpr) }
 
-  lazy val permuteTerm: PackratParser[Expr] =
-    ("Permute(" ~> arrayTerm <~ ",") ~ integerList <~ ")" ^^ { case xpr~list => UnaryExpr(OpPermute(list), xpr) }
+  //      "-" ~> arrayTerm ^^ { case x => UnaryExpr(OpNegate(), x) }
 
-  //TODO: Symbol reference and builtin func
+//  lazy val sumTerm: PackratParser[Expr] =
+//    ("Sum(" ~> arrayTerm <~ ",") ~ integerList <~ ")" ^^ { case xpr~list => UnaryExpr(OpSum(list), xpr) } |
+//      "Sum(" ~> arrayTerm <~ ")" ^^ { case xpr => UnaryExpr(OpSum(List.empty[Int]), xpr) }
+//
+//  lazy val prodTerm: PackratParser[Expr] =
+//    ("Prod(" ~> arrayTerm <~ ",") ~ integerList <~ ")" ^^ { case xpr~list => UnaryExpr(OpProd(list), xpr) } |
+//      "Prod(" ~> arrayTerm <~ ")" ^^ { case xpr => UnaryExpr(OpProd(List.empty[Int]), xpr) }
+//
+//  lazy val permuteTerm: PackratParser[Expr] =
+//    ("Permute(" ~> arrayTerm <~ ",") ~ integerList <~ ")" ^^ { case xpr~list => UnaryExpr(OpPermute(list), xpr) }
+
+//  lazy val sizeOf: PackratParser[Expr]=
+//    ("size("~> arrayExpr)
+
+  //TODO: Gm,Symbol reference and builtin func
 
 
 
   lazy val arrayFactor : PackratParser[Expr] =
     arrayRefExpr |
-      simpleFactor
+      simpleFactor |
+      cellExpr|
+  matrixExpr
 
 
   lazy val arrayList: PackratParser[Expr] =
@@ -307,7 +319,9 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
   // Array Reference
 
   lazy val arrayRefExpr: PackratParser[ArrayRefExpr] =
-    identifier ~ rep1("(" ~> sliceExpr <~ ")") ^^ { case id~slices => ArrayRefExpr(id, slices)}
+    identifier ~ rep1("(" ~> sliceExpr <~ ")") ^^ { case id~slices => ArrayRefExpr(id, slices)}  |
+      identifier ~ ("(" ~> repsep(sliceExpr,"," )<~ ")" )^^ { case id~slices => ArrayRefExpr(id, slices)}
+
 
   lazy val sliceExpr: PackratParser[Expr] =
     simpleExpr ~ (":" ~> simpleExpr) ~ (":" ~> simpleExpr) ^^ { case lower~upper~stride => SliceExpr(lower, upper, stride)} |
@@ -403,13 +417,23 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
 
   /******************************************************************************************/
   lazy val cellExpr: PackratParser[Expr] =
-    "{"~opt(",")~"}" ^^{case s =>ArrayCompositionExpr()}|
-    "{"~>repsep(arrayFactor,",")<~"}"^^{case arrayFactors =>CellCompositionExpr(arrayFactors)} |
-    "{"~>arrayList<~"}"
+  "{"~opt(",")~"}" ^^{case s =>ArrayCompositionExpr()}|
+      "{"~>repsep(arrayFactor,",")<~"}"^^{case arrayFactors =>CellCompositionExpr(arrayFactors)} |
+      "{"~>arrayList<~"}"
+//    "{"~opt(separator)~"}" ^^{case s =>ArrayCompositionExpr()}|
+//      "{"~>repsep(arrayFactor,separator)<~"}"^^{case arrayFactors =>CellCompositionExpr(arrayFactors)} |
+//      "{"~>arrayList<~"}"
+//
+
+//  lazy val separator = ","|" "
+
   lazy val matrixExpr :  PackratParser[Expr] =
     "["~opt(",")~"]" ^^{case s =>ArrayCompositionExpr()}|
       "["~>repsep(arrayFactor,",")<~"]"^^{case arrayFactors =>MatrixCompositionExpr(arrayFactors)} |
       "["~>arrayList<~"]"
+
+//  lazy val matrixAccessExpr: PackratParser[Expr]=
+//  identifier ~("("~>repsep(sliceExpr, ",")<~")" )^^{case arr~slices => FunctionCallExpr(arr,slices)}
 
   /******************************************************************************************/
 

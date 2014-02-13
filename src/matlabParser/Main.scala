@@ -35,12 +35,29 @@ object Main extends Parsers{
     val testSingleLineStmt = "/test_singleLineStmt.m"
     val testSwitch="/test_switch.m"
     val testWhile="/test_while.m"
+    val testScalar="/test_scalar.m"
+    val testVR ="/test_vector_row.m"
+    val testVC ="/test_vector_col.m"
+    val testNAryOp = "/test_NAryOp.m"
+    val testArrRef = "/test_simpleMatrixAccessExpr.m"
+    val testArrOp_plus = "/test_arrOP_plus_minus.m"
+    val testArrOp_arrTimes = "/test_arrayOp_arrTimes.m"
+    val testArrOp_matTimes = "/test_matOp_matTimes.m"
+    val test_ = "/test_simpleUnaryTerm.m"
+
+
+    //stencil code
+
+    val test_stencil_demo = "/test_paralleldemo_gpu_stencil.m"
+    val t_matrixCreation  = "/t_matrixCreation.m"
 
 
 
 
 
-    val filename = testPath + test_if_only
+    val filename = testPath + testCtrl
+
+
     val content = scala.io.Source.fromFile(filename).mkString
 
     MatlabParser.parseSource(content) match {

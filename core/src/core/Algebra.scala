@@ -168,8 +168,8 @@ object Algebra {
       def canMergeOperator(op: NAryOp): Boolean = op match {
         case OpPlus()       => true
         case OpTimes()      => true
-        case OpOuterProd()  => true
-        case OpMatProd()    => true
+//        case OpOuterProd()  => true
+//        case OpMatProd()    => true
         case OpBinaryAnd()  => true
         case OpBinaryXor()  => true
         case OpBinaryOr()   => true
@@ -191,7 +191,7 @@ object Algebra {
           expr.op match {
             case OpPlus()      => if (expr.terms.size == 1) expr.terms(0) else expr
             case OpTimes()     => if (expr.terms.size == 1) expr.terms(0) else expr
-            case OpOuterProd() => if (expr.terms.size == 1) expr.terms(0) else expr
+//            case OpOuterProd() => if (expr.terms.size == 1) expr.terms(0) else expr
             case _ => if (expr.terms.size == 1) throw new UnsupportedOperationException(expr.op.toString) else expr
           }
         } else {
