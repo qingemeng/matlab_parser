@@ -33,7 +33,6 @@ class ExpressionProcessor(private val visitor: ExpressionVisitor) {
         case e: ArrayRefExpr        => process(e)
         case e: ArrayEndExpr        => process(e)
         case e: FieldRefExpr        => process(e)
-        case e: IdExpr              => process(e)
         case e: FunctionCallExpr    => process(e)
         case e: ExpressionListExpr  => process(e)
         case e: TupleExpr  		      => process(e)
@@ -44,6 +43,7 @@ class ExpressionProcessor(private val visitor: ExpressionVisitor) {
         case e: SliceExpr           => process(e)
         case e: AllocateArrayExpr   => process(e)
         case e: DeallocateArrayExpr => process(e)
+        case e: IdExpr              => process(e)
         case e: ArrayCompositionExpr    => process(e)
       }
       

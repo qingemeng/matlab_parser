@@ -20,7 +20,7 @@ object SimpleTypeInferencer {
     
     typeInfo
   }
-  
+
 }
 
 class SimpleTypeInferencer {
@@ -156,6 +156,7 @@ private class TypeExprVisitor(typer: Typer) extends ExpressionVisitor {
       case t: IntType     => exprType = typer.mergeType(exprType, t)
       case t: FloatType   => exprType = typer.mergeType(exprType, t)
       case t: DoubleType  => exprType = typer.mergeType(exprType, t)
+      case t: BooleanType => exprType = typer.mergeType(exprType, t)
       case t: StringType  => throw new UnsupportedOperationException
       case _ => println(expr.kind); throw new UnsupportedOperationException
     }

@@ -3,17 +3,22 @@ package model.expression
 import   model._
 import   model.expression._
 import   model.property._
+//import refactoring.matlab.processing.SimpleTypeInferencer_
+import scala.collection.mutable
 
 abstract class BaseExpr
 
 abstract class Expr extends BaseExpr with HasProperties {
 
   private var _parent: Option[Expr] = None
-  
+  var typeInfo: Map[String, BasicType] = Map.empty
+
+
   // Pretty Print
   protected def indentStr(level: Int): String = "  " * level
   def pretty(hash: Boolean = false): String
   def treePretty(level: Int = 0, hash: Boolean = false): String
+  def typePretty(level: Int = 0, hash: Boolean = false): String
   
   def parent = _parent
   def getParent = _parent.getOrElse(null)
@@ -53,7 +58,35 @@ abstract class Expr extends BaseExpr with HasProperties {
   def /(literal: Int): Expr = NAryExpr(OpDivide(), List(this, ConstLiteralExpr(literal)))
   def /(literal: Float): Expr = NAryExpr(OpDivide(), List(this, ConstLiteralExpr(literal)))
   def /(expr: Expr): Expr = NAryExpr(OpDivide(), List(this, expr))
-  
+
+//  typeInfo = SimpleTypeInferencer.infer(ast)
+
+  def generateTypeStr(t: BasicType) = t match {
+    case t: IntType    => "int"
+    case t: FloatType  => "float"
+    case t: DoubleType => "double"
+    case t: BooleanType => "boolean"
+  }
+
+  def generateVarWithType: mutable.ListBuffer[String] = {
+    val gen = mutable.ListBuffer.empty[String]
+    typeInfo.foreach { case (id, iType) =>
+      if (iType != null) {
+        val decl = iType match {
+          case t: IntType    => id + " : " + generateTypeStr(t)
+          case t: FloatType  => id + " : "  + generateTypeStr(t)
+          case t: DoubleType => id + " : "  + generateTypeStr(t)
+          case t: BooleanType =>id + " : "  + generateTypeStr(t)
+          case t: ArrayType  => s"NdArray<${generateTypeStr(t.subType)}> $id"
+        }
+        gen += decl
+      }
+    }
+
+    gen
+  }
+
+
   //def unary_-(expr: Expr) = UnaryExpr(OpNegate(), expr)
   
   // map and transform this model.expression tree (depth first)

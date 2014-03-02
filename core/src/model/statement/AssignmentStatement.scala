@@ -6,6 +6,7 @@ import   model.statement._
 import   model.expression._
 import scala.collection.mutable.ListBuffer
 import   model.property.DomainsProperty
+import  refactoring.matlab.processing._
 
 object AssignmentStatement {
   def apply(lhs: Expr, rhs: Expr, assignOp: AssignOp) = new AssignmentStatement(lhs, rhs, assignOp)
@@ -18,7 +19,7 @@ class AssignmentStatement(
     private var _assignOp: AssignOp) extends Statement {
 
   update(_lhsExpr, _rhsExpr, _assignOp)
-  
+
   def lhsExpr = _lhsExpr
   def rhsExpr = _rhsExpr
   def assignOp = _assignOp
@@ -94,6 +95,31 @@ class AssignmentStatement(
     str.append("\n")
     str.append(rhsExpr.treePretty(level+2))
     
+    str.toString
+  }
+  override def typePretty(level: Int = 0): String = {
+    val str = new StringBuilder
+    str.append(indentStr(level))
+    str.append("AssignmentStatement(")
+    str.append(assignOp.toString())
+    str.append("): ")
+    str.append(pretty())
+    str.append("\n")
+
+    str.append(indentStr(level))
+    str.append("->LHS: ")
+    str.append(lhsExpr.pretty())
+    str.append("\n")
+    str.append(lhsExpr.treePretty(level+2))
+
+    str.append(indentStr(level))
+    str.append("->RHS: ")
+    str.append(TypeInferenceProcessor.typeInference(this).toList.mkString("\n"))
+//    str.append("\n")
+    str.append(rhsExpr.pretty())
+    str.append("\n")
+    str.append(rhsExpr.typePretty(level+2))
+
     str.toString
   }
 }

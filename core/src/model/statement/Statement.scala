@@ -11,6 +11,7 @@ abstract class Statement extends HasProperties with StencilProperty {
   def pretty(level: Int): String = indentStr(level) + pretty()
   def pretty(): String = ???
   def treePretty(level: Int = 0): String = ???
+  def typePretty(level: Int = 0): String = ???
   
   // deep clone of the model.statement
   def cloneStmt(): Statement = ???

@@ -19,5 +19,5 @@ class ContinueStatement extends Statement {
   }
   
   override def pretty(): String = "continue;"
-  override def treePretty(level: Int = 0): String = indentStr(level) + "ContinueStatement"
+  override def treePretty(level: Int = 0): String = indentStr(level) + "ContinueStatement" +"\n"
 }

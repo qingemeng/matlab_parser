@@ -5,6 +5,7 @@ import   model.expression._
 import   model.statement._
 import   core.Algebra
 import scala.collection.mutable
+import refactoring.matlab.model.FunctionDefStatement
 
 // This code generator uses templates for generating stencil codes
 object CodeGenerator {
@@ -27,25 +28,27 @@ class CodeGenerator {
   var currentIndex: Int = 0
   
   // entry
-  def generate(ast: StatementBlock) = {
+  def generate(ast: StatementBlock) :String= {
     // derive type information
     typeInfo = SimpleTypeInferencer.infer(ast)
     // obtain stencil information from identified stencil statements (type info not needed)
     stencils = StencilIdentifier.identify(ast)
     
     val gen = mutable.ListBuffer.empty[String]
-    gen += "#include <stdio.h>"
-    gen += "#include <math.h>"
-    gen += "#include \"hemi.h\""
-    gen += "#include \"ndarray.h\""
+//    gen += "#include <stdio.h>"
+//    gen += "#include <math.h>"
+//    gen += "#include \"hemi.h\""
+//    gen += "#include \"ndarray.h\""
     
     for (spec <- stencils.values) {
       gen += "#include \"" + spec.name + "\""
     }
     gen += " "
       
-    gen += "int main() {"
-    
+//    gen += "int main() {"
+    gen += "{"
+
+
     gen ++= generateDecl
     gen ++= generateCode(ast)
     
@@ -53,8 +56,9 @@ class CodeGenerator {
     
     val stencilCodes = stencils.values.map(spec => (spec.name, generateStencilCode(spec))).toMap
     val mainCode = gen.toList.mkString("\n")
+    mainCode
     // combine statements
-    new GeneratedCode(mainCode, stencilCodes)
+//    new GeneratedCode(mainCode, stencilCodes)
   }
   
   protected def generateStencilCode(spec: StencilSpec): String = {
@@ -162,6 +166,7 @@ class CodeGenerator {
     case t: IntType    => "int"
     case t: FloatType  => "float"
     case t: DoubleType => "double"
+    case t: BooleanType => "boolean"
   }
 
   protected def generateDecl: mutable.ListBuffer[String] = {
@@ -172,6 +177,7 @@ class CodeGenerator {
           case t: IntType    => generateTypeStr(t) + " " + id
           case t: FloatType  => generateTypeStr(t) + " " + id
           case t: DoubleType => generateTypeStr(t) + " " + id
+          case t: BooleanType => generateTypeStr(t) + " " + id
           case t: ArrayType  => s"NdArray<${generateTypeStr(t.subType)}> $id"
         }
         gen += decl + ";"
@@ -187,6 +193,7 @@ class CodeGenerator {
       case s: AssignmentStatement => generateCode(s)
       case s: ForStatement        => generateCode(s)
       case s: ExpressionStatement => generateCode(s)
+      case s: FunctionDefStatement =>generateCode(s)
       case s @ _ => println(s); ???
     }
   }
@@ -228,6 +235,28 @@ class CodeGenerator {
     gen += "}"
     gen
   }
+
+  protected def generateCode(stmt:FunctionDefStatement): mutable.ListBuffer[String] = {
+    val gen = mutable.ListBuffer.empty[String]
+    val functionDef = generateCode(stmt.funcDef).toList.mkString("\n")
+    gen += s"function: $functionDef"
+    gen
+  }
+      //TODO:gm,modify
+  protected def generateCode(stmt:FunctionDef): mutable.ListBuffer[String] = {
+    val gen = mutable.ListBuffer.empty[String]
+    val functionName = stmt.idName.id
+        gen+=functionName
+
+    stmt.inputs.foreach(in => gen += in.id)
+    stmt.inputs.foreach(out => gen += out.id)
+    val body = generateCode(stmt.body).toList.mkString("\n")
+        gen  +=s"functionBody: \n$body"
+        gen
+
+
+  }
+
   
   protected def generateCode(stmt: StatementBlock): mutable.ListBuffer[String] = {
     val gen = mutable.ListBuffer.empty[String]
@@ -331,6 +360,7 @@ class CodeGenerator {
       case e: ArrayEndExpr         => generateCode(e)
       case e: ArrayCompositionExpr => "[ArrayCompositionExpr]"
       case e: SliceExpr            => generateCode(e)
+//      case e: MatrixCompositionExpr => "[MatrixCompositionExpr]"
     }
     gen
   }

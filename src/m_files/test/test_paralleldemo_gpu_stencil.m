@@ -30,6 +30,7 @@ end
  %        m = (neighbors==2)
  %        m
  
- X = (X & (neighbors == 2)) | (neighbors == 3);
+ X = (X && (neighbors == 2)) ||
+  (neighbors == 3);
  % X
  end

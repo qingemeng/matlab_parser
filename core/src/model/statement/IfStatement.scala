@@ -83,9 +83,7 @@ class IfStatement(
     str.append(indentStr(level))
     str.append(String.format("if %s\n", condExpr.pretty()))
     str.append(thenBody.pretty(level + 1))
-    if(elseifBodies!=null&&elseBody.isDefined){
-      str.append("\n" + indentStr(level))
-      str.append("elseif\n")
+    if(elseifBodies!=null&& elseifBodies.get.size!=0&&elseifBodies.isDefined){
 
       elseifBodies.get.foreach(eachElseif =>
         str.append(eachElseif.pretty(level+1))
@@ -118,9 +116,10 @@ class IfStatement(
     str.append("->ThenBody:\n")
     str.append(thenBody.treePretty(level+2))
 
-    if(elseifBodies!= null && elseifBodies.isDefined){
+    if(elseifBodies!= null && elseifBodies.get.size!=0 && elseifBodies.isDefined){
       str.append(indentStr(level))
       elseifBodies.get.foreach(each => {
+        if(each!=null)
         str.append(each.treePretty(level+2))
       })
       //str.append(elseifBodies.get.foreach(eachElseif=>eachElseif.pretty(level+2)))

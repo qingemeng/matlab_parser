@@ -40,4 +40,11 @@ class FunctionCallStatement(private var _funcCallExpr: FunctionCallExpr) extends
     
     str.toString
   }
+  //TODO:gm,rewrite
+  override def typePretty(level: Int = 0): String = {
+    val str = new StringBuilder
+    str.append(indentStr(level))
+    str.append("\n")
+    str.toString
+  }
 }

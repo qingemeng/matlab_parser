@@ -58,4 +58,11 @@ class ArrayRefExpr private(var _owner: Expr, var _indices: List[Expr]) extends E
     indices.foreach(i => str.append(i.treePretty(level+2, hash)))
     str.toString
   }
+  //TODO:gm,rewrite
+  override def typePretty(level: Int = 0, hash: Boolean = false): String = {
+    val str = new StringBuilder
+    str.append(indentStr(level))
+    str.append("\n")
+    str.toString
+  }
 }

@@ -49,6 +49,8 @@ class ElseifStatement(
     val str = new StringBuilder
     str.append(indentStr(level))
     str.append(String.format("%s", condExpr.pretty()))
+    str.append("\n" + indentStr(level))
+    str.append("elseif\n")
     str.append(body.pretty(level + 1))
     str.toString
   }

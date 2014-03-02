@@ -133,4 +133,19 @@ class StatementBlock() extends Statement {
 
     str.toString
   }
+
+  override def typePretty(level: Int = 0): String = {
+    val str = new StringBuilder
+    str.append(indentStr(level))
+    str.append("StatementBlock: ")
+    //str.append(pretty())
+    str.append("\n")
+
+    statements.foreach(s => {
+      str.append(s.typePretty(level+1))
+    })
+
+    str.toString
+  }
+
 }

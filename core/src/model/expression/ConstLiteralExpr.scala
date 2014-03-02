@@ -81,7 +81,14 @@ class ConstLiteralExpr(val kind: BasicType, val value: Any) extends Expr {
   override def pretty(hash: Boolean = false): String = value.toString
   
   override def treePretty(level: Int = 0, hash: Boolean = false): String = {
-    indentStr(level) + "ConstLiteralExpr: " + value.toString + "\n"
+    indentStr(level) + "ConstLiteralExpr: " + value.toString ++ "\n"
+  }
+  //TODO:gm,rewrite
+  override def typePretty(level: Int = 0, hash: Boolean = false): String = {
+    val str = new StringBuilder
+    str.append(indentStr(level))
+    str.append("\n")
+    str.toString
   }
 }
 

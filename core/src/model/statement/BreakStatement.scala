@@ -20,5 +20,5 @@ class BreakStatement extends Statement {
   
   override def pretty(): String = "break;"
   
-  override def treePretty(level: Int = 0): String = indentStr(level) + "BreakStatement"
+  override def treePretty(level: Int = 0): String = indentStr(level) + "BreakStatement" +"\n"
 }

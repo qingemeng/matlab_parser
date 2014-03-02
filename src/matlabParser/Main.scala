@@ -5,6 +5,8 @@ import scala.util.parsing.combinator._
 import model._
 import model.expression._
 import model.statement._
+import refactoring.matlab._
+import refactoring.matlab.processing.CodeGenerator._
 
 /**
  * Created with IntelliJ IDEA.
@@ -43,7 +45,7 @@ object Main extends Parsers{
     val testArrOp_plus = "/test_arrOP_plus_minus.m"
     val testArrOp_arrTimes = "/test_arrayOp_arrTimes.m"
     val testArrOp_matTimes = "/test_matOp_matTimes.m"
-    val test_ = "/test_simpleUnaryTerm.m"
+    val test_ = "/test_.m"
 
 
     //stencil code
@@ -66,9 +68,14 @@ object Main extends Parsers{
 
         val pretty = stmt.pretty()
         println(pretty)
-
+//
         val tree_pretty = stmt.treePretty()
         println(tree_pretty)
+
+        val tree_type_pretty  = stmt.typePretty();
+        println(tree_type_pretty)
+
+        println(generate(stmt))
 
 //        MatlabParser.parseStatement(pretty) match {
 //          case Left((declMap2, stmt2)) => println(stmt2.pretty())
