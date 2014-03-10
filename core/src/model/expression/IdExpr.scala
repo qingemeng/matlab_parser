@@ -4,6 +4,7 @@ package model.expression
 import   model._
 import   model.expression._
 
+
 object IdExpr {
   def apply(idName: IdName) = new IdExpr(idName)
   def unapply(e: IdExpr) = Some(e.idName)
@@ -40,10 +41,11 @@ class IdExpr(val idName: IdName) extends Expr {
     str.toString
   }
   //TODO:gm,rewrite
-  override def typePretty(level: Int = 0, hash: Boolean = false): String = {
-    val str = new StringBuilder
-    str.append(indentStr(level))
-    str.append("\n")
-    str.toString
-  }
+//  override def typePretty(level: Int = 0, hash: Boolean = false): String = {
+//    val str = new StringBuilder
+//    str.append(indentStr(level))
+//    //str.append("type: " + this.typeInfo.keySet.toList.mkString)
+//    str.append("\n")
+//    str.toString
+//  }
 }

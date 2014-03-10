@@ -131,4 +131,42 @@ class ForStatement(
 
     str.toString
   }
+
+//  override def typePretty(level: Int = 0): String = {
+//    val str = new StringBuilder
+//    str.append(indentStr(level))
+//    str.append("ForStatement: ")
+//    //str.append(pretty())
+//    str.append("\n")
+//
+//    if (initStmt!=null){
+//      str.append(indentStr(level))
+//      str.append("->InitStmt: ")
+//      str.append(initStmt.pretty())
+//      str.append("\n")
+//      str.append(initStmt.typePretty(level+2))
+//    }
+//
+//    if (condExpr!=null&&condExpr.isDefined){
+//      str.append(indentStr(level))
+//      str.append("->condExpr: ")
+//      str.append(condExpr.get.pretty())
+//      str.append("\n")
+//      str.append(condExpr.get.typePretty(level+2))
+//    }
+//
+//    if (iterExpr!=null&&iterExpr.isDefined){
+//      str.append(indentStr(level))
+//      str.append("->iterExpr: ")
+//      str.append(iterExpr.get.pretty())
+//      str.append("\n")
+//      str.append(iterExpr.get.typePretty(level+2))
+//    }
+//
+//    str.append(indentStr(level))
+//    str.append("->ForBody:\n")
+//    str.append(body.typePretty(level+2))
+//
+//    str.toString
+//  }
 }

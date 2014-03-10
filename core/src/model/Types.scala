@@ -34,6 +34,9 @@ case class StringType() extends BasicType {
 case class BooleanType() extends BasicType {
   override def toString() = "Boolean"
 }
+case class NullType() extends BasicType{
+  override def toString() = "Null"
+}
 
 sealed trait NumericType extends BasicType
 

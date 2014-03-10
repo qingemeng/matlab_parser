@@ -97,31 +97,31 @@ class AssignmentStatement(
     
     str.toString
   }
-  override def typePretty(level: Int = 0): String = {
-    val str = new StringBuilder
-    str.append(indentStr(level))
-    str.append("AssignmentStatement(")
-    str.append(assignOp.toString())
-    str.append("): ")
-    str.append(pretty())
-    str.append("\n")
-
-    str.append(indentStr(level))
-    str.append("->LHS: ")
-    str.append(lhsExpr.pretty())
-    str.append("\n")
-    str.append(lhsExpr.treePretty(level+2))
-
-    str.append(indentStr(level))
-    str.append("->RHS: ")
-    str.append(TypeInferenceProcessor.typeInference(this).toList.mkString("\n"))
+//  override def typePretty(level: Int = 0): String = {
+//    val str = new StringBuilder
+//    str.append(indentStr(level))
+//    str.append("AssignmentStatement(")
+//    str.append(assignOp.toString())
+//    str.append("): ")
+//    str.append(pretty())
 //    str.append("\n")
-    str.append(rhsExpr.pretty())
-    str.append("\n")
-    str.append(rhsExpr.typePretty(level+2))
-
-    str.toString
-  }
+//
+//    str.append(indentStr(level))
+//    str.append("->LHS: ")
+//    str.append(lhsExpr.pretty())
+//    str.append("\n")
+//    str.append(lhsExpr.treePretty(level+2))
+//
+//    str.append(indentStr(level))
+//    str.append("->RHS: ")
+////    str.append(TypeInferenceProcessor.typeInference(this).toList.mkString("\n"))
+////    str.append("\n")
+//    str.append(rhsExpr.pretty())
+//    str.append("\n")
+////    str.append(rhsExpr.typePretty(level+2))
+//
+//    str.toString
+//  }
 }
 
 private class FindReadRefVisitor extends ExpressionVisitor {

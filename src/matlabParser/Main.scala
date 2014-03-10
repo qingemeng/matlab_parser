@@ -57,7 +57,7 @@ object Main extends Parsers{
 
 
 
-    val filename = testPath + testCtrl
+    val filename = testPath + testAssign
 
 
     val content = scala.io.Source.fromFile(filename).mkString
@@ -75,7 +75,7 @@ object Main extends Parsers{
         val tree_type_pretty  = stmt.typePretty();
         println(tree_type_pretty)
 
-        println(generate(stmt))
+        //println(generate(stmt))
 
 //        MatlabParser.parseStatement(pretty) match {
 //          case Left((declMap2, stmt2)) => println(stmt2.pretty())

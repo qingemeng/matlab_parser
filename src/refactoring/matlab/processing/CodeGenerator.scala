@@ -221,9 +221,16 @@ class CodeGenerator {
   }
   protected def generateCode(stmt: ForStatement): mutable.ListBuffer[String] = {
     val gen = mutable.ListBuffer.empty[String]
-    val init = generateCode(stmt.initStmt)(0).toString().drop(1).dropRight(1)	// remove brackets
-    val cond = generateCode(stmt.condExpr.get)
-    val iter = generateCode(stmt.iterExpr.get)
+    val init = generateCode(stmt.initStmt)(0).toString().drop(1).dropRight(1) // remove brackets
+    var cond = ""
+    var iter = ""
+    if(stmt.condExpr!=null){
+       cond = generateCode(stmt.condExpr.get)
+    }
+
+    if (stmt.iterExpr!= null){
+      iter = generateCode(stmt.iterExpr.get)
+    }
     
     if (stmt.isStencil) {
       // initialize the temp vars
@@ -360,6 +367,7 @@ class CodeGenerator {
       case e: ArrayEndExpr         => generateCode(e)
       case e: ArrayCompositionExpr => "[ArrayCompositionExpr]"
       case e: SliceExpr            => generateCode(e)
+
 //      case e: MatrixCompositionExpr => "[MatrixCompositionExpr]"
     }
     gen
@@ -435,6 +443,10 @@ class CodeGenerator {
 //      s"i${currentIndex}"
 //    }
     s"i${currentIndex}"
+  }
+
+  protected def generateCode(nul: Null): String = {
+    ""
   }
 
 }

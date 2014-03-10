@@ -63,4 +63,23 @@ case class FunctionDef(idName: IdName, params: List[IdName], var inputs: List[Id
     
     str.toString
   }
+//  def typePretty(level: Int = 0): String = {
+//    def indentStr(level: Int): String = "  " * level
+//
+//    val str = new StringBuilder
+//    str.append(indentStr(level))
+//    str.append("Function:\n")
+//
+//    str.append(indentStr(level))
+//    str.append("->Parameters: \n")
+//    params.foreach(parm => {
+//      str.append(parm.typePretty(level+2, false))
+//    })
+//
+//    str.append(indentStr(level))
+//    str.append("->FunctionBody: \n")
+//    str.append(body.typePretty(level + 2))
+//
+//    str.toString
+//  }
 }

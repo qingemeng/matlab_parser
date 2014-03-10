@@ -61,10 +61,10 @@ class ArrayEndExpr(private var _owner: Option[Expr]) extends Expr {
     str.toString
   }
   //TODO:gm,rewrite
-  override def typePretty(level: Int = 0, hash: Boolean = false): String = {
-    val str = new StringBuilder
-    str.append(indentStr(level))
-    str.append("\n")
-    str.toString
-  }
+//  override def typePretty(level: Int = 0, hash: Boolean = false): String = {
+//    val str = new StringBuilder
+//    str.append(indentStr(level))
+//    str.append("\n")
+//    str.toString
+//  }
 }

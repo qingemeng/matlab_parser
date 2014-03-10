@@ -3,6 +3,7 @@ package refactoring.matlab.processing
 import model.statement._
 import model.BasicType
 import scala.collection.mutable
+import com.sun.tools.classfile.Dependency
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,9 +16,9 @@ object TypeInferenceProcessor {
   def typeInference(ast: StatementBlock) = {
     new TypeInferenceProcessor().typeInference(ast)
   }
-  def typeInference(stmt:Statement) ={
-    new TypeInferenceProcessor().typeInference(stmt)
-  }
+//  def typeInference(stmt:Statement) ={
+//    new TypeInferenceProcessor().typeInference(stmt)
+//  }
 }
 
 class TypeInferenceProcessor   {
@@ -26,11 +27,12 @@ class TypeInferenceProcessor   {
   def typeInference(ast: StatementBlock)= {
     // derive type information
     typeInfo = SimpleTypeInferencer.infer(ast)
+    //typeInfo = DependencyTypeInferencer.infer(ast,typeInfo)
     typeInfo
   }
-  def typeInference(stmt: Statement)= {
-    // derive type information
-    typeInfo = SimpleTypeInferencer.infer(stmt)
-    typeInfo
-  }
+//  def typeInference(stmt: Statement)= {
+//    // derive type information
+//    typeInfo = SimpleTypeInferencer.infer(stmt)
+//    typeInfo
+//  }
 }

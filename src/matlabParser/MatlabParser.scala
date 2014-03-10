@@ -265,11 +265,15 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
 
   lazy val arrayExpr: PackratParser[Expr] =
     "["~opt(",")~"]" ^^{case s =>ArrayCompositionExpr()}| //empty
-      "["~>repsep(arrayFactor,",")<~"]"^^{case arrayFactors =>ArrayCompositionExpr(arrayFactors)}|   // row vector
-      "["~>repsep(arrayExpr,";")<~"]"^^{case arrayExprs =>ArrayCompositionExpr(
-       arrayExprs.map(each => ArrayCompositionExpr(List(each)))
+      "["~>eleList<~"]"^^{case arrayFactors =>ArrayCompositionExpr(arrayFactors)}|   // row vector
+      "["~>repsep(eleList,";")<~"]"^^{case arrayExprs =>ArrayCompositionExpr(
+       arrayExprs.map(each => ArrayCompositionExpr(each))
       )}|   // column vector
     arrayConditionalExpr
+
+  lazy val eleList: PackratParser[List[Expr]] =
+    repsep(arrayFactor,",")
+
 
 
   //  lazy val oneDArrExpr: PackratParser[Expr] =

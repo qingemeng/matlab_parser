@@ -5,6 +5,7 @@ import   model.statement._
 import   model.expression._
 
 import scala.collection.mutable
+import refactoring.matlab.processing.TypeInferenceProcessor
 
 object StatementBlock {
   def apply() = new StatementBlock()
@@ -134,16 +135,21 @@ class StatementBlock() extends Statement {
     str.toString
   }
 
-  override def typePretty(level: Int = 0): String = {
+  def typePretty(level: Int = 0): String = {
     val str = new StringBuilder
     str.append(indentStr(level))
-    str.append("StatementBlock: ")
+//    str.append("StatementBlock: ")
     //str.append(pretty())
     str.append("\n")
+    str.append("Type Information:\n")
 
-    statements.foreach(s => {
-      str.append(s.typePretty(level+1))
-    })
+
+//    statements.foreach(s => {
+//      str.append(s.treePretty(level+1))
+//    })
+
+    str.append(TypeInferenceProcessor.typeInference(this).toList.mkString("\n"))
+    str.append("\n")
 
     str.toString
   }
