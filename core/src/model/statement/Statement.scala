@@ -2,10 +2,12 @@ package model.statement
 
 import model.property._
 import model.BasicType
+import scala.util.parsing.input.Positional
 
-abstract class Statement extends HasProperties with StencilProperty {
+abstract class Statement extends HasProperties with Positional with StencilProperty {
   var cloneSrc: Option[Statement] = None
   private var _parent: Option[Statement] = None
+//  private var _position = this.pos
   var _typeInfo: Map[String, BasicType] = Map.empty
   
   // pretty print
@@ -13,8 +15,9 @@ abstract class Statement extends HasProperties with StencilProperty {
   def pretty(level: Int): String = indentStr(level) + pretty()
   def pretty(): String = ???
   def treePretty(level: Int = 0): String = ???
-//  def typePretty(level: Int = 0): String = ???
-  
+  def semanticAnalyse(level: Int = 0): String = ???
+
+//  def getLineNumber()
   // deep clone of the model.statement
   def cloneStmt(): Statement = ???
   
@@ -30,6 +33,9 @@ abstract class Statement extends HasProperties with StencilProperty {
   def getParent = _parent.getOrElse(null)
   def setParent(p: Statement) = if (p == null) _parent = None else _parent = Some(p)
   def typeInfo: Map[String, BasicType] = _typeInfo
+//  def position = _position
+//  def getPosition = _position
+//  def setPosition (pos:Positional) = if (pos == null) _position = null else _position = this.pos
 
 }
 

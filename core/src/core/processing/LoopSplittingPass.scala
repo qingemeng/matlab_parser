@@ -52,7 +52,7 @@ class LoopSplittingPass() extends StatementVisitor {
 				pass=false
 				return expr
 	      }
-	      var idNames = ArrayHelper.extractIdExprs(expr).filter(id => id.idName == loopInfo.inductionVar).map(id => id.idName)
+	      val idNames = ArrayHelper.extractIdExprs(expr).filter(id => id.idName == loopInfo.inductionVar).map(id => id.idName)
 	      // error if at least two of the same index
 	      if (idNames.distinct.size != idNames.size)
 	        pass = false

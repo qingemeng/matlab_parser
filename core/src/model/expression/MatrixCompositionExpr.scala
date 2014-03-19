@@ -52,7 +52,7 @@
 //    str.toString
 //  }
 //  //TODO:gm,rewrite
-//  override def typePretty(level: Int = 0, hash: Boolean = false): String = {
+//  override def semanticAnalyse(level: Int = 0, hash: Boolean = false): String = {
 //    val str = new StringBuilder
 //    str.append(indentStr(level))
 //    str.append("\n")

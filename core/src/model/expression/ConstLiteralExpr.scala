@@ -84,11 +84,8 @@ class ConstLiteralExpr(val kind: BasicType, val value: Any) extends Expr {
     indentStr(level) + "ConstLiteralExpr: " + value.toString ++ "\n"
   }
   //TODO:gm,rewrite
-//  override def typePretty(level: Int = 0, hash: Boolean = false): String = {
-//    val str = new StringBuilder
-//    str.append(indentStr(level))
-//    str.append("\n")
-//    str.toString
-//  }
+  override def semanticAnalyse(level: Int = 0, hash: Boolean = false): String = {
+    indentStr(level) + "ConstLiteralExpr: " ++ "\n"//+ value.toString ++ "\n"
+  }
 }
 

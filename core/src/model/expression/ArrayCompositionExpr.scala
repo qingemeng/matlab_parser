@@ -3,17 +3,19 @@ package model.expression
 
 import   model._
 import   model.expression._
+import scala.util.parsing.input.Positional
 
 object ArrayCompositionExpr {
   def apply() = new ArrayCompositionExpr(List())
   def apply(exprs: List[Expr]) = new ArrayCompositionExpr(exprs)
+//  def apply(expr:SliceExpr) = new ArrayCompositionExpr(expr)
   def unapply(e: ArrayCompositionExpr) = Some(e.exprs)
 }
 
 class ArrayCompositionExpr(private var _exprs: List[Expr]) extends Expr {
 
   update(_exprs)
-  
+
   def exprs = _exprs
   
   def update(exprs: List[Expr] = _exprs) = {
@@ -51,11 +53,19 @@ class ArrayCompositionExpr(private var _exprs: List[Expr]) extends Expr {
     
     str.toString
   }
-//  //TODO:gm,rewrite
-//  override def typePretty(level: Int = 0, hash: Boolean = false): String = {
-//    val str = new StringBuilder
-//    str.append(indentStr(level))
-//    str.append("\n")
-//    str.toString
-//  }
+  //TODO:gm,rewrite
+  override def semanticAnalyse(level: Int = 0, hash: Boolean = false): String = {
+    val str = new StringBuilder
+
+    str.append(indentStr(level))
+    str.append("ArrayCompositionExpr: ")
+//    str.append(pretty(hash))
+    str.append("\n")
+    exprs.foreach(t => {
+      str.append(t.semanticAnalyse(level+1))
+      str.append("\n")
+    })
+
+    str.toString
+  }
 }

@@ -41,10 +41,13 @@ class FunctionDefStatement(var _funcDef: FunctionDef) extends Statement{
     str.toString
   }
   //TODO:gm,rewrite
-//  override def typePretty(level: Int = 0): String = {
-//    val str = new StringBuilder
-//    str.append(indentStr(level))
-//    str.append("\n")
-//    str.toString
-//  }
+  override def semanticAnalyse(level: Int = 0): String = {
+    val str = new StringBuilder
+    str.append(indentStr(level))
+    str.append("FunctionDefStatement: ")
+    str.append("\n")
+    str.append(funcDef.treePretty(level+1))
+
+    str.toString
+  }
 }

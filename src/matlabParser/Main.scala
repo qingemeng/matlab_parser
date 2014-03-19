@@ -31,6 +31,7 @@ object Main extends Parsers{
     val testElse_If = "/test_elseif2.m"
     val testElseIf_Simple = "/test_elseif_simple.m"
     val testFor ="/test_for.m"
+    val testForSimple = "/test_for_simple.m"
     val testExpr ="/test_expr.m"
     val testMatrix ="/test_matrix.m"
     val testNestedFuncs ="/test_nested_funcs.m"
@@ -45,7 +46,9 @@ object Main extends Parsers{
     val testArrOp_plus = "/test_arrOP_plus_minus.m"
     val testArrOp_arrTimes = "/test_arrayOp_arrTimes.m"
     val testArrOp_matTimes = "/test_matOp_matTimes.m"
+    val testArr_AND_OR = "/test_logicalOpArray.m"
     val test_ = "/test_.m"
+
 
 
     //stencil code
@@ -54,26 +57,51 @@ object Main extends Parsers{
     val t_matrixCreation  = "/t_matrixCreation.m"
 
 
+    //semantic checking
+
+    val t_noInitVar = "/test_err_noInitVar.m"
+
+    //builtin funcs
+    val t_zeros = "/test_zeros.m"
+
+    //global scope
+    val t_global = "/test_global.m"
 
 
 
-    val filename = testPath + testAssign
+
+
+    val filename = testPath + test_
 
 
     val content = scala.io.Source.fromFile(filename).mkString
+    val linedContent = content.split("\n")
+    var lineNum = 1
+    for (line<- linedContent){
+      println("Line " + lineNum +": " +line )
+      lineNum = lineNum+1
+    }
+    println()
+//    val file = scala.io.Source.fromFile(filename)
+//    while (file.hasNext){
+//      println("+======================pos  = " ,file.pos)
+//
+//    }
 
     MatlabParser.parseSource(content) match {
       case Left((declMap, stmt)) => {
         //println(declMap.mkString("\n"));
 
+
         val pretty = stmt.pretty()
         println(pretty)
 //
+//        val varDeclared = stmt.varsDeclaredCheck(this)
         val tree_pretty = stmt.treePretty()
         println(tree_pretty)
 
-        val tree_type_pretty  = stmt.typePretty();
-        println(tree_type_pretty)
+        val semanticCheck  = stmt.semanticAnalyse();
+        println(semanticCheck)
 
         //println(generate(stmt))
 

@@ -61,10 +61,23 @@ class ArrayEndExpr(private var _owner: Option[Expr]) extends Expr {
     str.toString
   }
   //TODO:gm,rewrite
-//  override def typePretty(level: Int = 0, hash: Boolean = false): String = {
+  override def semanticAnalyse(level: Int = 0, hash: Boolean = false): String = {
 //    val str = new StringBuilder
 //    str.append(indentStr(level))
 //    str.append("\n")
 //    str.toString
-//  }
+val str = new StringBuilder
+    str.append(indentStr(level))
+
+    str.append("ArrayEndExpr: ")
+//    str.append(pretty(hash))
+    str.append("\n")
+
+    owner match {
+      case Some(o) => str.append(o.semanticAnalyse(level+1, hash))
+      case None =>
+    }
+
+    str.toString
+  }
 }

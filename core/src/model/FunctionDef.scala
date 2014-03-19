@@ -3,6 +3,7 @@ package   model
 import   model.statement._
 import   model.expression._
 import   model.property._
+import refactoring.matlab.processing.TypeInferenceProcessor
 
 object FunctionDef {
   def apply(idName: IdName, params: List[IdName], body: Statement):FunctionDef = FunctionDef(idName, params, List(), List(), body, None)
@@ -63,23 +64,26 @@ case class FunctionDef(idName: IdName, params: List[IdName], var inputs: List[Id
     
     str.toString
   }
-//  def typePretty(level: Int = 0): String = {
-//    def indentStr(level: Int): String = "  " * level
-//
-//    val str = new StringBuilder
-//    str.append(indentStr(level))
-//    str.append("Function:\n")
-//
-//    str.append(indentStr(level))
-//    str.append("->Parameters: \n")
-//    params.foreach(parm => {
-//      str.append(parm.typePretty(level+2, false))
-//    })
-//
-//    str.append(indentStr(level))
-//    str.append("->FunctionBody: \n")
-//    str.append(body.typePretty(level + 2))
-//
-//    str.toString
-//  }
+  def semanticAnalyse(level: Int = 0): String = {
+    def indentStr(level: Int): String = "  " * level
+
+    val str = new StringBuilder
+    str.append(indentStr(level))
+    str.append("Function:\n")
+
+    str.append(indentStr(level))
+    str.append("->Parameters: \n")
+    params.foreach(parm => {
+      str.append(parm.semanticAnalyse(level+2, false))
+    })
+
+    str.append(indentStr(level))
+    str.append("->FunctionBody: \n")
+    str.append(body.semanticAnalyse(level + 2))
+
+    str.append(TypeInferenceProcessor.typeInference(body).toList.mkString("\n"))
+
+
+    str.toString
+  }
 }

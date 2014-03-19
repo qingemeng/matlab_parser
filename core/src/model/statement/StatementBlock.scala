@@ -112,6 +112,7 @@ class StatementBlock() extends Statement {
     str.append(indentStr(level-1))
     str.append("{\n")
     for (i <- 0 until statements.size) {
+//      str.append("Line "+statements(i).pos.line+ " : ")
       str.append(statements(i).pretty(level))
       //if (i != statements.size - 1)
       str.append("\n")
@@ -127,7 +128,7 @@ class StatementBlock() extends Statement {
     str.append("StatementBlock: ")
     //str.append(pretty())
     str.append("\n")
-    
+
     statements.foreach(s => {
       str.append(s.treePretty(level+1))
     })
@@ -135,23 +136,36 @@ class StatementBlock() extends Statement {
     str.toString
   }
 
-  def typePretty(level: Int = 0): String = {
+  override def semanticAnalyse(level: Int = 0): String = {
     val str = new StringBuilder
     str.append(indentStr(level))
 //    str.append("StatementBlock: ")
     //str.append(pretty())
     str.append("\n")
+    str.append("==============================================================\n")
     str.append("Type Information:\n")
 
-
-//    statements.foreach(s => {
-//      str.append(s.treePretty(level+1))
-//    })
-
+//    for(stmt <- statements){
+//      if(stmt.isInstanceOf[Statement]){
+//        stmt match {
+//          case e: Statement => str.append(TypeInferenceProcessor.typeInference(e,level+1).toList.mkString("\n"))
+//        }
+//      }
+//
+//    }
     str.append(TypeInferenceProcessor.typeInference(this).toList.mkString("\n"))
+
+    statements.foreach(s => {
+      str.append(s.semanticAnalyse(level+1))
+    })
+
     str.append("\n")
 
-    str.toString
+    str.toString()
   }
+//
+//  def varsDeclaredCheck(blkStmt:StatementBlock):Boolean ={
+//
+//  }
 
 }

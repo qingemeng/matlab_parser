@@ -3,6 +3,13 @@ package   core.processing
 import   core._
 import   model._
 import   model.expression._
+import org.eclipse.cdt.core.dom.ast.IVariable
+import org.eclipse.cdt.core.dom.ast.IType
+import org.eclipse.cdt.core.dom.ast.IBasicType
+import org.eclipse.cdt.core.dom.ast.IArrayType
+import org.eclipse.cdt.core.dom.ast.IPointerType
+import org.eclipse.cdt.core.dom.ast.IBinding
+
 
 import scala.collection.mutable.ListBuffer
 
@@ -37,14 +44,10 @@ object ArrayHelper {
     array.update(indices = indices)
   }
   
-  /*
+
   //----------------------------------------------------------------------------
   // to build in expr type in Expr class
-  import org.eclipse.cdt.core.dom.ast.IVariable
-  import org.eclipse.cdt.core.dom.ast.IType
-  import org.eclipse.cdt.core.dom.ast.IBasicType
-  import org.eclipse.cdt.core.dom.ast.IArrayType
-  import org.eclipse.cdt.core.dom.ast.IPointerType
+
   
   def inferArrayInfo(array: ArrayRefExpr, declUseMap: DeclUseMap): Option[ArrayInfo] = {
     var nDim = 0
@@ -57,7 +60,7 @@ object ArrayHelper {
         sizes += ConstLiteralExpr(t.getSize().numericalValue().toInt)
         deduceArrayType(t.getType())
       case t: IBasicType => t.getKind match {
-        case IBasicType.Kind.eInt => basicType = IntegerType()
+        case IBasicType.Kind.eInt => basicType = IntType()
         case IBasicType.Kind.eFloat => basicType = FloatType()
         case IBasicType.Kind.eDouble => basicType = DoubleType()
       }
@@ -70,7 +73,7 @@ object ArrayHelper {
         sizes += ConstLiteralExpr(-1) // dynamic size
         deducePointerType(t.getType())
       case t: IBasicType => t.getKind match {
-        case IBasicType.Kind.eInt => basicType = IntegerType()
+        case IBasicType.Kind.eInt => basicType = IntType()
         case IBasicType.Kind.eFloat => basicType = FloatType()
         case IBasicType.Kind.eDouble => basicType = DoubleType()
       }
@@ -86,6 +89,7 @@ object ArrayHelper {
     else {
       val declUseGroup = declUseMap.getDeclUse(idName)
       // array can either be fixed size or dynamically declared
+//      val declNames = getAst().getDefinitions(binding)
       val variable = declUseGroup.declNames(0).resolveBinding().asInstanceOf[IVariable]
       val varType = variable.getType
       varType match {
@@ -95,7 +99,7 @@ object ArrayHelper {
     }
     
     Some(ArrayInfo(basicType, nDim, sizes.toList))
-  }*/
+  }
 
 }
 

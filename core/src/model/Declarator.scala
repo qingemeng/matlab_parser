@@ -3,6 +3,7 @@ package   model
 import   model._
 import   model.statement._
 import   model.expression._
+import scala.util.parsing.input.Positional
 
 object Declarator {
   def apply(idName: IdName, initializer: Option[Expr]) = new Declarator(idName, initializer)
@@ -11,7 +12,7 @@ object Declarator {
   def unapply(d: Declarator) = Some(d.idName, d.initializer)
 }
 
-class Declarator(val idName: IdName, private var _initializer: Option[Expr]) {
+class Declarator(val idName: IdName, private var _initializer: Option[Expr]) extends Positional {
 
   def initializer = _initializer
   

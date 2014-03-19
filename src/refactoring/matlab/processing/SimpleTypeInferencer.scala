@@ -5,6 +5,7 @@ import   model.expression._
 import   model.statement._
 import scala.collection.mutable
 import scala.util.control.Breaks
+import core.util._
 
 // Given a block of code, infers the type from first set ref
 // Limitations:
@@ -15,7 +16,7 @@ import scala.util.control.Breaks
 object SimpleTypeInferencer {
 
   def infer(ast: Statement) = {
-    val typeInfo = new SimpleTypeInferencer().infer(ast)
+    val typeInfo = new SimpleTypeInferencer().infer(ast)//,level)
 
     //typeInfo.foreach(t => println(s"${t._1} ~ ${t._2}"));println
 
@@ -26,8 +27,8 @@ object SimpleTypeInferencer {
 
 class SimpleTypeInferencer {
 
-  def infer(ast: Statement) = {
-    val typer = new Typer
+  def infer(ast: Statement) = {//,level:Int) = {
+  val typer = new Typer
 
     val visitor = new TypeStatementVisitor(typer)
 
@@ -40,6 +41,7 @@ class SimpleTypeInferencer {
 // Utility to merge types
 private class Typer {
   val vars: mutable.Map[String, BasicType] = mutable.Map.empty
+  //  val rhs_vars:mutable.Map[String, BasicType] = mutable.Map.empty
 
   def updateType(id: String, idType: BasicType): BasicType = {
     if (vars contains id) {
@@ -52,6 +54,45 @@ private class Typer {
 
     vars(id)
   }
+  // check all id at rhs is declared
+  private def isDeclared(rhsId:String,line:Int):Boolean  ={
+
+    if(!(vars contains rhsId)){
+      println(ErrConstants.ErrPrefix + rhsId + " " + ErrMsgs.getErrMsg(ErrConstants.VarNotInitialized, line))
+      return false
+    }
+    return true
+
+  }
+
+  def isDeclared(rhsExpr:Expr) :Boolean= rhsExpr match {
+    case e: IdExpr => isDeclared(e.idName.id, rhsExpr.pos.line)
+    case e: ArrayRefExpr => isDeclared(e.owner.asInstanceOf[IdExpr].idName.id,rhsExpr.pos.line)
+    case e: ArrayCompositionExpr => isDeclared(e)
+    case e: NAryExpr => {
+      val areDeclared  = e.terms.map(each => isDeclared(each))
+
+      if(areDeclared.contains(false) ){
+        return false
+      }
+      return true
+
+    }
+
+    case _ => true
+    //TODO:check if the function call is declared
+    //    case e: FunctionCallExpr => isDeclaration()
+  }
+
+  //  def getArrType(expr:ArrayCompositionExpr): BasicType = {
+  //    expr.exprs.map(xpr => if(xpr.isInstanceOf[ArrayCompositionExpr]){
+  //      getArrType(xpr)
+  //    }else{
+  //      expr.exprs.map(xpr => xp)
+  //    }
+  //    )
+  //
+  //  }
 
   // merge types
 
@@ -104,6 +145,8 @@ private class Typer {
 
     cur
   }
+
+
   def getType(id:String):BasicType={
     if (vars contains id) {
       vars(id)
@@ -116,23 +159,25 @@ private class Typer {
 
   def getIds(exprs:List[Expr]):List[String] ={
     var ids  =List("")
+    /* check whether all elements in rhs is a id */
     val temp = exprs.map(expr=>expr.isInstanceOf[IdExpr])
     var notAllId = false
     val loop = new Breaks;
     loop.breakable{
-    for(each<- temp){
-      if (!each){
-        notAllId = true
-        loop.break()
-      }
+      for(each<- temp){
+        if (!each){
+          notAllId = true
+          loop.break()
+        }
 
+      }
     }
-    }
+    /* end check*/
     if(!notAllId)
     {
-             ids = exprs match {
-              case e: List[IdExpr] => e.map(id=>id.idName.id)
-            }
+      ids = exprs match {
+        case e: List[IdExpr] => e.map(id=>id.idName.id)
+      }
     }
 
     ids
@@ -159,23 +204,21 @@ private class TypeStatementVisitor(typer: Typer) extends StatementVisitor {
     }
 
 
-
-
-
     //if(!rhsVisitor.exprType.isInstanceOf[NullType])
+    typer.isDeclared(stmt.rhsExpr)
     typer.updateType(id, rhsVisitor.exprType)
 
     if(stmt.rhsExpr.isInstanceOf[NAryExpr]){
-    val rhs_ids = stmt.rhsExpr match{
-      case e: NAryExpr => typer.getIds(e.terms)
+      val rhs_ids = stmt.rhsExpr match{
+        case e: NAryExpr => typer.getIds(e.terms)
 
-    }
+      }
 
 
-    if(rhs_ids!= null && rhs_ids!=List("") ){
-      val merged_rhs_ids_type = typer.mergeType(rhs_ids)
-      typer.updateType(id,merged_rhs_ids_type)
-    } }
+      if(rhs_ids!= null && rhs_ids!=List("") ){
+        val merged_rhs_ids_type = typer.mergeType(rhs_ids)
+        typer.updateType(id,merged_rhs_ids_type)
+      } }
 
     //val exprType = typer.mergeType(lhsVisitor.exprType, rhsVisitor.exprType)
 
@@ -190,6 +233,53 @@ private class TypeExprVisitor(typer: Typer) extends ExpressionVisitor {
   val defaultType = FloatType()
   var exprType: BasicType = null
 
+  def getRank(exprs:List[Expr]):Int={
+    val ranks = exprs.map {
+      case e: ArrayCompositionExpr => getRank(e.exprs) + 1
+      case e: ArrayRefExpr => e.rank + 1
+      case _ => 1
+    }
+    ranks.max
+  }
+
+  def getSize(exprs:List[Expr]):List[Expr]={
+    val sizes = exprs match {
+      case e: List[IdExpr] =>e
+      case e: List[ConstLiteralExpr]=>e
+      case e: List[ArrayCompositionExpr]=> getSize(e.head.exprs)
+      case e: List[ArrayRefExpr] => e.head.indices
+      case _ => List.empty
+    }
+    //    val sizes = exprs.map  {
+    //      case e: ArrayCompositionExpr=> getSize(e.exprs).head
+    //      case e: ArrayRefExpr => e.indices.head
+    //      case e: IdExpr =>e
+    //      case e: ConstLiteralExpr=>e
+    //      case _ => List.empty.head
+    //    }
+    println("sizes = " + sizes.size)
+
+    sizes
+  }
+
+  def getType(exprs:List[Expr]):BasicType={
+    //    val newtype = exprs match {
+    //      case e: List[ConstLiteralExpr]=>e.map(each => each.kind).head
+    //      case e: List[ArrayCompositionExpr]=> getType(e.head.exprs)
+    //      case e: List[ArrayRefExpr] => getType(e.head.indices)
+    //      case e: List[IdExpr] =>e.map(each=>typer.getType(e.head.idName.id) ).head
+    //      case _ => defaultType
+    //    }
+    val newtype = exprs.map {
+      case e: ConstLiteralExpr => e.kind
+      case e: ArrayCompositionExpr => getType(e.exprs)
+      case e: ArrayRefExpr => getType(e.indices)
+      case e: IdExpr =>  typer.getType(e.idName.id)
+      case _ => defaultType
+    }
+    newtype.head
+  }
+
   override def visit(expr: IdExpr): Int = {
     //    if (vars contains expr.idName.id) {
     //      val idType = vars(expr.idName.id)
@@ -199,6 +289,7 @@ private class TypeExprVisitor(typer: Typer) extends ExpressionVisitor {
     //    }
     // no type information
     //exprType = typer.updateType(expr.idName.id, defaultType)
+//    typer.isDeclared(expr)
     return ExpressionVisitor.Continue
   }
 
@@ -217,6 +308,7 @@ private class TypeExprVisitor(typer: Typer) extends ExpressionVisitor {
   }
 
   override def visit(expr: ConstLiteralExpr): Int = {
+
     expr.kind match {
       case t: IntType     => exprType = typer.mergeType(exprType, t)
       case t: FloatType   => exprType = typer.mergeType(exprType, t)
@@ -232,9 +324,26 @@ private class TypeExprVisitor(typer: Typer) extends ExpressionVisitor {
   override def visit(expr: ArrayRefExpr): Int = {
     // we cannot determine the sizes from accessing a sub-array
     // array type is default to float
+//    typer.isDeclared(expr)
+
+
     exprType = typer.mergeType(exprType, ArrayType(defaultType, expr.rank, List.empty))
 
     return ExpressionVisitor.Continue
+  }
+
+  override def visit(expr: ArrayCompositionExpr): Int = {
+    val rank = getRank(expr.exprs)
+    val sizes  = getSize(expr.exprs)
+    val temp_type = getType(expr.exprs)
+    //     val new_rank  = expr.exprs
+    //     sizes.+:(expr.exprs.size)
+//    expr.exprs.foreach(xpr=>{
+////      typer.isDeclared(xpr)
+//    })
+    exprType = typer.mergeType(exprType, ArrayType(temp_type,rank, sizes))
+    return ExpressionVisitor.Skip
+    //  return ExpressionVisitor.Continue
   }
 
 }

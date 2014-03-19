@@ -3,6 +3,7 @@ package model.expression
 
 import   model._
 import   model.expression._
+import scala.util.parsing.input.Positional
 
 object CellCompositionExpr {
   def apply() = new CellCompositionExpr(List())
@@ -52,10 +53,10 @@ class CellCompositionExpr(private var _exprs: List[Expr]) extends Expr {
     str.toString
   }
   //TODO:gm,rewrite
-//  override def typePretty(level: Int = 0, hash: Boolean = false): String = {
-//    val str = new StringBuilder
-//    str.append(indentStr(level))
-//    str.append("\n")
-//    str.toString
-//  }
+  override def semanticAnalyse(level: Int = 0, hash: Boolean = false): String = {
+    val str = new StringBuilder
+    str.append(indentStr(level))
+    str.append("\n")
+    str.toString
+  }
 }

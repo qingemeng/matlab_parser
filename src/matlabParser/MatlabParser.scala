@@ -11,6 +11,27 @@ package matlabParser
 
 import scala.language.postfixOps
 import scala.collection.mutable._
+import model.OpPostfixInc
+import model.OpLogicalAnd
+import model.OpEquals
+import model.OpMinus
+import model.OpTimes
+import model.OpGreaterEq
+import model.OpLessThan
+import model.OpPlus
+import model.OpPostfixDec
+import model.OpNotEquals
+import model.OpLogicalOr
+import model.OpAssign
+import model.OpPow
+import model.OpLessEq
+import model.OpPrefixInc
+import model.OpDotProd
+import model.OpPrefixDec
+import model.OpDivide
+import model.OpGreaterThan
+import scala.util.parsing.input.Positional
+
 //import scala.collection.mutable.ListBuffer
 import scala.util.parsing.combinator._
 
@@ -18,7 +39,7 @@ import model._
 import model.expression._
 import model.statement._
 import model.property.HasProperties
-import refactoring.matlab.model.FunctionDefStatement
+import refactoring.matlab.model._
 import model.OpTimesAssign
 import model.OpPostfixInc
 import model.OpLogicalAnd
@@ -83,7 +104,11 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
 
 
   lazy val source: PackratParser[StatementBlock] =
-    (statement*) ^^ { case stmts => StatementBlock(stmts)}
+   positioned(
+      (statement*) ^^ {
+        case stmts => StatementBlock(stmts)
+      }
+    )
 
   lazy val functions: PackratParser[List[FunctionDefStatement]] = rep(function_def)
 
@@ -109,7 +134,7 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
 
 
 
-  lazy val function_def: PackratParser[FunctionDefStatement] =
+  lazy val function_def: PackratParser[FunctionDefStatement] =   positioned(
     "function" ~> ("["~>parameters<~"]")  ~ ( "=" ~>identifierName) ~ ("("~>(parameters)<~")") ~blockStmt <~"end"^^{
       case out~name~in~body => newFunction(name,in, out, body)
     } |
@@ -122,48 +147,54 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
       "function" ~> identifierName ~ blockStmt<~"end"^^{
         case name~body => newFunction(name,null,null,body)
       }
+  )
 
-  class Parameter(val idName: IdName)
+  class Parameter(val idName: IdName) extends Positional
   case class InParameter(name:IdName) extends Parameter(name)
   case class OutParameter(name:IdName) extends Parameter(name)
 
 
 
-  lazy val parameters: PackratParser[List[Parameter]] = repsep(parameter, ",")
+  lazy val parameters: PackratParser[List[Parameter]] =repsep(parameter, ",")
 
-  lazy val parameter: PackratParser[Parameter] =
+  lazy val parameter: PackratParser[Parameter] =   positioned(
     identifierName  ^^ { case name => InParameter(name)} |
       identifierName ^^ { case name => OutParameter(name)}
+  )
 
   /******************************************************************************************/
 
-  lazy val statement: PackratParser[Statement] =
+  lazy val statement: PackratParser[Statement] = positioned(
       statementCmd
+  )
 
-  lazy val statementCmd: PackratParser[Statement] =
+  lazy val statementCmd: PackratParser[Statement] =     positioned(
     forStmt|
   whileStmt|
    switchStmt|
     ifStmt|
       singleLineStmt|
   function_def
+  )
 
 
-  lazy val blockStmt : PackratParser[StatementBlock] =
+  lazy val blockStmt : PackratParser[StatementBlock] =  positioned(
     (statement*) ^^ { case stmts => StatementBlock(stmts)}
+  )
 
 
 
-  lazy val singleLineStmt: PackratParser[Statement] =
-    declarationStmt <~ eol |
+  lazy val singleLineStmt: PackratParser[Statement] = positioned(
+    globalDeclarationStmt <~ eol |
       assignmentStmt <~ eol |
       caseStmt <~ eol |
       retStmt <~ eol |
       defaultStmt <~ eol |
       breakStmt <~ eol |
       continueStmt <~ eol|
-      simpleStmt<~eol |
+//      simpleStmt<~eol |
       functionCallStatement<~eol
+  )
 
   //TODO:fix the single line evaluation
 //  lazy val evalStmt: PackratParser[Statement] =
@@ -177,102 +208,120 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
 //  simpleFactor^^{case simpleFactor => ExpressionStatement(simpleFactor)}
 //  cellExpr|matrixExpr|simpleFactor
 
-
-
-
-
-
-
-
   //@TODO:declare global var
-  lazy val declarationStmt: PackratParser[Statement] =
+  lazy val globalDeclarationStmt: PackratParser[Statement] =   positioned(
+    "global"~> declarator ^^{case declarator=> GlobalDeclarationStatement("global",List(declarator))}
+  )
 //  assignmentStmt|
-  "global"~> declarator ^^{case declarator=> DeclarationStatement(List(declarator))}|
-  "local"~> declarator ^^{case declarator => DeclarationStatement(List(declarator)) }
-  lazy val declarator: PackratParser[Declarator] = identifierName^^{case idname => Declarator(idname)}
+//  "global"~> declarator ^^{case declarator=> DeclarationStatement("",List(declarator))}|
+//  "local"~> declarator ^^{case declarator => DeclarationStatement(List(declarator)) }
+  lazy val declarator: PackratParser[Declarator] =  positioned(
+  identifierName^^{case idname => Declarator(idname)}
+)
 
-  lazy val assignmentLHSexpr: PackratParser[Expr] =
+  lazy val assignmentLHSexpr: PackratParser[Expr] =  positioned(
     arrayRefExpr |
       identifier
+  )
 
-  lazy val assignmentStmt: PackratParser[Statement] =
+  lazy val assignmentStmt: PackratParser[Statement] =  positioned(
 //  opt(",")~>   assignmentLHSexpr ~ ("+=" ~> expr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpPlusAssign())} |
-  opt(",")~>   assignmentLHSexpr ~ ("=" ~> expr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpAssign())}
+    opt(",")~>   assignmentLHSexpr ~ ("=" ~> expr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpAssign())}|
+      rangeAssignStmt
+//      arrayAssignStmt
+
 //  opt(",")~>   assignmentLHSexpr ~ ("-=" ~> expr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpMinusAssign())} |
 //  opt(",")~>   assignmentLHSexpr ~ ("*=" ~> expr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpTimesAssign())} |
 //  opt(",")~>   assignmentLHSexpr ~ ("/=" ~> expr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpDivideAssign())}
+  )
 
-  lazy val forStmt: PackratParser[Statement] =
+  lazy val forStmt: PackratParser[Statement] = positioned(
     ("for"~> rangeAssignStmt) ~blockStmt<~"end"^^{
       case range~body =>ForStatement(range,null,null, body)
     }|
       ("for"~> assignmentStmt) ~blockStmt<~"end"^^{
         case init~body =>ForStatement(init,null,null, body)
       }
+  )
 
 
 
-  lazy val ifStmt: PackratParser[Statement] =
+  lazy val ifStmt: PackratParser[Statement] =   positioned(
 //    ("if" ~> opt("(")~>expr<~opt(")"))~ blockStmt <~"end"^^ { case cond~stmt => IfStatement(cond, stmt,null, null)}|
     (("if" ~> opt("(")~>expr<~opt(")") ) ~blockStmt )~ opt(elseifStmt*)~opt(("else" ~> blockStmt)) <~"end"^^ { case cond~thebody~elseifStmts~elsebody => IfStatement(cond, thebody,elseifStmts, elsebody)}
 //  (("if" ~> opt("(")~>expr<~opt(")") )) ~ blockStmt ~ opt(elseifBlocks)<~"end"^^ { case cond~thebody~elseifStmts => IfStatement(cond, thebody,elseifStmts,null)}|
 //      ( ("if" ~> opt("(")~>expr<~opt(")") )) ~ blockStmt ~ ("else" ~> opt(blockStmt)) <~"end"^^ { case cond~thebody~elsebody => IfStatement(cond, thebody,null, elsebody)}|
 //      ( ("if" ~> opt("(")~>expr<~opt(")")) )~ blockStmt <~"end"^^ { case cond~stmt => IfStatement(cond, stmt)}
+  )
   //Todo:elseif
 
 //  lazy val elseifBlocks: PackratParser[StatementBlock]=
 //  (("elseif" ~> blockStmt)*) ^^ {case blockStmts => ElseifStatements(blockStmts)}
-  lazy val elseifStmt : PackratParser[ElseifStatement] =
+  lazy val elseifStmt : PackratParser[ElseifStatement] = positioned(
   ("elseif"~>opt("(")~>expr<~opt(")")) ~blockStmt ^^{case cond~body => ElseifStatement(cond,body)}
+)
 
 
 
-  lazy val whileStmt: PackratParser[Statement] =
+  lazy val whileStmt: PackratParser[Statement] =  positioned(
     ("while"  ~>opt("(")~> expr<~opt(")")) ~ blockStmt <~"end"^^ { case cond~stmt => WhileStatement(cond, stmt)}
+  )
 
   //  lazy val doStmt: PackratParser[Statement] =
   //    ("do" ~> statement) ~  ("while" ~> "(" ~> expr <~ ")") ^^ { case stmt~cond => DoStatement(cond, stmt)}
 
-  lazy val switchStmt: PackratParser[Statement] =
+  lazy val switchStmt: PackratParser[Statement] =  positioned(
     ("switch" ~> expr ) ~ blockStmt<~"end" ^^ { case cond~stmt => SwitchStatement(cond, stmt)}
+  )
 
-  lazy val breakStmt: PackratParser[Statement] =
+  lazy val breakStmt: PackratParser[Statement] =  positioned(
     "break" ^^ {x => BreakStatement()}
+  )
 
-  lazy val continueStmt: PackratParser[Statement] =
+  lazy val continueStmt: PackratParser[Statement] =  positioned(
     "continue" ^^ {x => ContinueStatement()}
+  )
 
-  lazy val defaultStmt: PackratParser[Statement] =
+  lazy val defaultStmt: PackratParser[Statement] =  positioned(
     "otherwise" ^^ {x => DefaultStatement()}
+  )
 
-  lazy val caseStmt: PackratParser[Statement] =
+  lazy val caseStmt: PackratParser[Statement] =  positioned(
     "case" ~> expr  ^^ {xpr => CaseStatement(xpr)}
+  )
 
-  lazy val retStmt: PackratParser[Statement] =
+  lazy val retStmt: PackratParser[Statement] =  positioned(
     "return" ~> expr  ^^ {xpr => ReturnStatement(xpr)} |
       "return"  ^^ {x => ReturnStatement()}
+  )
 
-  lazy val rangeAssignStmt: PackratParser[Statement] =
+  lazy val rangeAssignStmt: PackratParser[Statement] =  positioned(
     assignmentLHSexpr ~ ("=" ~> sliceExpr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpAssign())}
+  )
+//  lazy val arrayAssignStmt: PackratParser[Statement] =
+//     assignmentLHSexpr ~ ("=" ~> arrayExpr) ^^ { case lhs~rhs => AssignmentStatement(lhs, rhs, OpAssign())}
 
   /******************************************************************************************/
 
   /******************************************************************************************/
-  lazy val expr: PackratParser[Expr] = arrayExpr|cellExpr //|matrixExpr
+  lazy val expr: PackratParser[Expr] = positioned( arrayExpr|cellExpr) //|matrixExpr
 
 
   //Array Expressions
+//
+//  lazy val arrayExpr: PackratParser[Expr] =
+//    "["~opt(",")~"]" ^^{case s =>ArrayCompositionExpr()}| //empty
+//      "["~>eleListExpr<~"]"^^{case arrayFactors =>ArrayCompositionExpr(arrayFactors)}|
+//      //sliceExpr^^{case sliceExpr =>ArrayCompositionExpr(sliceToElelist(sliceExpr))}|  // row vector
+//      "["~>repsep(eleListExpr,";")<~"]"^^{case arrayExprs =>ArrayCompositionExpr(
+//       arrayExprs.map(each => ArrayCompositionExpr(each))
+//      )}//|   // column vector
+////    arrayConditionalExpr
 
-  lazy val arrayExpr: PackratParser[Expr] =
-    "["~opt(",")~"]" ^^{case s =>ArrayCompositionExpr()}| //empty
-      "["~>eleList<~"]"^^{case arrayFactors =>ArrayCompositionExpr(arrayFactors)}|   // row vector
-      "["~>repsep(eleList,";")<~"]"^^{case arrayExprs =>ArrayCompositionExpr(
-       arrayExprs.map(each => ArrayCompositionExpr(each))
-      )}|   // column vector
-    arrayConditionalExpr
-
-  lazy val eleList: PackratParser[List[Expr]] =
+  lazy val arrayExpr: PackratParser[Expr] =positioned(arrayBinaryExpr|arrayUnitExpr)
+  lazy val eleListExpr: PackratParser[List[Expr]] =
     repsep(arrayFactor,",")
+
 
 
 
@@ -280,45 +329,59 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
 //    repsep(arrayFactor,",") ^^{case arrayFactors =>ArrayCompositionExpr(arrayFactors)}
 
 
-      lazy val arrayConditionalExpr: PackratParser[Expr] =
-    (arrayConditionalExpr <~ "&&") ~ arrayCompareExpr ^^ { case lhs~rhs => NAryExpr(OpLogicalAnd(), List(lhs, rhs)) } |
-      (arrayConditionalExpr <~ "||") ~ arrayCompareExpr ^^ { case lhs~rhs => NAryExpr(OpLogicalOr(), List(lhs, rhs)) } |
+//      lazy val arrayConditionalExpr: PackratParser[Expr] =
+//    (arrayConditionalExpr <~ "&&") ~ arrayCompareExpr ^^ { case lhs~rhs => NAryExpr(OpLogicalAnd(), List(lhs, rhs)) } |
+//      (arrayConditionalExpr <~ "||") ~ arrayCompareExpr ^^ { case lhs~rhs => NAryExpr(OpLogicalOr(), List(lhs, rhs)) } |
+//      arrayCompareExpr
+  lazy val arrayBinaryExpr = positioned(arrayConditionalExpr  )
+  lazy val arrayConditionalExpr: PackratParser[Expr] =   positioned(
+    (arrayConditionalExpr <~ "&") ~ arrayCompareExpr ^^ { case lhs~rhs => NAryExpr(EleWiseOpLogicalAnd(), List(lhs, rhs)) } |
+      (arrayConditionalExpr <~ "|") ~ arrayCompareExpr ^^ { case lhs~rhs => NAryExpr(EleWiseOpLogicalOr(), List(lhs, rhs)) } |
       arrayCompareExpr
+  )
 
-  lazy val arrayCompareExpr: PackratParser[Expr] =
+  lazy val arrayCompareExpr: PackratParser[Expr] =   positioned(
     (arrayTerm <~ "==") ~ arrayTerm ^^ { case lhs~rhs => NAryExpr(OpEquals(), List(lhs, rhs)) } |
-      (arrayTerm <~ "!=") ~ arrayTerm ^^ { case lhs~rhs => NAryExpr(OpNotEquals(), List(lhs, rhs)) } |
+      (arrayTerm <~ "~=") ~ arrayTerm ^^ { case lhs~rhs => NAryExpr(OpNotEquals(), List(lhs, rhs)) } |
       (arrayTerm <~ "<") ~ arrayTerm ^^ { case lhs~rhs => NAryExpr(OpLessThan(), List(lhs, rhs)) } |
       (arrayTerm <~ "<=") ~ arrayTerm ^^ { case lhs~rhs => NAryExpr(OpLessEq(), List(lhs, rhs)) } |
       (arrayTerm <~ ">") ~ arrayTerm ^^ { case lhs~rhs => NAryExpr(OpGreaterThan(), List(lhs, rhs)) } |
       (arrayTerm <~ ">=") ~ arrayTerm ^^ { case lhs~rhs => NAryExpr(OpGreaterEq(), List(lhs, rhs)) } |
       arrayTerm
+  )
 
-  lazy val arrayTerm: PackratParser[Expr] =
+  lazy val arrayTerm: PackratParser[Expr] = positioned(
     (arrayTerm <~ "+") ~ arrayTerm2 ^^ { case lhs~rhs => NAryExpr(OpPlus(), List(lhs, rhs)) } |
       (arrayTerm <~ "-") ~ arrayTerm2 ^^ { case lhs~rhs => NAryExpr(OpMinus(), List(lhs, rhs)) } |
       arrayTerm2
+  )
 
-  lazy val arrayTerm2: PackratParser[Expr] =
+  lazy val arrayTerm2: PackratParser[Expr] = positioned(
     (arrayTerm2 <~ "*") ~ arrayUnaryTerm ^^ { case lhs~rhs => NAryExpr(OpTimes(), List(lhs, rhs)) } |
       (arrayTerm2 <~ "/") ~ arrayUnaryTerm ^^ { case lhs~rhs => NAryExpr(OpDivide(), List(lhs, rhs)) } |
+      (arrayTerm2<~ "\\") ~ arrayUnaryTerm ^^ { case lhs~rhs => NAryExpr(OpLeftDivide(),List(lhs,rhs))}|
       (arrayTerm2 <~ "^") ~ arrayUnaryTerm ^^ { case lhs~rhs => NAryExpr(OpPow(), List(lhs, rhs)) } |
       (arrayTerm2 <~ ".*") ~ arrayUnaryTerm ^^ { case lhs~rhs => NAryExpr(OpDotProd(), List(lhs, rhs)) } |
 //      (arrayTerm2 <~ "<o>") ~ arrayUnaryTerm ^^ { case lhs~rhs => NAryExpr(OpOuterProd(), List(lhs, rhs)) } |
 //      (arrayTerm2 <~ "**") ~ arrayUnaryTerm ^^ { case lhs~rhs => NAryExpr(OpMatProd(), List(lhs, rhs)) } |
 //      (arrayTerm2 <~ "*^") ~ arrayUnaryTerm ^^ { case lhs~rhs => NAryExpr(OpMatPow(), List(lhs, rhs)) } |
       arrayUnaryTerm
+  )
 
-  lazy val arrayUnaryTerm: PackratParser[Expr] =
+  lazy val arrayUnaryTerm: PackratParser[Expr] =  positioned(
 //    sumTerm | prodTerm | permuteTerm |
-      identifier ~ ("(" ~> repsep(arrayTerm, ",") <~ ")") ^^ { case name~params => FunctionCallExpr(name,params)} |
-      "(" ~> arrayExpr <~ ")" |
+//      identifier ~ ("(" ~> repsep(arrayTerm, ",") <~ ")") ^^ { case name~params => FunctionCallExpr(name,params)} |
+//      "(" ~> arrayExpr <~ ")" |
+    "+" ~> arrayFactor ^^ { case x => UnaryExpr(OpUnaryPlus(), x)} |
+      "-" ~> arrayFactor ^^ { case x => UnaryExpr(OpUnaryMinus(), x)} |
+    arrayRefExpr|
       arrayFactor
+  )
 
-  lazy val functionCallStatement: PackratParser[Statement] =
+  lazy val functionCallStatement: PackratParser[Statement] =positioned(
     identifier ~ ("(" ~> repsep(arrayTerm, ",") <~ ")") ^^ { case name~params => FunctionCallStatement(FunctionCallExpr(name,params))}
 
-
+  )
   //      "-" ~> arrayTerm ^^ { case x => UnaryExpr(OpNegate(), x) }
 
 //  lazy val sumTerm: PackratParser[Expr] =
@@ -339,11 +402,42 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
 
 
 
-  lazy val arrayFactor : PackratParser[Expr] =
+  lazy val arrayFactor : PackratParser[Expr] =  positioned(
+    sliceExpr|
     arrayRefExpr |
       simpleFactor |
-      cellExpr|
-  arrayExpr
+      cellUnitExpr|
+   arrayUnitExpr
+  )
+
+  lazy val arrayUnitExpr: PackratParser[Expr] =  positioned(
+    "["~opt(",")~"]" ^^{case s =>ArrayCompositionExpr()}| //empty
+      "["~>eleListExpr<~"]"^^{case arrayFactors =>ArrayCompositionExpr(arrayFactors)}|
+      //sliceExpr^^{case sliceExpr =>ArrayCompositionExpr(sliceToElelist(sliceExpr))}|  // row vector
+      "["~>repsep(eleListExpr,";")<~"]"^^{case arrayExprs =>ArrayCompositionExpr(
+        arrayExprs.map(each => ArrayCompositionExpr(each))
+      )}//|   // column vector
+  //    arrayConditionalExpr
+  )
+
+  lazy val cellUnitExpr: PackratParser[Expr] =   positioned(
+    "{"~opt(",")~"}" ^^{case s =>CellCompositionExpr()}| //empty
+      "{"~>eleListExpr<~"}"^^{case cellFactors =>CellCompositionExpr(cellFactors)}|
+      //sliceExpr^^{case sliceExpr =>ArrayCompositionExpr(sliceToElelist(sliceExpr))}|  // row vector
+      "{"~>repsep(eleListExpr,";")<~"}"^^{case cellExprs =>CellCompositionExpr(
+        cellExprs.map(each => CellCompositionExpr(each))
+      )}
+  )
+
+//  lazy val arrayExprFactor: PackratParser[Expr] =
+//  "["~opt(",")~"]" ^^{case s =>UnaryExpr(OpMakeFactor(), ArrayCompositionExpr())}| //empty
+//    "["~>eleListExpr<~"]"^^{case arrayFactors =>UnaryExpr(OpMakeFactor(),ArrayCompositionExpr(arrayFactors))}|
+//    //sliceExpr^^{case sliceExpr =>ArrayCompositionExpr(sliceToElelist(sliceExpr))}|  // row vector
+//    "["~>repsep(eleListExpr,";")<~"]"^^{case arrayExprs =>ArrayCompositionExpr(
+//      arrayExprs.map(each => UnaryExpr(OpMakeFactor(),ArrayCompositionExpr(each)))
+//    )}|   // column vector
+//    arrayConditionalExpr
+
 //  matrixExpr
 
 
@@ -354,73 +448,85 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
   /******************************************************************************************/
   // Array Reference
 
-  lazy val arrayRefExpr: PackratParser[ArrayRefExpr] =
+  lazy val arrayRefExpr: PackratParser[ArrayRefExpr] =  positioned(
     identifier ~ rep1("(" ~> sliceExpr <~ ")") ^^ { case id~slices => ArrayRefExpr(id, slices)}  |
       identifier ~ ("(" ~> repsep(sliceExpr,"," )<~ ")" )^^ { case id~slices => ArrayRefExpr(id, slices)}
+  )
 
 
-  lazy val sliceExpr: PackratParser[Expr] =
+  lazy val sliceExpr: PackratParser[Expr] =   positioned(
     simpleExpr ~ (":" ~> simpleExpr) ~ (":" ~> simpleExpr) ^^ { case lower~upper~stride => SliceExpr(lower, upper, stride)} |
       simpleExpr ~ (":" ~> simpleExpr) ^^ { case lower~upper => SliceExpr(lower, upper)} |
   ":" ^^ { x => SliceExpr()} |
       simpleExpr
+  )
 
   /******************************************************************************************/
   // Simple Expressions
-  lazy val simpleExprList: PackratParser[Expr] =
+  lazy val simpleExprList: PackratParser[Expr] =   positioned(
     repsep(simpleExpr, ",") ^^ { case exprs => exprs.size match {
       case 0 => throw new UnsupportedOperationException("ExpressionList of size 0")
       case 1 => exprs(0)
       case _ => ExpressionListExpr(exprs)
     } } |
       simpleExpr
+  )
 
-  lazy val simpleExpr: PackratParser[Expr] =
+  lazy val simpleExpr: PackratParser[Expr] =   positioned(
     simpleConditionalExpr
+  )
 
-  lazy val simpleConditionalExpr: PackratParser[Expr] =
+  lazy val simpleConditionalExpr: PackratParser[Expr] =  positioned(
     (simpleConditionalExpr <~ "&&") ~ simpleCompareExpr ^^ { case lhs~rhs => NAryExpr(OpLogicalAnd(), List(lhs, rhs)) } |
       (simpleConditionalExpr <~ "||") ~ simpleCompareExpr ^^ { case lhs~rhs => NAryExpr(OpLogicalOr(), List(lhs, rhs)) } |
       simpleCompareExpr
+  )
 
-  lazy val simpleCompareExpr: PackratParser[Expr] =
+  lazy val simpleCompareExpr: PackratParser[Expr] =  positioned(
     (simpleArithmeticExpr <~ "==") ~ simpleArithmeticExpr ^^ { case lhs~rhs => NAryExpr(OpEquals(), List(lhs, rhs)) } |
-      (simpleArithmeticExpr <~ "!=") ~ simpleArithmeticExpr ^^ { case lhs~rhs => NAryExpr(OpNotEquals(), List(lhs, rhs)) } |
+      (simpleArithmeticExpr <~ "~=") ~ simpleArithmeticExpr ^^ { case lhs~rhs => NAryExpr(OpNotEquals(), List(lhs, rhs)) } |
       (simpleArithmeticExpr <~ "<") ~ simpleArithmeticExpr ^^ { case lhs~rhs => NAryExpr(OpLessThan(), List(lhs, rhs)) } |
       (simpleArithmeticExpr <~ "<=") ~ simpleArithmeticExpr ^^ { case lhs~rhs => NAryExpr(OpLessEq(), List(lhs, rhs)) } |
       (simpleArithmeticExpr <~ ">") ~ simpleArithmeticExpr ^^ { case lhs~rhs => NAryExpr(OpGreaterThan(), List(lhs, rhs)) } |
       (simpleArithmeticExpr <~ ">=") ~ simpleArithmeticExpr ^^ { case lhs~rhs => NAryExpr(OpGreaterEq(), List(lhs, rhs)) } |
       simpleArithmeticExpr
+  )
 
-  lazy val simpleArithmeticExpr: PackratParser[Expr] =
+  lazy val simpleArithmeticExpr: PackratParser[Expr] =   positioned(
     (simpleArithmeticExpr <~ "+") ~ simpleTerm ^^ { case lhs~rhs => NAryExpr(OpPlus(), List(lhs, rhs)) } |
       (simpleArithmeticExpr <~ "-") ~ simpleTerm ^^ { case lhs~rhs => NAryExpr(OpMinus(), List(lhs, rhs)) } |
       simpleTerm
+  )
 
-  lazy val simpleTerm: PackratParser[Expr] =
+  lazy val simpleTerm: PackratParser[Expr] =   positioned(
     (simpleTerm <~ "*") ~ simpleUnaryTerm ^^ { case lhs~rhs => NAryExpr(OpTimes(), List(lhs, rhs)) } |
       (simpleTerm <~ "/") ~ simpleUnaryTerm ^^ { case lhs~rhs => NAryExpr(OpDivide(), List(lhs, rhs)) } |
+      (simpleTerm <~ "\\") ~ simpleUnaryTerm ^^ { case lhs~rhs => NAryExpr(OpLeftDivide(), List(lhs, rhs)) } |
       simpleUnaryTerm
+  )
 
-  lazy val simpleUnaryTerm: PackratParser[Expr] =
-    "++" ~> simpleFactor ^^ { case x => UnaryExpr(OpPrefixInc(), x)} |
-      "--" ~> simpleFactor ^^ { case x => UnaryExpr(OpPrefixDec(), x)} |
-      simpleFactor <~ "++" ^^ { case x => UnaryExpr(OpPostfixInc(), x)} |
-      simpleFactor <~ "--" ^^ { case x => UnaryExpr(OpPostfixDec(), x)} |
+  lazy val simpleUnaryTerm: PackratParser[Expr] =    positioned(
+    "+" ~> simpleFactor ^^ { case x => UnaryExpr(OpUnaryPlus(), x)} |
+      "-" ~> simpleFactor ^^ { case x => UnaryExpr(OpUnaryMinus(), x)} |
+//      simpleFactor <~ "++" ^^ { case x => UnaryExpr(OpPostfixInc(), x)} |
+//      simpleFactor <~ "--" ^^ { case x => UnaryExpr(OpPostfixDec(), x)} |
       "(" ~> simpleExpr <~ ")" |
       simpleFactor
+  )
 
-  lazy val simpleFactor : PackratParser[Expr] =
+  lazy val simpleFactor : PackratParser[Expr] =  positioned(
     const_literal |
       identifier
+  )
 
   /******************************************************************************************/
-  lazy val const_literal: PackratParser[ConstLiteralExpr] =
+  lazy val const_literal: PackratParser[ConstLiteralExpr] =   positioned(
     stringLiteral ^^ {x => ConstLiteralExpr(x)} |
       floatingPointNumber ^^ {x => toFloat(x)} |
       decimalNumber ^^ {x => toFloat(x)} |
       wholeNumber ^^ {x => ConstLiteralExpr(x.toInt)} |
       booleanLiteral
+  )
   override def stringLiteral: Parser[String] =
   ("\'"+"""([^"\p{Cntrl}\\]|\\[\\'"bfnrt]|\\u[a-fA-F0-9]{4})*"""+"\'").r
 
@@ -431,31 +537,51 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
       case e: NumberFormatException => ConstLiteralExpr(x.toFloat)
     }
   }
+//  def toFactor(x:Expr): Expr ={
+//
+//  }
+
+//  def sliceToElelist(sliceExpr:SliceExpr) :List[Expr]={
+//    val list = List()
+//    var lower = sliceExpr.lowerBound.asInstanceOf[ConstLiteralExpr].value.asInstanceOf[Int]
+//    val upper = sliceExpr.upperBound.asInstanceOf[ConstLiteralExpr].value.asInstanceOf[Int]
+//    val stride = sliceExpr.stride.asInstanceOf[ConstLiteralExpr].value.asInstanceOf[Int]
+//    //just int
+//    while(lower != upper){
+//      list.:+( ConstLiteralExpr(lower.toString.toInt))
+//      lower = lower + stride
+//    }
+//    list
+//
+//
+//  }
 
   //[-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?
 
-  lazy val booleanLiteral: PackratParser[ConstLiteralExpr] =
+  lazy val booleanLiteral: PackratParser[ConstLiteralExpr] =  positioned(
     ("true" | "false") ^^ {x => ConstLiteralExpr(x.toBoolean)}
+  )
 
 //  lazy val integerList: PackratParser[List[Int]] =  "[" ~> repsep(integer, ",") <~ "]"
   lazy val integer: PackratParser[Int] = wholeNumber ^^ {x => x.toInt}
 
-  lazy val identifier: PackratParser[IdExpr] = identifierName ^^ {x => IdExpr(x)}
+  lazy val identifier: PackratParser[IdExpr] = positioned( identifierName ^^ {x => IdExpr(x)}   )
 
-  lazy val identifierName: PackratParser[IdName] = "[a-zA-Z][a-zA-Z0-9_]*".r ^^ {x => IdName(x)}
+  lazy val identifierName: PackratParser[IdName] =  positioned("[a-zA-Z][a-zA-Z0-9_]*".r ^^ {x => IdName(x)})
   //lazy val identifierName: PackratParser[IdName] = not(keywords)~ident ^^ { case x~name => IdName(name)}
 
   //override val whiteSpace = """(\s|(//.*\n))+""".r
 
   //Ignores C-style comments
   //override val whiteSpace = """(\s|//.*|(?m)/\*(\*(?!/)|[^*])*\*/)+""".r
-  override val whiteSpace = """(\s|%.*|%\{(\n|\r)+\}%)+""".r
+  override val whiteSpace =  """(\s|%.*|%\{(\n|\r)+\}%)+""".r
 
 
   /******************************************************************************************/
-  lazy val cellExpr: PackratParser[Expr] =
-  "{"~opt(",")~"}" ^^{case s =>ArrayCompositionExpr()}|
-      "{"~>repsep(arrayFactor,",")<~"}"^^{case arrayFactors =>CellCompositionExpr(arrayFactors)} //|
+  lazy val cellExpr: PackratParser[Expr] =  cellUnitExpr|cellBinaryExpr
+  lazy val cellBinaryExpr: PackratParser[Expr] = arrayBinaryExpr
+//  "{"~opt(",")~"}" ^^{case s =>ArrayCompositionExpr()}|
+//      "{"~>repsep(arrayFactor,",")<~"}"^^{case arrayFactors =>CellCompositionExpr(arrayFactors)} //|
 //      "{"~>arrayList<~"}"
 //    "{"~opt(separator)~"}" ^^{case s =>ArrayCompositionExpr()}|
 //      "{"~>repsep(arrayFactor,separator)<~"}"^^{case arrayFactors =>CellCompositionExpr(arrayFactors)} |
@@ -496,7 +622,10 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
   def parseSource(text: String) = {
     declMap.clear()
     parseAll(source, text)  match {
-      case Success (statement, _) => Left(declMap.toMap, statement)
+      case Success (statement, _) =>{ Left(declMap.toMap, statement)
+//        val pos = statement.pos
+//        print("pos = " +pos)
+      }
       case f => Right(f.toString)
     }
   }
@@ -508,4 +637,5 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
       case f => Right(f.toString)
     }
   }
+
 }

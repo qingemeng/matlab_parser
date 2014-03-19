@@ -3,6 +3,7 @@ package model.expression
 
 import   model._
 import   model.expression._
+import refactoring.matlab.processing.TypeInferenceProcessor
 
 object FunctionCallExpr {
   def apply(funcNameExpr: Expr, params: List[Expr]) = new FunctionCallExpr(funcNameExpr, params)
@@ -59,10 +60,24 @@ class FunctionCallExpr(private var _funcNameExpr: Expr, private var _params: Lis
     str.toString
   }
   //TODO:gm,rewrite
-//  override def typePretty(level: Int = 0, hash: Boolean = false): String = {
-//    val str = new StringBuilder
-//    str.append(indentStr(level))
-//    str.append("\n")
-//    str.toString
-//  }
+  override def semanticAnalyse(level: Int = 0, hash: Boolean = false): String = {
+    val str = new StringBuilder
+    str.append(indentStr(level))
+
+    str.append("FunctionCallExpr: ")
+//    str.append(pretty(hash))
+    str.append("\n")
+
+    str.append(indentStr(level))
+    str.append("->FunctionName:\n")
+    str.append(funcNameExpr.semanticAnalyse(level+2, hash))
+
+    str.append(indentStr(level))
+    str.append("->Parameters:\n")
+    params.foreach(t => {
+      str.append(t.semanticAnalyse(level+2))
+    })
+
+    str.toString
+  }
 }

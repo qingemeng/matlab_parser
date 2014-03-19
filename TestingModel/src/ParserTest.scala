@@ -144,6 +144,8 @@ class ParserTest extends FlatSpec with Matchers {
     parsing_script(content)
   }
 
+  // operators
+
   "Array Op parsing"should "parse simple Array op as + -" in {
 
     val test  ="/test_arrOP_plus_minus.m"
@@ -167,6 +169,27 @@ class ParserTest extends FlatSpec with Matchers {
     val content = scala.io.Source.fromFile(filename).mkString
     parsing_script(content)
   }
+  "Array unary Op parsing"should "parse +A -A" in {
+
+    val test  ="/test_matOp_matTimes.m"
+    val filename = testPath + test
+    val content = scala.io.Source.fromFile(filename).mkString
+    parsing_script(content)
+  }
+
+  //unary ops
+
+
+  "simple stencil parsing"should "parse simple stencil code" in {
+
+    val test  ="/test_paralleldemo_gpu_stencil.m"
+    val filename = testPath + test
+    val content = scala.io.Source.fromFile(filename).mkString
+    parsing_script(content)
+  }
+
+
+
 
 
 

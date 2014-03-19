@@ -71,7 +71,8 @@ class AssignmentStatement(
   
   override def pretty(): String = {
     //(if (props[DomainsProperty].hasDomains) ">" else " ") +
-    lhsExpr.pretty() + assignOp.pretty() + rhsExpr.pretty()
+     lhsExpr.pretty() + assignOp.pretty() + rhsExpr.pretty()
+
   }
   
   override def treePretty(level: Int = 0): String = {
@@ -97,31 +98,32 @@ class AssignmentStatement(
     
     str.toString
   }
-//  override def typePretty(level: Int = 0): String = {
-//    val str = new StringBuilder
-//    str.append(indentStr(level))
-//    str.append("AssignmentStatement(")
-//    str.append(assignOp.toString())
-//    str.append("): ")
+  override def semanticAnalyse(level: Int = 0): String = {
+    val str = new StringBuilder
+    str.append(indentStr(level))
+    str.append("AssignmentStatement(")
+    str.append(assignOp.toString())
+    str.append("): ")
+
 //    str.append(pretty())
-//    str.append("\n")
-//
-//    str.append(indentStr(level))
-//    str.append("->LHS: ")
+    str.append("\n")
+
+    str.append(indentStr(level))
+    str.append("->LHS: ")
 //    str.append(lhsExpr.pretty())
+    str.append("\n")
+    str.append(lhsExpr.semanticAnalyse(level+2))
+
+    str.append(indentStr(level))
+    str.append("->RHS: ")
+//    str.append(TypeInferenceProcessor.typeInference(this).toList.mkString("\n"))
 //    str.append("\n")
-//    str.append(lhsExpr.treePretty(level+2))
-//
-//    str.append(indentStr(level))
-//    str.append("->RHS: ")
-////    str.append(TypeInferenceProcessor.typeInference(this).toList.mkString("\n"))
-////    str.append("\n")
 //    str.append(rhsExpr.pretty())
-//    str.append("\n")
-////    str.append(rhsExpr.typePretty(level+2))
-//
-//    str.toString
-//  }
+    str.append("\n")
+    str.append(rhsExpr.semanticAnalyse(level+2))
+
+    str.toString
+  }
 }
 
 private class FindReadRefVisitor extends ExpressionVisitor {

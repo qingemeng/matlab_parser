@@ -2,16 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbd1eb0d-98d0-4002-b4ee-e896ff357094" name="Default" comment="additional for statement builder and fix&quot;{&quot; found err">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/core/util/ErrConstants.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/core/util/ErrMsgs.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/model/statement/GlobalDeclarationStatement.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_err_noInitVar.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_for_simple.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_global.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_logicalOpArray.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m_files/test/test_zeros.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/.classpath" afterPath="$PROJECT_DIR$/core/.classpath" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/expression/AllocateArrayExpr.scala" afterPath="$PROJECT_DIR$/core/src/model/expression/AllocateArrayExpr.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/expression/ArrayCompositionExpr.scala" afterPath="$PROJECT_DIR$/core/src/model/expression/ArrayCompositionExpr.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/expression/ArrayEndExpr.scala" afterPath="$PROJECT_DIR$/core/src/model/expression/ArrayEndExpr.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/core/processing/ArrayHelper.scala" afterPath="$PROJECT_DIR$/core/src/core/processing/ArrayHelper.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/ArrayInfo.scala" afterPath="$PROJECT_DIR$/core/src/model/ArrayInfo.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/expression/ArrayRefExpr.scala" afterPath="$PROJECT_DIR$/core/src/model/expression/ArrayRefExpr.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/statement/AssignmentStatement.scala" afterPath="$PROJECT_DIR$/core/src/model/statement/AssignmentStatement.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/core/BaseDeclUseGroup.scala" afterPath="$PROJECT_DIR$/core/src/core/BaseDeclUseGroup.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/expression/CellCompositionExpr.scala" afterPath="$PROJECT_DIR$/core/src/model/expression/CellCompositionExpr.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/refactoring/matlab/processing/CodeGenerator.scala" afterPath="$PROJECT_DIR$/src/refactoring/matlab/processing/CodeGenerator.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/expression/ConditionalExpr.scala" afterPath="$PROJECT_DIR$/core/src/model/expression/ConditionalExpr.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/expression/ConstLiteralExpr.scala" afterPath="$PROJECT_DIR$/core/src/model/expression/ConstLiteralExpr.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/expression/DeallocateArrayExpr.scala" afterPath="$PROJECT_DIR$/core/src/model/expression/DeallocateArrayExpr.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/core/DeclUseGroup.scala" afterPath="$PROJECT_DIR$/core/src/core/DeclUseGroup.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/core/DeclUseMap.scala" afterPath="$PROJECT_DIR$/core/src/core/DeclUseMap.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/Declarator.scala" afterPath="$PROJECT_DIR$/core/src/model/Declarator.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/expression/Expr.scala" afterPath="$PROJECT_DIR$/core/src/model/expression/Expr.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/expression/ExpressionListExpr.scala" afterPath="$PROJECT_DIR$/core/src/model/expression/ExpressionListExpr.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/expression/FieldRefExpr.scala" afterPath="$PROJECT_DIR$/core/src/model/expression/FieldRefExpr.scala" />
@@ -22,9 +36,13 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/refactoring/matlab/model/FunctionDefStatement.scala" afterPath="$PROJECT_DIR$/src/refactoring/matlab/model/FunctionDefStatement.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/expression/IdExpr.scala" afterPath="$PROJECT_DIR$/core/src/model/expression/IdExpr.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/IdName.scala" afterPath="$PROJECT_DIR$/core/src/model/IdName.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/core/processing/LoopSplittingPass.scala" afterPath="$PROJECT_DIR$/core/src/core/processing/LoopSplittingPass.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/matlabParser/Main.scala" afterPath="$PROJECT_DIR$/src/matlabParser/Main.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" afterPath="$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/expression/MatrixCompositionExpr.scala" afterPath="$PROJECT_DIR$/core/src/model/expression/MatrixCompositionExpr.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/expression/NAryExpr.scala" afterPath="$PROJECT_DIR$/core/src/model/expression/NAryExpr.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/refactoring/matlab/model/Operators.scala" afterPath="$PROJECT_DIR$/src/refactoring/matlab/model/Operators.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestingModel/src/ParserTest.scala" afterPath="$PROJECT_DIR$/TestingModel/src/ParserTest.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" afterPath="$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/expression/SliceExpr.scala" afterPath="$PROJECT_DIR$/core/src/model/expression/SliceExpr.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/statement/Statement.scala" afterPath="$PROJECT_DIR$/core/src/model/statement/Statement.scala" />
@@ -34,10 +52,11 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/refactoring/matlab/processing/TypeInferenceProcessor.scala" afterPath="$PROJECT_DIR$/src/refactoring/matlab/processing/TypeInferenceProcessor.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/Types.scala" afterPath="$PROJECT_DIR$/core/src/model/Types.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/model/expression/UnaryExpr.scala" afterPath="$PROJECT_DIR$/core/src/model/expression/UnaryExpr.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m_files/test/test_arrayOp_arrTimes.m" afterPath="$PROJECT_DIR$/src/m_files/test/test_arrayOp_arrTimes.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m_files/test/test_scalar.m" afterPath="$PROJECT_DIR$/src/m_files/test/test_scalar.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m_files/test/test_vector_col.m" afterPath="$PROJECT_DIR$/src/m_files/test/test_vector_col.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m_files/test/test_vector_row.m" afterPath="$PROJECT_DIR$/src/m_files/test/test_vector_row.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/core.eml" afterPath="$PROJECT_DIR$/core/core.eml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m_files/test/test_.m" afterPath="$PROJECT_DIR$/src/m_files/test/test_.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m_files/test/test_arrOp_plus_minus.m" afterPath="$PROJECT_DIR$/src/m_files/test/test_arrOp_plus_minus.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m_files/test/test_assignment.m" afterPath="$PROJECT_DIR$/src/m_files/test/test_assignment.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m_files/test/test_paralleldemo_gpu_stencil.m" afterPath="$PROJECT_DIR$/src/m_files/test/test_paralleldemo_gpu_stencil.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="matlab_to.iws" />
@@ -45,52 +64,52 @@
     <file path="/Parser.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388387692777" ignored="false" />
     <file path="$PROJECT_DIR$/src/m_files/package.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388047866487" ignored="false" />
     <file path="/MatlabILParser.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388390947531" ignored="false" />
-    <file path="/a.dummy" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394374542231" ignored="false" />
-    <file path="/AllocateArrayExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392878570844" ignored="false" />
+    <file path="/a.dummy" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395212300098" ignored="false" />
+    <file path="/AllocateArrayExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394439109779" ignored="false" />
     <file path="/TypeUtil.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388073857885" ignored="false" />
     <file path="$USER_HOME$/Downloads/scala-2.10.3.final/examples/parsing/lambda/.idea/workspace.xml" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388110028947" ignored="false" />
     <file path="/Algebra.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388073660000" ignored="false" />
-    <file path="/BaseDeclUseGroup.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388074200953" ignored="false" />
-    <file path="/Types.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394376738162" ignored="false" />
-    <file path="/ArrayHelper.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388074508090" ignored="false" />
+    <file path="/BaseDeclUseGroup.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395113674167" ignored="false" />
+    <file path="/Types.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394460300448" ignored="false" />
+    <file path="/ArrayHelper.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395113168969" ignored="false" />
     <file path="/Complex.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388074820579" ignored="false" />
     <file path="/test.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388391348895" ignored="false" />
     <file path="$PROJECT_DIR$/../test2/src/test.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388109407382" ignored="false" />
     <file path="$PROJECT_DIR$/../test2/.idea/workspace.xml" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388109430349" ignored="false" />
     <file path="$USER_HOME$/Downloads/scala-2.10.3.final/examples/parsing/lambda/Main.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388109465729" ignored="false" />
-    <file path="/Main.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392886365373" ignored="false" />
+    <file path="/Main.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395233860619" ignored="false" />
     <file path="/ConstLiteralExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392867816655" ignored="false" />
     <file path="/NumericValue.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388110404595" ignored="false" />
     <file path="/*.regexp" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388288288007" ignored="false" />
     <file path="/Activator.java" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388197671178" ignored="false" />
     <file path="/DependencyGraph.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394366424531" ignored="false" />
     <file path="/ExprHelper.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388198351920" ignored="false" />
-    <file path="/SliceExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388198387869" ignored="false" />
-    <file path="/fragment.java" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394424201801" ignored="false" />
+    <file path="/SliceExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394438992213" ignored="false" />
+    <file path="/fragment.java" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394436810896" ignored="false" />
     <file path="/test.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388287953919" ignored="false" />
     <file path="/mParser.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388412985439" ignored="false" />
-    <file path="/MatlabParser.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1393734477439" ignored="false" />
-    <file path="/Dummy.txt" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394207238496" ignored="false" />
+    <file path="/MatlabParser.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395232487447" ignored="false" />
+    <file path="/Dummy.txt" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395191241312" ignored="false" />
     <file path="/VectorExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388474263098" ignored="false" />
     <file path="/ExpressionProcessor.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388475257710" ignored="false" />
     <file path="/ExpressionVisitor.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388474610881" ignored="false" />
     <file path="/plus.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388645607135" ignored="false" />
     <file path="/plus.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1388646040982" ignored="false" />
     <file path="/ForStatement2.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1389016904571" ignored="false" />
-    <file path="/FunctionDef.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394368646096" ignored="false" />
+    <file path="/FunctionDef.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394440209693" ignored="false" />
     <file path="/test_assignment.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392870038585" ignored="false" />
-    <file path="/StatementBlock.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394423490951" ignored="false" />
+    <file path="/StatementBlock.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395233012548" ignored="false" />
     <file path="/LoopHelper.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1389006574045" ignored="false" />
-    <file path="/ForStatement.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394368521952" ignored="false" />
+    <file path="/ForStatement.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394440338887" ignored="false" />
     <file path="/test_elseif.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1389821025191" ignored="false" />
     <file path="/test_while.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1389041603817" ignored="false" />
-    <file path="/ParserTest.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392321738869" ignored="false" />
+    <file path="/ParserTest.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395078631026" ignored="false" />
     <file path="/testUtil.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1389498494621" ignored="false" />
     <file path="/TestUtil.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1389498208485" ignored="false" />
     <file path="/SideEffectPass.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1389799142764" ignored="false" />
     <file path="/ExpressionStatementProcessor.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1389799224914" ignored="false" />
-    <file path="/CodeGenerator.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394371000770" ignored="false" />
-    <file path="/CellCompositionExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1389801497250" ignored="false" />
+    <file path="/CodeGenerator.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394437349567" ignored="false" />
+    <file path="/CellCompositionExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395232342757" ignored="false" />
     <file path="/MatrixCompositionExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1389801580513" ignored="false" />
     <file path="/IfStatement.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1393733443788" ignored="false" />
     <file path="/ElseifStatementBlock.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1389812995216" ignored="false" />
@@ -100,14 +119,14 @@
     <file path="/test_vestor_col.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392301889284" ignored="false" />
     <file path="/test_simpleUnaryTerm.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392317154220" ignored="false" />
     <file path="/test_NAryOP.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392305663384" ignored="false" />
-    <file path="/Operators.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392307116720" ignored="false" />
+    <file path="/Operators.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395071455102" ignored="false" />
     <file path="/arrOp_plus.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392319753897" ignored="false" />
     <file path="/test_arrayOp_arrTimes.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392320148615" ignored="false" />
     <file path="/t_matrixCreation.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392323029100" ignored="false" />
-    <file path="/Statement.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394375028890" ignored="false" />
-    <file path="/AssignmentStatement.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394373278713" ignored="false" />
-    <file path="/Expr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394375194658" ignored="false" />
-    <file path="/test_.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392878368147" ignored="false" />
+    <file path="/Statement.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395229580949" ignored="false" />
+    <file path="/AssignmentStatement.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395231316023" ignored="false" />
+    <file path="/Expr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395232381485" ignored="false" />
+    <file path="/test_.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395193670150" ignored="false" />
     <file path="/CPPCodeGenerator.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392882412116" ignored="false" />
     <file path="$PROJECT_DIR$/codegen/src/plugin/Activator.java" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392882492059" ignored="false" />
     <file path="$PROJECT_DIR$/codegen/src/processing/TransposeLhstoRhsPass.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392882492077" ignored="false" />
@@ -118,9 +137,9 @@
     <file path="$PROJECT_DIR$/codegen/src/model/CodeGenerator.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392882492142" ignored="false" />
     <file path="$PROJECT_DIR$/codegen/src/model/ExtendedCodeGenerator.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392882492142" ignored="false" />
     <file path="$PROJECT_DIR$/codegen/src/model/RequiredInclude.java" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392882492142" ignored="false" />
-    <file path="/SimpleTypeInferencer.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394425722689" ignored="false" />
+    <file path="/SimpleTypeInferencer.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395233905945" ignored="false" />
     <file path="/TypeInferencProcessor.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392888531090" ignored="false" />
-    <file path="/TypeInferenceProcessor.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394375699031" ignored="false" />
+    <file path="/TypeInferenceProcessor.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394437237451" ignored="false" />
     <file path="/FunctionCallStatement.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1392909427855" ignored="false" />
     <file path="$PROJECT_DIR$/../../courses/csc302/lab/ass1/.idea/workspace.xml" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1393405727961" ignored="false" />
     <file path="$PROJECT_DIR$/../../courses/csc302/lab/ass1/.idea/misc.xml" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1393137404980" ignored="false" />
@@ -171,10 +190,38 @@
     <file path="$PROJECT_DIR$/../javatest/src/jp/co/wap/exam/Interval.java" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1393919091589" ignored="false" />
     <file path="$PROJECT_DIR$/../javatest/src/jp/co/wap/exam/lib/Interval.java" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1393919196966" ignored="false" />
     <file path="$PROJECT_DIR$/../javatest/src/jp/co/wap/exam/lib/ImmutableList.java" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1393921349135" ignored="false" />
-    <file path="/IdName.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394369293394" ignored="false" />
-    <file path="/IdExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394373939806" ignored="false" />
-    <file path="$PROJECT_DIR$/core/src/model/expression/ExprHelper.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394374062632" ignored="false" />
+    <file path="/IdName.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395232694969" ignored="false" />
+    <file path="/IdExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394438925817" ignored="false" />
     <file path="/DependencyTypeInferencer.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394375910183" ignored="false" />
+    <file path="/ArrayCompositionExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395232301445" ignored="false" />
+    <file path="/ExpressionListExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394438781597" ignored="false" />
+    <file path="/DeallocateArrayExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394438794403" ignored="false" />
+    <file path="/FieldRefExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394438854060" ignored="false" />
+    <file path="/FunctionCallExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394438897075" ignored="false" />
+    <file path="/NAryExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394438945253" ignored="false" />
+    <file path="/TupleExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394439038915" ignored="false" />
+    <file path="/UnaryExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394439098830" ignored="false" />
+    <file path="/ArrayEndExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394439125869" ignored="false" />
+    <file path="/ArrayRefExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395232365614" ignored="false" />
+    <file path="/ConditionalExpr.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394439168272" ignored="false" />
+    <file path="/ArrayInfo.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395201533390" ignored="false" />
+    <file path="/test_for_simple.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394466989886" ignored="false" />
+    <file path="/test_err_noInitVar.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1394676181111" ignored="false" />
+    <file path="/test_zeros.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395042173012" ignored="false" />
+    <file path="/test_global.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395043795575" ignored="false" />
+    <file path="/GlobalDeclarationStatement.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395044654779" ignored="false" />
+    <file path="/test_arrOp_plus_minus.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395066273166" ignored="false" />
+    <file path="/test_logicalOpArray.m" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395071493971" ignored="false" />
+    <file path="/LoopSplittingPass.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395111979069" ignored="false" />
+    <file path="/DeclUseMap.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395112244480" ignored="false" />
+    <file path="/DeclUseGroup.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395113538036" ignored="false" />
+    <file path="/SemanticCheck.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395200728475" ignored="false" />
+    <file path="/ErrMsgConstants.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395203155417" ignored="false" />
+    <file path="/ErrMsgs.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395226149451" ignored="false" />
+    <file path="/Contants.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395206454735" ignored="false" />
+    <file path="/Constants.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395226047285" ignored="false" />
+    <file path="/ErrConstants.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395215294485" ignored="false" />
+    <file path="/Declarator.scala" changelist="bbd1eb0d-98d0-4002-b4ee-e896ff357094" time="1395232083235" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -279,7 +326,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" line="80" class="matlabParser.MatlabParser$" package="matlabParser">
+      <breakpoint url="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" line="101" class="matlabParser.MatlabParser$" package="matlabParser">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -294,7 +341,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" line="505" class="matlabParser.MatlabParser$" package="matlabParser">
+      <breakpoint url="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" line="634" class="matlabParser.MatlabParser$" package="matlabParser">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -339,7 +386,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/core/src/model/Types.scala" line="54" class="model.IntType" package="model">
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/Types.scala" line="56" class="model.IntType" package="model">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -414,7 +461,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/core/src/model/statement/AssignmentStatement.scala" line="126" class="model.statement.FindReadRefVisitor" package="model.statement">
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/statement/AssignmentStatement.scala" line="128" class="model.statement.FindReadRefVisitor" package="model.statement">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -429,7 +476,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/core/src/model/expression/Expr.scala" line="39" class="model.expression.Expr" package="model.expression">
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/expression/Expr.scala" line="46" class="model.expression.Expr" package="model.expression">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -444,7 +491,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/core/src/model/expression/Expr.scala" line="35" class="model.expression.Expr" package="model.expression">
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/expression/Expr.scala" line="42" class="model.expression.Expr" package="model.expression">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -489,7 +536,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/core/src/model/Types.scala" line="40" class="model.NumericType" package="model">
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/Types.scala" line="42" class="model.NumericType" package="model">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -504,7 +551,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/core/src/model/Types.scala" line="43" class="model.IntegerType" package="model">
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/Types.scala" line="45" class="model.IntegerType" package="model">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -519,7 +566,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/core/src/model/Types.scala" line="61" class="model.FloatingType" package="model">
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/Types.scala" line="63" class="model.FloatingType" package="model">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -624,7 +671,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/TypeInferenceProcessor.scala" line="19" class="refactoring.matlab.processing.TypeInferenceProcessor$" package="refactoring.matlab.processing">
+      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/TypeInferenceProcessor.scala" line="19" class="refactoring.matlab.processing.TypeInferenceProcessor$$&lt;anonymous&gt;" package="refactoring.matlab.processing">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -640,21 +687,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
       <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/TypeInferenceProcessor.scala" line="34" class="refactoring.matlab.processing.TypeInferenceProcessor" package="refactoring.matlab.processing">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" line="152" class="refactoring.matlab.processing.TypeStatementVisitor" package="refactoring.matlab.processing">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -744,7 +776,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/core/src/model/statement/AssignmentStatement.scala" line="116" class="model.statement.AssignmentStatement" package="model.statement">
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/statement/AssignmentStatement.scala" line="118" class="model.statement.AssignmentStatement" package="model.statement">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -804,22 +836,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/core/src/model/FunctionDef.scala" line="66" class="model.FunctionDef" package="model">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/core/src/model/FunctionDef.scala" line="47" class="model.FunctionDef" package="model">
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/FunctionDef.scala" line="67" class="model.FunctionDef" package="model">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -849,7 +866,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" line="167" class="refactoring.matlab.processing.TypeStatementVisitor" package="refactoring.matlab.processing">
+      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" line="178" class="refactoring.matlab.processing.Typer" package="refactoring.matlab.processing">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -879,7 +896,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" line="175" class="refactoring.matlab.processing.TypeStatementVisitor" package="refactoring.matlab.processing">
+      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" line="186" class="refactoring.matlab.processing.Typer" package="refactoring.matlab.processing">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -894,7 +911,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" line="125" class="refactoring.matlab.processing.Typer" package="refactoring.matlab.processing">
+      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" line="138" class="refactoring.matlab.processing.Typer" package="refactoring.matlab.processing">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -909,7 +926,412 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" line="133" class="refactoring.matlab.processing.Typer" package="refactoring.matlab.processing">
+      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" line="147" class="refactoring.matlab.processing.Typer" package="refactoring.matlab.processing">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" line="176" class="refactoring.matlab.processing.Typer" package="refactoring.matlab.processing">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/Types.scala" line="13" class="model.ArrayType" package="model">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/statement/StatementBlock.scala" line="150" class="model.statement.StatementBlock" package="model.statement">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/statement/StatementBlock.scala" line="148" class="model.statement.StatementBlock" package="model.statement">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" line="34" class="refactoring.matlab.processing.SimpleTypeInferencer" package="refactoring.matlab.processing">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/statement/StatementBlock.scala" line="158" class="model.statement.StatementBlock" package="model.statement">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/statement/ForStatement.scala" line="174" class="model.statement.ForStatement" package="model.statement">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" line="54" class="refactoring.matlab.processing.Typer" package="refactoring.matlab.processing">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" line="51" class="refactoring.matlab.processing.Typer" package="refactoring.matlab.processing">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" line="46" class="refactoring.matlab.processing.Typer" package="refactoring.matlab.processing">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/StatementProcessor.scala" line="13" class="model.StatementProcessor$$&lt;anonymous&gt;" package="model">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/ExpressionProcessor.scala" line="46" class="model.ExpressionProcessor" package="model">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/ExpressionProcessor.scala" line="193" class="model.ExpressionProcessor" package="model">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/ExpressionProcessor.scala" line="201" class="model.ExpressionProcessor" package="model">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/ExpressionProcessor.scala" line="194" class="model.ExpressionProcessor" package="model">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" line="165" class="refactoring.matlab.processing.Typer" package="refactoring.matlab.processing">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" line="166" class="refactoring.matlab.processing.Typer" package="refactoring.matlab.processing">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" line="298" class="refactoring.matlab.processing.TypeExprVisitor" package="refactoring.matlab.processing">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" line="299" class="refactoring.matlab.processing.TypeExprVisitor" package="refactoring.matlab.processing">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" line="292" class="refactoring.matlab.processing.TypeExprVisitor" package="refactoring.matlab.processing">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/processing/StencilIdentifier.scala" line="117" class="refactoring.matlab.processing.StencilIdentifierVisitor$&lt;anonymous&gt;" package="refactoring.matlab.processing">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/statement/AssignmentStatement.scala" line="11" class="model.statement.AssignmentStatement$" package="model.statement">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/refactoring/matlab/model/Operators.scala" line="34" class="refactoring.matlab.model.OpMakeFactor" package="refactoring.matlab.model">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/statement/StatementBlock.scala" line="155" class="model.statement.StatementBlock" package="model.statement">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/core/src/core/util/ErrMsgs.scala" line="13" class="core.util.ErrMsgs$" package="core.util">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" line="615" class="matlabParser.MatlabParser$" package="matlabParser">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/core/src/model/expression/Expr.scala" line="2" class="Expr.scala" package="">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -939,41 +1361,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AssignmentStatement.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/model/statement/AssignmentStatement.scala">
+      <file leaf-file-name="Main.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/matlabParser/Main.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#26#42#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SimpleTypeInferencer.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="122" column="12" selection-start="2968" selection-end="2972" vertical-scroll-proportion="-6.52">
-              <folding>
-                <element signature="e#41#57#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NAryExpr.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/model/expression/NAryExpr.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0">
+            <state line="83" column="12" selection-start="2352" selection-end="2352" vertical-scroll-proportion="-11.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_assignment.m" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/m_files/test/test_assignment.m">
+      <file leaf-file-name="test_for.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/m_files/test/test_for.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="45" selection-start="47" selection-end="47" vertical-scroll-proportion="0.26978418">
+            <state line="14" column="10" selection-start="133" selection-end="133" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AssignmentStatement.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/model/statement/AssignmentStatement.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="6" selection-start="656" selection-end="656" vertical-scroll-proportion="-1.2">
               <folding />
             </state>
           </provider>
@@ -982,17 +1391,30 @@
       <file leaf-file-name="StatementBlock.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/model/statement/StatementBlock.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="150" column="0" selection-start="3613" selection-end="3613" vertical-scroll-proportion="0.0">
+            <state line="115" column="55" selection-start="2896" selection-end="2896" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StatementProcessor.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/model/StatementProcessor.scala">
+      <file leaf-file-name="MatlabParser.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="153" column="0" selection-start="4197" selection-end="4197" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="322" column="10" selection-start="11166" selection-end="11166" vertical-scroll-proportion="-4.8">
+              <folding>
+                <element signature="e#183#215#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SimpleTypeInferencer.scala" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="60" column="39" selection-start="1465" selection-end="1465" vertical-scroll-proportion="0.5151515">
+              <folding>
+                <element signature="e#41#57#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1016,22 +1438,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/core/src/model/expression/ArrayRefExpr.scala" />
-        <option value="$PROJECT_DIR$/core/src/model/expression/ExpressionListExpr.scala" />
-        <option value="$PROJECT_DIR$/core/src/model/expression/FieldRefExpr.scala" />
-        <option value="$PROJECT_DIR$/core/src/model/expression/FunctionCallExpr.scala" />
-        <option value="$PROJECT_DIR$/core/src/model/expression/SliceExpr.scala" />
-        <option value="$PROJECT_DIR$/core/src/model/expression/TupleExpr.scala" />
-        <option value="$PROJECT_DIR$/core/src/model/expression/TypeIdExpr.scala" />
-        <option value="$PROJECT_DIR$/core/src/model/expression/UnaryExpr.scala" />
-        <option value="$PROJECT_DIR$/core/src/model/statement/AssignmentStatement.scala" />
-        <option value="$PROJECT_DIR$/src/refactoring/matlab/model/FunctionDefStatement.scala" />
-        <option value="$PROJECT_DIR$/core/src/model/expression/NAryExpr.scala" />
-        <option value="$PROJECT_DIR$/core/src/model/statement/FunctionCallStatement.scala" />
-        <option value="$PROJECT_DIR$/core/src/model/expression/CellCompositionExpr.scala" />
-        <option value="$PROJECT_DIR$/core/src/model/expression/IdExpr.scala" />
-        <option value="$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" />
         <option value="$PROJECT_DIR$/src/m_files/test/test_assignment.m" />
+        <option value="$PROJECT_DIR$/core/src/core/util/Constants.scala" />
+        <option value="$PROJECT_DIR$/core/src/core/util/ErrConstants.scala" />
+        <option value="$PROJECT_DIR$/core/src/core/util/ErrMsgs.scala" />
+        <option value="$PROJECT_DIR$/core/src/model/statement/Statement.scala" />
+        <option value="$PROJECT_DIR$/core/src/model/Declarator.scala" />
+        <option value="$PROJECT_DIR$/core/src/model/expression/ArrayRefExpr.scala" />
+        <option value="$PROJECT_DIR$/core/src/model/expression/Expr.scala" />
+        <option value="$PROJECT_DIR$/core/src/model/expression/ArrayCompositionExpr.scala" />
+        <option value="$PROJECT_DIR$/core/src/model/expression/CellCompositionExpr.scala" />
+        <option value="$PROJECT_DIR$/core/src/model/IdName.scala" />
+        <option value="$PROJECT_DIR$/core/src/model/statement/AssignmentStatement.scala" />
+        <option value="$PROJECT_DIR$/src/matlabParser/MatlabParser.scala" />
+        <option value="$PROJECT_DIR$/core/src/model/statement/StatementBlock.scala" />
+        <option value="$PROJECT_DIR$/src/matlabParser/Main.scala" />
+        <option value="$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala" />
       </list>
     </option>
   </component>
@@ -1144,6 +1566,10 @@
               <option name="myItemId" value="processing" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TypeInferenceProcessor.scala" />
+              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1163,7 +1589,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
+              <option name="myItemId" value="processing" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1181,7 +1607,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="matlabParser" />
+              <option name="myItemId" value="matlab" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="processing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="StencilIdentifier.scala" />
+              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="matlab_to" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="matlab_to" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="matlab" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1256,6 +1708,10 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1304,36 +1760,6 @@
               <option name="myItemId" value="util" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DotDescriptor.scala" />
-              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="matlab_to" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="matlab_to" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="processing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -1342,18 +1768,18 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="87" />
-    <property name="project.structure.proportion" value="0.15" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="104" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="recentsLimit" value="5" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="98" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib.scalax.graph/bundles/graph-dot_2.10-1.6.0.jar!/" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/org.eclipse.cdt.core_5.3.1.201109151620.jar/org.eclipse.cdt.core_5.3.1.201109151620.jar!/" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="107" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="898" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="902" />
@@ -1366,22 +1792,22 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
     <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
-    <property name="Repository.Attach.Sources" value="false" />
+    <property name="Repository.Attach.Sources" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="Downloaded.Files.Path" value="$USER_HOME$/Downloads" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/core/src" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/core/src" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="options.lastSelected" value="appearance" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -1390,9 +1816,10 @@
     </key>
   </component>
   <component name="RunManager" selected="ScalaTest.scalaTest">
-    <configuration default="true" type="#org.osmorc.OsgiConfigurationType" factoryName="OSGi Bundles" vmParameters="" programParameters="" includeAllBundlesInClassPath="false" workingDir="$PROJECT_DIR$/out/run.osgi/" useAlternativeJre="false" alternativeJrePath="" frameworkStartLevel="1" defaultStartLevel="5" generateWorkingDir="false">
-      <framework instance="Felix" />
-      <additinalProperties debugMode="false" startConsole="true" />
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
+      <option name="PROGRAM_PARAMETERS" />
       <method />
     </configuration>
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
@@ -1403,10 +1830,9 @@
       <option name="testName" />
       <method />
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
-      <option name="PROGRAM_PARAMETERS" />
+    <configuration default="true" type="#org.osmorc.OsgiConfigurationType" factoryName="OSGi Bundles" vmParameters="" programParameters="" includeAllBundlesInClassPath="false" workingDir="$PROJECT_DIR$/out/run.osgi/" useAlternativeJre="false" alternativeJrePath="" frameworkStartLevel="1" defaultStartLevel="5" generateWorkingDir="false">
+      <framework instance="Felix" />
+      <additinalProperties debugMode="false" startConsole="true" />
       <method />
     </configuration>
     <configuration default="true" type="ScalaScriptConsoleRunConfiguration" factoryName="Scala Console">
@@ -1422,6 +1848,19 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -1450,19 +1889,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1501,15 +1927,6 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="true" type="ScalaScriptRunConfiguration" factoryName="Scala Script">
-      <module name="" />
-      <setting name="path" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="consoleargs" value="" />
-      <setting name="params" value="" />
-      <setting name="workingDirectory" value="$PROJECT_DIR$" />
-      <method />
-    </configuration>
     <configuration default="true" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <extension name="scalaCoverage" />
@@ -1523,6 +1940,15 @@
       <setting name="testName" value="" />
       <setting name="testKind" value="Class" />
       <setting name="showProgressMessages" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="ScalaScriptRunConfiguration" factoryName="Scala Script">
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="consoleargs" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="$PROJECT_DIR$" />
       <method />
     </configuration>
     <configuration default="false" name="mP" type="Application" factoryName="Application">
@@ -1642,10 +2068,10 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32674772" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3237082" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21884498" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39817628" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31458968" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34954408" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17235772" sideWeight="0.42727274" order="2" side_tool="true" content_ui="tabs" />
@@ -1653,14 +2079,14 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34954408" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25609756" sideWeight="0.6018237" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23821138" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17642276" sideWeight="0.5440729" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21138212" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22601625" sideWeight="0.5440729" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.45592704" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25609756" sideWeight="0.6018237" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1733,121 +2159,121 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/src/model/expression/FunctionCallExpr.scala">
+    <entry file="file://$PROJECT_DIR$/core/src/core/util/ErrConstants.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="9" selection-start="1734" selection-end="1920" vertical-scroll-proportion="0.0">
+        <state line="12" column="36" selection-start="293" selection-end="293" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/model/expression/TupleExpr.scala">
+    <entry file="jar://$USER_HOME$/Downloads/scala-2.10.3.final/src/scala-library-src.jar!/scala/util/parsing/combinator/RegexParsers.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="9" selection-start="1210" selection-end="1396" vertical-scroll-proportion="0.0">
+        <state line="127" column="15" selection-start="5290" selection-end="5290" vertical-scroll-proportion="0.3325">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/model/expression/TypeIdExpr.scala">
+    <entry file="file://$PROJECT_DIR$/core/src/model/statement/Statement.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="8" selection-start="925" selection-end="1112" vertical-scroll-proportion="0.0">
+        <state line="10" column="26" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/model/expression/UnaryExpr.scala">
+    <entry file="file://$PROJECT_DIR$/core/src/model/expression/ArrayRefExpr.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="7" selection-start="1384" selection-end="1572" vertical-scroll-proportion="0.0">
+        <state line="5" column="7" selection-start="79" selection-end="79" vertical-scroll-proportion="0.19543974">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/refactoring/matlab/model/FunctionDefStatement.scala">
+    <entry file="file://$PROJECT_DIR$/core/src/model/expression/ArrayCompositionExpr.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="18" selection-start="1075" selection-end="1229" vertical-scroll-proportion="0.0">
+        <state line="14" column="72" selection-start="453" selection-end="453" vertical-scroll-proportion="0.4397394">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/model/expression/IdExpr.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="11" selection-start="978" selection-end="1230" vertical-scroll-proportion="1.4820144">
-          <folding>
-            <element signature="e#27#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/model/expression/CellCompositionExpr.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="9" selection-start="1310" selection-end="1496" vertical-scroll-proportion="0.70863307">
+        <state line="13" column="71" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/model/expression/SliceExpr.scala">
+    <entry file="file://$PROJECT_DIR$/core/src/model/Declarator.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="9" selection-start="2250" selection-end="2436" vertical-scroll-proportion="0.6388889">
+        <state line="6" column="18" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/model/statement/FunctionCallStatement.scala">
+    <entry file="jar://$USER_HOME$/Downloads/scala-2.10.3.final/src/scala-library-src.jar!/scala/collection/immutable/StringLike.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="5" selection-start="1314" selection-end="1314" vertical-scroll-proportion="1.717608">
+        <state line="228" column="6" selection-start="7918" selection-end="7918" vertical-scroll-proportion="0.28338763">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/Downloads/scala-2.10.3.final/src/scala-library-src.jar!/scala/MatchError.scala">
+    <entry file="file://$PROJECT_DIR$/core/src/model/IdName.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="790" selection-end="790" vertical-scroll-proportion="0.0">
+        <state line="8" column="7" selection-start="234" selection-end="234" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/model/statement/AssignmentStatement.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0">
+        <state line="23" column="6" selection-start="656" selection-end="656" vertical-scroll-proportion="-1.2">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/model/expression/Expr.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="71" selection-start="331" selection-end="331" vertical-scroll-proportion="-1.8605442">
           <folding>
             <element signature="e#26#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/model/expression/NAryExpr.scala">
+    <entry file="file://$PROJECT_DIR$/src/matlabParser/MatlabParser.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0">
+        <state line="322" column="10" selection-start="11166" selection-end="11166" vertical-scroll-proportion="-4.8">
+          <folding>
+            <element signature="e#183#215#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/m_files/test/test_for.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="10" selection-start="133" selection-end="133" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/model/statement/StatementBlock.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="150" column="0" selection-start="3613" selection-end="3613" vertical-scroll-proportion="0.0">
+        <state line="115" column="55" selection-start="2896" selection-end="2896" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/model/StatementProcessor.scala">
+    <entry file="file://$PROJECT_DIR$/src/matlabParser/Main.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="153" column="0" selection-start="4197" selection-end="4197" vertical-scroll-proportion="0.0">
+        <state line="83" column="12" selection-start="2352" selection-end="2352" vertical-scroll-proportion="-11.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/refactoring/matlab/processing/SimpleTypeInferencer.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="12" selection-start="2968" selection-end="2972" vertical-scroll-proportion="-6.52">
+        <state line="60" column="39" selection-start="1465" selection-end="1465" vertical-scroll-proportion="0.5151515">
           <folding>
             <element signature="e#41#57#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/m_files/test/test_assignment.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="45" selection-start="47" selection-end="47" vertical-scroll-proportion="0.26978418">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1880,7 +2306,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
-          <last-edited>eclipse-workbench-2.1.0</last-edited>
+          <last-edited>org.eclipse.cdt.core_5.3.1.201109151620</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1928,7 +2354,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>scala-2.10</last-edited>
+          <last-edited>scalatest_2.10-2.0</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

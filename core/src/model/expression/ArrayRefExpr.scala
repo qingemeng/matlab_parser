@@ -8,7 +8,7 @@ object ArrayRefExpr {
   def unapply(e: ArrayRefExpr) = Some(e.owner, e.indices)
 }
 
-class ArrayRefExpr private(var _owner: Expr, var _indices: List[Expr]) extends Expr {
+class ArrayRefExpr private(var _owner: Expr, var _indices: List[Expr]) extends Expr  {
   update(_owner, _indices)
   
   def owner = _owner
@@ -59,10 +59,20 @@ class ArrayRefExpr private(var _owner: Expr, var _indices: List[Expr]) extends E
     str.toString
   }
 //  //TODO:gm,rewrite
-//  override def typePretty(level: Int = 0, hash: Boolean = false): String = {
-//    val str = new StringBuilder
-//    str.append(indentStr(level))
-//    str.append("\n")
-//    str.toString
-//  }
+  override def semanticAnalyse(level: Int = 0, hash: Boolean = false): String = {
+val str = new StringBuilder
+  str.append(indentStr(level))
+  str.append("ArrayRefExpr: ")
+//  str.append(pretty(hash))
+  str.append("\n")
+
+  str.append(indentStr(level+1))
+  str.append("Owner:\n")
+  str.append(owner.semanticAnalyse(level+2, hash))
+
+  str.append(indentStr(level))
+  str.append("->Indices:\n")
+  indices.foreach(i => str.append(i.semanticAnalyse(level+2, hash)))
+  str.toString
+  }
 }

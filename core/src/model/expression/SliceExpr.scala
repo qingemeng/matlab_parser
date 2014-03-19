@@ -73,10 +73,29 @@ case class SliceExpr (private var _lowerBound: Expr, private var _upperBound: Ex
     str.toString
   }
   //TODO:gm,rewrite
-//  override def typePretty(level: Int = 0, hash: Boolean = false): String = {
-//    val str = new StringBuilder
-//    str.append(indentStr(level))
-//    str.append("\n")
-//    str.toString
-//  }
+  override def semanticAnalyse(level: Int = 0, hash: Boolean = false): String = {
+    val str = new StringBuilder
+    str.append(indentStr(level))
+
+    str.append("SliceExpr: ")
+//    str.append(pretty(hash))
+    str.append("\n")
+
+    str.append(indentStr(level))
+    str.append("->LowerBound: ")
+    str.append(lowerBound.semanticAnalyse(level+2, hash))
+    str.append("\n")
+
+    str.append(indentStr(level))
+    str.append("->UpperBound: ")
+    str.append(upperBound.semanticAnalyse(level+2, hash))
+    str.append("\n")
+
+    str.append(indentStr(level))
+    str.append("->Stride: ")
+    str.append(stride.semanticAnalyse(level+2, hash))
+    str.append("\n")
+
+    str.toString
+  }
 }

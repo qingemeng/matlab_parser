@@ -1,7 +1,7 @@
 function test_paralleldemo_gpu_stencil()
 gridSize = 500;
 numGenerations = 100;
-initialGrid = (rand(gridSize,gridSize)>.75);
+% initialGrid = (rand(gridSize,gridSize)>.75);
 gpu = gpuDevice();
 
  % draw the initial grid
@@ -30,7 +30,6 @@ end
  %        m = (neighbors==2)
  %        m
  
- X = (X && (neighbors == 2)) ||
-  (neighbors == 3);
+ X = (X && (neighbors == 2)) ||(neighbors == 3);
  % X
  end

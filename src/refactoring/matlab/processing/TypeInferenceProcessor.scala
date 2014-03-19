@@ -16,9 +16,9 @@ object TypeInferenceProcessor {
   def typeInference(ast: StatementBlock) = {
     new TypeInferenceProcessor().typeInference(ast)
   }
-//  def typeInference(stmt:Statement) ={
-//    new TypeInferenceProcessor().typeInference(stmt)
-//  }
+  def typeInference(stmt:Statement) ={
+    new TypeInferenceProcessor().typeInference(stmt)
+  }
 }
 
 class TypeInferenceProcessor   {
@@ -30,9 +30,9 @@ class TypeInferenceProcessor   {
     //typeInfo = DependencyTypeInferencer.infer(ast,typeInfo)
     typeInfo
   }
-//  def typeInference(stmt: Statement)= {
-//    // derive type information
-//    typeInfo = SimpleTypeInferencer.infer(stmt)
-//    typeInfo
-//  }
+  def typeInference(stmt: Statement)= {
+    // derive type information
+    typeInfo = SimpleTypeInferencer.infer(stmt)
+    typeInfo
+  }
 }

@@ -52,11 +52,19 @@ class NAryExpr(private var _op: NAryOp, private var _terms: List[Expr]) extends 
     str.toString
   }
   //TODO:gm,rewrite
-//  override def typePretty(level: Int = 0, hash: Boolean = false): String = {
-//    val str = new StringBuilder
-//    str.append(indentStr(level))
-//    str.append("\n")
-//    str.toString
-//  }
+  override def semanticAnalyse(level: Int = 0, hash: Boolean = false): String = {
+    val str = new StringBuilder
+    str.append(indentStr(level))
+    str.append("NAryExpr(")
+    str.append(op.toString())
+    str.append("): ")
+
+//    str.append(pretty(hash))
+    str.append("\n")
+    terms.foreach(term => {
+      str.append(term.semanticAnalyse(level+1))
+    })
+    str.toString
+  }
 }
 

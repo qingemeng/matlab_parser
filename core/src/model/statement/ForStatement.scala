@@ -4,6 +4,7 @@ import   model._
 import   model.statement._
 import   model.expression._
 import   model.property._
+import refactoring.matlab.processing.TypeInferenceProcessor
 
 object ForStatement {
   def apply(
@@ -132,41 +133,48 @@ class ForStatement(
     str.toString
   }
 
-//  override def typePretty(level: Int = 0): String = {
-//    val str = new StringBuilder
-//    str.append(indentStr(level))
-//    str.append("ForStatement: ")
-//    //str.append(pretty())
-//    str.append("\n")
-//
-//    if (initStmt!=null){
-//      str.append(indentStr(level))
-//      str.append("->InitStmt: ")
-//      str.append(initStmt.pretty())
-//      str.append("\n")
-//      str.append(initStmt.typePretty(level+2))
-//    }
-//
-//    if (condExpr!=null&&condExpr.isDefined){
-//      str.append(indentStr(level))
-//      str.append("->condExpr: ")
+  override def semanticAnalyse(level: Int = 0): String = {
+    val str = new StringBuilder
+    str.append(indentStr(level))
+    str.append("ForStatement: ")
+    //str.append(pretty())
+    str.append("\n")
+
+    if (initStmt!=null){
+      str.append(indentStr(level))
+      str.append("->InitStmt: ")
+      str.append(TypeInferenceProcessor.typeInference(this).toList.mkString("\n"))
+
+      //      str.append(initStmt.pretty())
+      str.append("\n")
+      str.append(initStmt.semanticAnalyse(level+2))
+      str.append(TypeInferenceProcessor.typeInference(initStmt).toList.mkString("\n"))
+
+    }
+
+    if (condExpr!=null&&condExpr.isDefined){
+      str.append(indentStr(level))
+      str.append("->condExpr: ")
 //      str.append(condExpr.get.pretty())
-//      str.append("\n")
-//      str.append(condExpr.get.typePretty(level+2))
-//    }
-//
-//    if (iterExpr!=null&&iterExpr.isDefined){
-//      str.append(indentStr(level))
-//      str.append("->iterExpr: ")
+      str.append("\n")
+      str.append(condExpr.get.semanticAnalyse(level+2))
+
+    }
+
+    if (iterExpr!=null&&iterExpr.isDefined){
+      str.append(indentStr(level))
+      str.append("->iterExpr: ")
 //      str.append(iterExpr.get.pretty())
-//      str.append("\n")
-//      str.append(iterExpr.get.typePretty(level+2))
-//    }
-//
-//    str.append(indentStr(level))
-//    str.append("->ForBody:\n")
-//    str.append(body.typePretty(level+2))
-//
-//    str.toString
-//  }
+      str.append("\n")
+      str.append(iterExpr.get.semanticAnalyse(level+2))
+    }
+
+    str.append(indentStr(level))
+    str.append("->ForBody:\n")
+    str.append(body.semanticAnalyse(level+2))
+    str.append(TypeInferenceProcessor.typeInference(body).toList.mkString("\n"))
+
+
+    str.toString
+  }
 }

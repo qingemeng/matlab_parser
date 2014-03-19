@@ -7,4 +7,6 @@ abstract class DeclUseMap {
   def getDeclUse(idName: IdName): DeclUseGroup
   def declExist(idName: IdName): Boolean
   def addDecl(idName: IdName, declUseGroup: DeclUseGroup)
+  //def declNames(id)
+
 }

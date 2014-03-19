@@ -67,10 +67,27 @@ class ConditionalExpr(
     str.toString
   }
   //TODO:gm,rewrite
-//  override def typePretty(level: Int = 0, hash: Boolean = false): String = {
-//    val str = new StringBuilder
-//    str.append(indentStr(level))
-//    str.append("\n")
-//    str.toString
-//  }
+  override def semanticAnalyse(level: Int = 0, hash: Boolean = false): String = {
+    val str = new StringBuilder
+    str.append(indentStr(level))
+
+    str.append("ConditionalExpr: ")
+//    str.append(pretty(hash))
+    str.append("\n")
+
+    str.append(indentStr(level))
+    str.append("->CondExpr:\n")
+    str.append(condExpr.semanticAnalyse(level+2, hash))
+
+    str.append(indentStr(level))
+    str.append("->PositiveExpr:\n")
+    str.append(positiveExpr.semanticAnalyse(level+2, hash))
+
+    str.append(indentStr(level))
+    str.append("->NegativeExpr:\n")
+    str.append(negativeExpr.semanticAnalyse(level+2, hash))
+    str.append("\n")
+
+    str.toString
+  }
 }

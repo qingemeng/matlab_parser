@@ -20,24 +20,44 @@ class ArrayInfo(val arrayType: BasicType, val rank: Int, val sizes: List[Expr]){
   def pretty(hash:Boolean = false): String = {
     arrayType + sizes.map(size => "[" + size.pretty(hash) + "]").mkString
   }
-  
+
+
   def treePretty(level: Int = 0, hash:Boolean = false): String = {
     def indentStr(level: Int): String = "  " * level
-    
+
     val str = new StringBuilder
     str.append(indentStr(level))
     str.append("ArrayInfo: ")
     str.append(pretty(hash))
     str.append("\n")
-    
+
     str.append(indentStr(level))
     str.append("->Type: ")
     str.append(arrayType)
     str.append("\n")
-    
+
     str.append(indentStr(level))
     str.append("->Sizes:\n")
     sizes.foreach(size => str.append(size.treePretty(level+2, hash)))
+    str.toString
+  }
+  def semanticAnalyse(level: Int = 0, hash:Boolean = false): String = {
+    def indentStr(level: Int): String = "  " * level
+
+    val str = new StringBuilder
+    str.append(indentStr(level))
+    str.append("ArrayInfo: ")
+//    str.append(pretty(hash))
+    str.append("\n")
+
+    str.append(indentStr(level))
+    str.append("->Type: ")
+    str.append(arrayType)
+    str.append("\n")
+
+    str.append(indentStr(level))
+    str.append("->Sizes:\n")
+    sizes.foreach(size => str.append(size.semanticAnalyse(level+2, hash)))
     str.toString
   }
   

@@ -3,26 +3,33 @@ package model.expression
 import   model._
 import   model.expression._
 import   model.property._
+import scala.util.parsing.input.Positional
+
 //import refactoring.matlab.processing.SimpleTypeInferencer_
 import scala.collection.mutable
 
 abstract class BaseExpr
 
-abstract class Expr extends BaseExpr with HasProperties {
+abstract class Expr extends BaseExpr with HasProperties with Positional {
 
   private var _parent: Option[Expr] = None
-//  var _typeInfo: Map[String, BasicType] = Map.empty
+//  private var _position = this.pos
+
+  //  var _typeInfo: Map[String, BasicType] = Map.empty
 
 
   // Pretty Print
   protected def indentStr(level: Int): String = "  " * level
   def pretty(hash: Boolean = false): String
   def treePretty(level: Int = 0, hash: Boolean = false): String
-//  def typePretty(level: Int = 0, hash: Boolean = false): String
+  def semanticAnalyse(level: Int = 0, hash: Boolean = false): String
   
   def parent = _parent
   def getParent = _parent.getOrElse(null)
   def setParent(p: Expr) = if (p == null) _parent = None else _parent = Some(p)
+//  def position = _position
+//  def getPosition = _position
+//  def setPosition (pos:Positional) = if (pos == null) _position = null else _position = this.pos
 
   // deep clone of the model.expression
   def cloneExpr(): Expr
@@ -67,6 +74,7 @@ abstract class Expr extends BaseExpr with HasProperties {
     case t: DoubleType => "double"
     case t: BooleanType => "boolean"
   }
+
 
 //  def generateVarWithType: mutable.ListBuffer[String] = {
 //    val gen = mutable.ListBuffer.empty[String]

@@ -1,6 +1,7 @@
 package   core
 
 import   model._
+import org.eclipse.cdt.core.dom.ast.IASTName
 
 class BaseDeclUseGroup(_type: BasicType,var _arrayInfo: ArrayInfo) extends DeclUseGroup {
   def this(_type: BasicType) = this(_type, null)
@@ -11,4 +12,6 @@ class BaseDeclUseGroup(_type: BasicType,var _arrayInfo: ArrayInfo) extends DeclU
   override def updateArrayInfo(arrayInfo: ArrayInfo){
     _arrayInfo = arrayInfo
   }
+
+  var declNames: List[IASTName] = _
 }

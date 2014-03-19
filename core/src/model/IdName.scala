@@ -5,6 +5,7 @@ import   model.expression._
 import   model.property._
 import refactoring.matlab.processing.TypeInferenceProcessor
 import model.statement.ExpressionStatement
+import scala.util.parsing.input.Positional
 
 object IdName {
   def apply(id: String) = new IdName(id, id)
@@ -12,7 +13,7 @@ object IdName {
   def unapply(n: IdName) = Some(n.id, n.name)
 }
 
-class IdName(val id: String, val name: String) extends HasProperties with Ordered[IdName]{
+class IdName(val id: String, val name: String) extends HasProperties with Positional with Ordered[IdName]{
 
   def cloneName(): IdName = {
     val c = new IdName(id, name)
@@ -36,7 +37,7 @@ class IdName(val id: String, val name: String) extends HasProperties with Ordere
   def treePretty(level: Int = 0, hash: Boolean = false): String = {
     "  " * level + "IdName: " + pretty(hash) + "\n"
   }
-  def typePretty(level: Int = 0, hash: Boolean = false): String = {
+  def semanticAnalyse(level: Int = 0, hash: Boolean = false): String = {
     "  " * level + "IdName: " + pretty(hash) + "\n" //+ TypeInferenceProcessor.typeInference(ExpressionStatement(this)).toList.mkString("\n")
   }
 }
