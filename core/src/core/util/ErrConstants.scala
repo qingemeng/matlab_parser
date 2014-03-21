@@ -9,7 +9,12 @@ package core.util
  */
 object ErrConstants {
   val  ErrPrefix = "Error : "
+  val NullValue = 0
   val  VarNotInitialized = 1
+  val  ArrContainsVariousSubType = 2
+  val   ArrOfDiffSize = 3
+  val ArrSubTypeNotMatch = 4
+  val ArrSizeNotMatch = 5
   val  LineLocationPrefix = "Line : "
 
 

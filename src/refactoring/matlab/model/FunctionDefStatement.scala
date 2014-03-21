@@ -2,6 +2,7 @@ package refactoring.matlab.model
 
 import   model._
 import   model.statement._
+import refactoring.matlab.processing.TypeInferenceProcessor
 
 object FunctionDefStatement {
   def apply(funcDef: FunctionDef) = new FunctionDefStatement(funcDef)
@@ -46,7 +47,10 @@ class FunctionDefStatement(var _funcDef: FunctionDef) extends Statement{
     str.append(indentStr(level))
     str.append("FunctionDefStatement: ")
     str.append("\n")
-    str.append(funcDef.treePretty(level+1))
+    str.append(funcDef.semanticAnalyse(level+1))
+
+//    str.append(TypeInferenceProcessor.typeInference(body.asInstanceOf[StatementBlock]).toList.mkString("\n"))
+
 
     str.toString
   }

@@ -172,7 +172,7 @@ class ForStatement(
     str.append(indentStr(level))
     str.append("->ForBody:\n")
     str.append(body.semanticAnalyse(level+2))
-    str.append(TypeInferenceProcessor.typeInference(body).toList.mkString("\n"))
+    str.append(TypeInferenceProcessor.typeInference(body.asInstanceOf[StatementBlock]).toList.mkString("\n"))
 
 
     str.toString

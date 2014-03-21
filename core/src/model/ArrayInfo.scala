@@ -1,6 +1,6 @@
 package model
 
-import  model.expression.Expr
+import model.expression.{IdExpr, Expr}
 
 object ArrayInfo {
   def apply(arrayType: BasicType, rank: Int, sizes: List[Expr] = List.empty) = new ArrayInfo(arrayType, rank, sizes)
@@ -9,6 +9,8 @@ object ArrayInfo {
 // each size is null if dynamic
 class ArrayInfo(val arrayType: BasicType, val rank: Int, val sizes: List[Expr]){
   def hasUnknownSize(): Boolean = sizes.isEmpty || sizes.contains(null)
+
+
   
   def toArrayType: ArrayType = ArrayType(arrayType, rank, sizes)
   

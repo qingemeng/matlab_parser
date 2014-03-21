@@ -17,6 +17,7 @@ import refactoring.matlab.processing.CodeGenerator._
  */
 object Main extends Parsers{
   def main(args : Array[String]){
+    val DEBUG = true
     val path = "/Users/gemengqin/Dropbox/ntu/FYP/matlab_to/src/m_files"
     val testPath = "/Users/gemengqin/Dropbox/ntu/FYP/matlab_to/src/m_files/test"
 
@@ -75,6 +76,7 @@ object Main extends Parsers{
 
 
     val content = scala.io.Source.fromFile(filename).mkString
+
     val linedContent = content.split("\n")
     var lineNum = 1
     for (line<- linedContent){
@@ -90,7 +92,7 @@ object Main extends Parsers{
 
     MatlabParser.parseSource(content) match {
       case Left((declMap, stmt)) => {
-        //println(declMap.mkString("\n"));
+        println(declMap.mkString("\n"));
 
 
         val pretty = stmt.pretty()
@@ -103,7 +105,7 @@ object Main extends Parsers{
         val semanticCheck  = stmt.semanticAnalyse();
         println(semanticCheck)
 
-        //println(generate(stmt))
+        println(generate(stmt))
 
 //        MatlabParser.parseStatement(pretty) match {
 //          case Left((declMap2, stmt2)) => println(stmt2.pretty())
@@ -117,6 +119,11 @@ object Main extends Parsers{
       case Right(err) => println(err)
     }
 
+
+//    MatlabParser.parseTest(content) match {
+//      case Left((declMap,test)) => print(test.treePretty())
+//      case Right(err) => println(err)
+//    }
   }
 
 

@@ -3,6 +3,12 @@
 	<output-test url="file://$MODULE_DIR$/../out/test/core"/>
 	<exclude-output/>
 	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="$MODULE_DIR$/../lib.scalax.graph/bundles/graph-core_2.10-1.6.0.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib.scalax.graph/bundles/graph-core_2.10-1.6.0.jar!/"/>
+	</lib>
+	<lib name="$MODULE_DIR$/../lib.scalax.graph/bundles/graph-dot_2.10-1.6.0.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib.scalax.graph/bundles/graph-dot_2.10-1.6.0.jar!/"/>
+	</lib>
 	<levels>
 		<level name="scala-2.10" value="project"/>
 	</levels>

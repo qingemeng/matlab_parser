@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Fada
+Bundle-SymbolicName: dependency.fada;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: dependency.fada.plugin.Activator
+Bundle-Vendor: HPCTODAY
+Require-Bundle: org.eclipse.core.runtime,
+ org.scala-ide.scala.library,
+ com.hpctoday.lib.scalax.graph;visibility:=reexport,
+ com.hpctoday.lib.fada;visibility:=reexport,
+  core;visibility:=reexport,
+  dataflow;visibility:=reexport
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: dependency.fada

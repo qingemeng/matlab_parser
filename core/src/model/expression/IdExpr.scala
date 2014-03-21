@@ -11,12 +11,13 @@ object IdExpr {
 }
 
 class IdExpr(val idName: IdName) extends Expr {
-
+  var value = null
   def cloneExpr(): Expr = {
     val c = new IdExpr(idName.cloneName)
     c.base_copyFrom(this)
     c
   }
+
   
   override def isLValue(): Boolean = true
   override def isLeafNode(): Boolean = true

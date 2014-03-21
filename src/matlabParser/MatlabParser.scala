@@ -31,6 +31,7 @@ import model.OpPrefixDec
 import model.OpDivide
 import model.OpGreaterThan
 import scala.util.parsing.input.Positional
+import scala.collection.mutable
 
 //import scala.collection.mutable.ListBuffer
 import scala.util.parsing.combinator._
@@ -96,6 +97,7 @@ import model.OpMatPow
 
 object MatlabParser extends JavaTokenParsers with PackratParsers {
   val declMap = HashMap[IdName, BasicType]()
+//  val funcNames  = mutable.MutableList.empty[IdExpr]
 
 
   //lazy val keywords: PackratParser[Any] = "var" | "for"
@@ -153,7 +155,12 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
   case class InParameter(name:IdName) extends Parameter(name)
   case class OutParameter(name:IdName) extends Parameter(name)
 
-
+  lazy val testExpr: PackratParser[String] =( (testExpr <~ "+") ~ testTerm) ^^ {case a~b => a.toString + " + " + b.toString }
+////
+lazy val testExpr2: PackratParser[String] = testTerm ~ y ^^{case t~ye => " testTerm: " + t.toString +" y : "+ ye.toString }
+   lazy val testTerm :PackratParser[String] = "t"|"f"
+   lazy val y: PackratParser[String] = "+" ~>testTerm ~ y ^^{case t~ye => " testTerm: " + t.toString +" y : "+ ye.toString } |
+     eol ^^ { case end => end.toString}
 
   lazy val parameters: PackratParser[List[Parameter]] =repsep(parameter, ",")
 
@@ -167,8 +174,10 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
   lazy val statement: PackratParser[Statement] = positioned(
       statementCmd
   )
+//  lazy val statement: PackratParser[Statement] = positioned(
+//      statementCmd)
 
-  lazy val statementCmd: PackratParser[Statement] =     positioned(
+  lazy val statementCmd: PackratParser[Statement] = positioned (
     forStmt|
   whileStmt|
    switchStmt|
@@ -374,14 +383,24 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
 //      "(" ~> arrayExpr <~ ")" |
     "+" ~> arrayFactor ^^ { case x => UnaryExpr(OpUnaryPlus(), x)} |
       "-" ~> arrayFactor ^^ { case x => UnaryExpr(OpUnaryMinus(), x)} |
-    arrayRefExpr|
+//      arrayRefExpr|
       arrayFactor
+
   )
 
   lazy val functionCallStatement: PackratParser[Statement] =positioned(
-    identifier ~ ("(" ~> repsep(arrayTerm, ",") <~ ")") ^^ { case name~params => FunctionCallStatement(FunctionCallExpr(name,params))}
+    identifier ~ ("(" ~> repsep(expr, ",") <~ ")") ^^ { case name~params =>
+//      if()
+      FunctionCallStatement(FunctionCallExpr(name,params))
+    }
 
   )
+  lazy val functionCallExpr: PackratParser[FunctionCallExpr] = positioned(
+    identifier ~ ("(" ~> repsep(expr, ",") <~ ")") ^^ {
+      case name~params =>FunctionCallExpr(name,params)
+    }
+  )
+
   //      "-" ~> arrayTerm ^^ { case x => UnaryExpr(OpNegate(), x) }
 
 //  lazy val sumTerm: PackratParser[Expr] =
@@ -403,8 +422,9 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
 
 
   lazy val arrayFactor : PackratParser[Expr] =  positioned(
-    sliceExpr|
-    arrayRefExpr |
+      functionCallExpr|
+      arrayRefExpr |
+        sliceExpr|
       simpleFactor |
       cellUnitExpr|
    arrayUnitExpr
@@ -476,7 +496,7 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
     simpleConditionalExpr
   )
 
-  lazy val simpleConditionalExpr: PackratParser[Expr] =  positioned(
+lazy val simpleConditionalExpr: PackratParser[Expr] =  positioned(
     (simpleConditionalExpr <~ "&&") ~ simpleCompareExpr ^^ { case lhs~rhs => NAryExpr(OpLogicalAnd(), List(lhs, rhs)) } |
       (simpleConditionalExpr <~ "||") ~ simpleCompareExpr ^^ { case lhs~rhs => NAryExpr(OpLogicalOr(), List(lhs, rhs)) } |
       simpleCompareExpr
@@ -622,7 +642,9 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
   def parseSource(text: String) = {
     declMap.clear()
     parseAll(source, text)  match {
-      case Success (statement, _) =>{ Left(declMap.toMap, statement)
+      case Success (statement, _) =>{
+        Left(declMap.toMap, statement
+        )
 //        val pos = statement.pos
 //        print("pos = " +pos)
       }
@@ -637,5 +659,12 @@ object MatlabParser extends JavaTokenParsers with PackratParsers {
       case f => Right(f.toString)
     }
   }
-
+  def parseTest(testTxt: String) = {
+  declMap.clear()
+  parseAll(simpleArithmeticExpr, testTxt)  match {
+          case Success (test, _) => Left(declMap.toMap, test)
+          case f => Right(f.toString)
+        }
+}
+//
 }

@@ -13,6 +13,7 @@ case class UnsupportedType() extends BasicType {
 /**************************************************************************************/
 case class ArrayType(subType: BasicType, rank: Int, sizes: List[Expr]) extends BasicType {
   override def toString() = s"ArrayType($subType, $rank, ${sizes.map(s => s.pretty()).mkString(",\n ")})"
+
 }
 
 //case class SliceType(subType:BasicType) extends BasicType

@@ -14,8 +14,8 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/eclipse:eclipse-ui:2.1.0"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/eclipse-workbench-2.1.0"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/matlab_to"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/org.eclipse.cdt.core_5.3.1.201109151620"/>
 	<classpathentry kind="lib" path="/lib.scalax.graph/bundles/graph-core_2.10-1.6.0.jar"/>
 	<classpathentry kind="lib" path="/lib.scalax.graph/bundles/graph-dot_2.10-1.6.0.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/org.eclipse.cdt.core_5.3.1.201109151620"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
